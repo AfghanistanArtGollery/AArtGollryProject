@@ -1,0 +1,33 @@
+.Information p {
+  font-size: 22px;
+  margin-bottom: 2rem;
+  text-align: start;
+  margin-top: 1rem;
+}
+
+.Information span {
+  color: gray;
+  /* text-align: start; */
+  font-size: 14px;
+}
+
+.Information div p {
+  font-size: 16px !important;
+}
+
+.Information div:nth-child(5) svg {
+  margin-top: 0.7rem;
+}
+
+.Information div {
+  display: flex;
+  justify-content: left;  /* Change from 'right' to 'left' */
+  gap: 14px;
+  align-items: start;
+  color: gray;
+  flex-direction: row;  /* Ensure row layout for LTR */
+}
+
+.Information div svg {
+  font-size: 2.2rem;
+}

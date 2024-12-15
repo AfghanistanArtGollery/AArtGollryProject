@@ -1,0 +1,104 @@
+.form {
+  display: grid;
+  background-color: white;
+  padding: 10px 25px;
+  width: 380px;
+  font-family: Arial, sans-serif; /* Changed from 'shabnam' to a common English font */
+  margin: 7rem auto 2rem;
+  border-radius: 4px;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+  text-align: center; /* Center text for LTR */
+  color: black;
+}
+
+.input {
+  font-family: Arial, sans-serif; /* Changed from 'shabnam' to a common English font */
+  padding: 13px;
+  background-color: white;
+  color: black;
+  border-radius: 3px;
+  border: 1px solid black;
+  direction: ltr; /* Set to left-to-right */
+  margin-top: 20px;
+}
+
+.btn_light {
+  color: rgb(109, 109, 109);
+  border: 1px solid rgb(214, 214, 214);
+  margin-bottom: 3rem;
+  cursor: pointer;
+  padding: 1rem;
+  font-family: Arial, sans-serif; /* Changed from 'shabnam' to a common English font */
+  background: rgb(242, 242, 242);
+}
+
+.btn {
+  padding: 0.8rem;
+  cursor: pointer;
+  color: white !important;
+  font-family: Arial, sans-serif; /* Changed from 'shabnam' to a common English font */
+  background-color: rgb(52, 24, 14);
+}
+
+.forgot_pass {
+  font-size: 13px;
+  margin: 15px 0;
+}
+
+.form span {
+  text-align: left; /* Changed to left-aligned for LTR */
+  margin-top: 30px;
+  margin-bottom: 20px;
+  font-size: 13px;
+}
+
+.back_to_login {
+  font-size: 13px;
+  text-align: center;
+  margin-top: 1rem;
+  cursor: pointer;
+  margin-bottom: 3rem;
+}
+
+.redirect_to_home {
+  display: block;
+  width: max-content;
+  margin: 0 auto;
+  cursor: pointer;
+  font-family: Arial, sans-serif; /* Changed from 'shabnam' to a common English font */
+  font-size: 13px;
+  color: rgb(52, 24, 14);
+}
+.valid {
+  color: green;
+  font-weight: bold;
+}
+
+.invalid {
+  color: red;
+  font-weight: normal;
+}
+
+.style-none {
+  list-style: none;
+  padding: 0;
+}
+
+.password-valid-ul {
+  list-style-type: none;
+}
+
+.password-requirements li::before {
+  content: "✔";
+  color: transparent;
+  margin-right: 8px;
+}
+
+.password-requirements li.valid::before {
+  color: green;
+}
+
+.password-requirements li.invalid::before {
+  content: "✖";
+  color: red;
+}

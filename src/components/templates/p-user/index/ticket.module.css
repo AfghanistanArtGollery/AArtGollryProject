@@ -1,0 +1,98 @@
+.ticket {
+  width: 100%;
+  background-color: #711d1c21; /* Light background for ticket */
+  border-right: 3px solid #711d1c;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 8px;
+  margin: 1rem auto;
+  height: auto;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover transition */
+  text-decoration: none; /* Remove underline for links */
+}
+
+.ticket:hover {
+  transform: translateY(-4px); /* Lift the card on hover */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.ticket_left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  width: 70%;
+}
+
+.ticket_right {
+  text-align: center;
+  width: 30%;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.department {
+  padding: 0.5rem 1rem;
+  background: white;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  color: #711d1c;
+}
+
+.timestamp {
+  font-size: 0.85rem;
+  color: #777;
+}
+
+.answered {
+  background-color: #4caf50; /* Green background for answered */
+  color: white;
+  border-radius: 5px;
+  padding: 0.3rem 0.7rem;
+  font-weight: bold;
+}
+
+.not_answered {
+  background-color: #ff5722; /* Red background for not answered */
+  color: white;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .ticket {
+    flex-direction: column;
+    gap: 12px;
+    padding: 1rem;
+    height: auto;
+  }
+
+  .ticket_left,
+  .ticket_right {
+    width: 100%;
+    text-align: left;
+  }
+
+  .ticket_right {
+    margin-top: 10px;
+    text-align: left;
+  }
+
+  .title {
+    font-size: 1rem;
+  }
+
+  .timestamp,
+  .department {
+    font-size: 0.85rem;
+  }
+}

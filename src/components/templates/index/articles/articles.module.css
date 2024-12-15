@@ -1,0 +1,75 @@
+/* Default Title Style */
+.title {
+
+  color: #114639;
+  font-size: 36px;
+  text-align: center;
+  /* Center title */
+
+}
+
+/* Description Style */
+
+.description {
+  direction: ltr !important;
+  text-align: start;
+  color: gray;
+  /* Center description */
+  font-size: 18px;
+  /* Make description font slightly smaller */
+
+}
+
+/* Container styling */
+.container {
+  max-width: 1222px;
+  margin: 0 auto;
+  direction: rtl;
+  padding: 0 15px;
+  /* Add some padding for smaller screens */
+
+}
+
+/* Main content margin */
+.container main {
+  margin: 40px 0 90px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .title {
+    font-size: 30px;
+    /* Adjust title size for medium screens */
+  }
+
+  .description {
+    font-size: 16px;
+    /* Slightly smaller font size */
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 26px;
+    /* Make title smaller for smaller screens */
+  }
+
+  .description {
+    font-size: 14px;
+    /* Smaller description text */
+  }
+}
+
+@media (max-width: 576px) {
+  .title {
+    font-size: 22px;
+    /* Further reduce title size on very small screens */
+  }
+
+  .description {
+
+
+    font-size: 12px;
+    /* Reduce description font size for small screens */
+  }
+}

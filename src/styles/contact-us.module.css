@@ -1,0 +1,100 @@
+/* Main container settings */
+.container {
+  color: black;
+  text-align: left; /* Update for English layout (LTR) */
+  max-width: 1222px;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-bottom: 4rem;
+  margin-left: auto;
+}
+
+/* Maps layout (side-by-side on larger screens) */
+.maps {
+  display: flex;
+  gap: 25px;
+}
+
+.maps section {
+  width: 50%;
+}
+
+/* Contents layout for form and information (side-by-side on larger screens) */
+.contents {
+  display: flex;
+  gap: 35px;
+}
+
+.contents section,
+.contents form {
+  width: 50%;
+  margin-top: 3rem;
+}
+
+/* Make it responsive for smaller screens */
+@media (max-width: 768px) {
+  /* Stacking maps vertically on smaller screens */
+  .maps {
+    flex-direction: column;
+    gap: 15px; /* Smaller gap between stacked maps */
+  }
+
+  /* Adjust map section width */
+  .maps section {
+    width: 100%; /* Full width for map sections */
+  }
+
+  /* Stacking content sections vertically */
+  .contents {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* Adjust form and information layout */
+  .contents section,
+  .contents form {
+    width: 100%; /* Full width for form and information */
+    margin-top: 2rem;
+  }
+
+  /* Make the container padding a little more generous on smaller screens */
+  .container {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+}
+
+/* Mobile devices (portrait) */
+@media (max-width: 480px) {
+  .container {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .contents {
+    gap: 15px; /* Smaller gap between content sections */
+  }
+
+  .contents section,
+  .contents form {
+    width: 100%; /* Full width for form and information */
+    margin-top: 1rem;
+  }
+
+  /* Adjust font sizes for better readability on small screens */
+  .form p {
+    font-size: 18px;
+  }
+
+  .form button {
+    padding: 10px 15px;
+    font-size: 12px;
+  }
+
+  .form input,
+  .form textarea {
+    font-size: 14px; /* Slightly smaller text on smaller screens */
+  }
+}

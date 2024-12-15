@@ -1,0 +1,127 @@
+/* General table styling */
+.table {
+  direction: ltr;
+  width: 100%;
+  background-color: #f2f7fd;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  padding: 12px 15px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+/* Title styling */
+.title {
+  margin-top: 30px;
+  text-align: left;
+  text-transform: uppercase;
+  font-size: 30px;
+  font-weight: 500;
+  position: relative;
+  z-index: 1;
+}
+
+.title:before, .title:after {
+  content: "";
+  position: absolute;
+  top: 52%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 95%;
+  z-index: -1;
+  border-top: 2px solid #dfdfdf;
+  box-shadow: 0 1px 0 0 #711d1c;
+}
+
+/* Table container - responsive */
+.table_container {
+  padding: 40px 25px;
+  overflow-x: auto;
+}
+
+/* Button styles */
+.edit_btn,
+.delete_btn,
+.respond_btn {
+  font-size: 13px;
+  padding: 0.5rem 1rem;
+  border: 0;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  width: -webkit-fill-available;
+}
+
+.edit_btn {
+  background: #000000;
+}
+
+.delete_btn {
+  background: #711d1c;
+}
+
+.respond_btn {
+  background: #0000ff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .table th, .table td {
+    padding: 10px 8px;
+  }
+
+  /* Adjust table to allow horizontal scrolling on smaller screens */
+  .table_container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .title {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .title span {
+    font-size: 20px;
+  }
+
+  .edit_btn,
+  .delete_btn,
+  .respond_btn {
+    font-size: 12px;
+    padding: 0.5rem 0.9rem;
+  }
+
+  .table th,
+  .table td {
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 20px;
+  }
+
+  .table th,
+  .table td {
+    padding: 8px 6px;
+  }
+
+  /* Smaller buttons */
+  .edit_btn,
+  .delete_btn,
+  .respond_btn {
+    font-size: 11px;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .empty {
+    font-size: 1.4rem;
+    margin: 10rem auto;
+  }
+}
+

@@ -1,0 +1,23 @@
+.breadcrumb li a {
+  font-size: 12.5px;
+}
+.breadcrumb {
+  padding-top: 140px;
+  height: 250px;
+  margin-bottom: 25px;
+  list-style: none;
+  text-align: center;
+  background-color: rgb(252, 249, 249);
+  border-radius: 3px;
+}
+.cms_page_content {
+  padding-left: 15px;
+  padding-right: 15px;
+  position: relative;
+}
+@media (min-width: 992px) {
+  .cms_page_content {
+      margin-left: 8.33333%;
+      width: 83.33333%;
+  }
+}

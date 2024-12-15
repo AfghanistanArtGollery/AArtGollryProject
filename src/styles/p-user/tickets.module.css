@@ -1,0 +1,195 @@
+/* Title Section */
+.title {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  text-transform: uppercase;
+  position: relative;
+  font-size: 30px;
+  z-index: 1;
+  margin-bottom: 30px;
+  font-weight: 500;
+  direction: ltr; /* Ensure text is aligned left to right */
+}
+
+.title a {
+  background-color: #ffffff;
+  color: #711d1c;
+  font-size: 1rem;
+  display: flex;
+  position: relative;
+  right: 30px; /* Align the link to the right for LTR layout */
+  border-radius: 20px;
+  padding: 0 10px;
+  align-items: center;
+  border: 1px solid #711d1c;
+}
+
+.title:before {
+  border-top: 2px solid #dfdfdf;
+  content: "";
+  margin: 0 auto;
+  position: absolute;
+  top: 52%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+.title span {
+  background: #fff;
+  padding: 0 15px;
+  margin-left: 4rem; /* Adjust margin for LTR */
+}
+
+.title:after {
+  border-bottom: 1px solid #711d1c;
+  box-shadow: 0 1px 0 0 #711d1c;
+  content: "";
+  margin: 0 auto;
+  position: absolute;
+  top: 51%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+/* Main Container */
+.container {
+  padding: 0 30px;
+}
+
+/* Boxes Section */
+.boxes {
+  display: grid;
+  direction: ltr;
+  grid-template-columns: repeat(4, 0.5fr); /* Simplified for LTR and 5 equal columns */
+  justify-content: space-between;
+  gap: 1rem; /* Add gap between the boxes */
+}
+
+.filtering {
+  direction: ltr;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 2rem;
+}
+
+.filtering div {
+  display: flex;
+  gap: 15px;
+}
+
+.filtering select {
+  background: white;
+  padding: 10px;
+  color: black;
+  border: none;
+  border-bottom: 3px solid #711d1c;
+  margin-top: 4.5px;
+  width: 150px;
+  outline: 0;
+}
+
+.filtering button {
+  width: max-content;
+  padding: 0.8rem 1.4rem;
+  border: 0;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #711d1c;
+}
+
+.empty {
+  width: 100%;
+  border-radius: 5px;
+  background-color: #711d1c21;
+  text-align: center;
+  margin-top: 60px;
+  padding: 20px 0;
+  color: #711d1c;
+}
+
+/* Responsive Styles */
+@media (max-width: 968px) {
+  .boxes {
+  display: grid;
+  grid-template-columns: repeat(2, 0.5fr); /* Simplified for LTR and 5 equal columns */
+  justify-content: space-between;
+  gap: 0.5rem; /* Add gap between the boxes */
+
+  }
+}
+/* For Medium Screens (tablets ≤ 768px) */
+@media (max-width: 768px) {
+  .title {
+    flex-direction: column;
+    text-align: center;
+    font-size: 24px;
+  }
+
+  .title a {
+    position: relative;
+    margin-top: 10px; /* Give space between the title and link */
+    right: 0;
+  }
+
+ 
+
+  .filtering {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .filtering select {
+    width: 100%; /* Make dropdowns full width on small screens */
+  }
+
+  .filtering button {
+    width: 100%; /* Make the Apply button full width on small screens */
+  }
+
+  .container {
+    padding: 0 15px;
+  }
+}
+
+/* For Small Screens (mobile ≤ 480px) */
+@media (max-width: 480px) {
+  .title {
+    font-size: 20px; /* Adjust title font size for small screens */
+  }
+
+  .title a {
+    font-size: 0.9rem; /* Reduce link font size */
+  }
+
+  .boxes {
+    grid-template-columns: 1fr; /* Stack the boxes vertically on mobile */
+    
+  }
+
+  .filtering {
+    gap: 0.5rem;
+  }
+
+  .filtering select {
+    width: 100%; /* Ensure dropdowns are full width on mobile */
+    padding: 8px; /* Adjust padding for mobile screens */
+  }
+
+  .filtering button {
+    width: 100%; /* Full-width button */
+    padding: 0.8rem 0; /* Adjust button padding */
+  }
+
+  .empty {
+    font-size: 0.9rem; /* Make the "No tickets" text smaller */
+  }
+}

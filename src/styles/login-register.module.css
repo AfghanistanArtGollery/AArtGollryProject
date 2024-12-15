@@ -1,0 +1,47 @@
+.login_register {
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(rgb(237, 230, 234), rgb(237, 230, 234));
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: row; /* Ensure horizontal layout on large screens */
+}
+
+.form_bg {
+  width: 50%; /* Form takes 50% of the screen */
+  padding: 20px; /* Added padding for spacing */
+}
+
+.login_register section {
+  width: 50%; /* Image section takes 50% of the screen */
+  height: 100%;
+  background-color: rgb(52, 24, 14);
+}
+
+@media screen and (max-width: 796px) {
+  .login_register {
+    flex-direction: column; /* Stacks content vertically on small screens */
+  }
+
+  .form_bg {
+    width: 100%; /* Form takes full width on small screens */
+    padding: 15px; /* Less padding on small screens */
+  }
+
+  .login_register section {
+    width: 100%; /* Image takes full width but will be hidden */
+    height: 300px; /* Set a fixed height for the image area */
+    background-color: rgb(52, 24, 14); /* Background color for image section */
+  }
+
+  .login_regist_img {
+    visibility: hidden; /* Hide the image on small screens */
+  }
+}
+
+@media screen and (min-width: 797px) {
+  .login_regist_img {
+    visibility: visible; /* Make the image visible again on larger screens */
+  }
+}

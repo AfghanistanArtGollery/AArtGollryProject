@@ -1,0 +1,41 @@
+
+.img{
+height: 200px;
+width: 100%;
+}
+
+.product_price {
+background-color: rgba(240, 9, 9, 0.72);
+color: #fff;
+font-size: 15px;
+position: absolute;
+margin-top: 160px;
+border-top-right-radius: 5px;
+border-bottom-right-radius: 5px;
+}
+.result_category_list{
+list-style: none;
+margin-left: -30px;
+}
+.result_category_list li a {
+color: rgb(92, 70, 70);
+cursor: pointer;
+
+}
+
+
+.filter_title {
+color: #FFFFFF;
+background-color: #293B70;
+color: #FFF;
+margin-top: 0;
+margin-bottom: 12.5px;
+background-color: #04BFBF;
+display: inline-block;
+padding: 1px 10px;
+border-radius: 3px;
+}
+.noUi_base .noUi_connect {
+background-color: #293B70;
+}
+

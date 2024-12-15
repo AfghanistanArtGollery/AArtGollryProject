@@ -1,0 +1,147 @@
+/* Base Styling */
+.userTicket, .adminticket {
+  width: 50%;
+  border-radius: 5px;
+  padding: 0px 10px 10px;
+  margin-bottom: 15px;
+}
+
+.userTicket {
+  background-color: #711d1c;
+  color: white;
+}
+
+.adminticket {
+  background-color: #f9f9f9;
+  border: #711d1c 3px solid;
+  margin-right: auto;
+}
+
+.ticket_main {
+  direction: ltr;
+  text-align: start;
+  display: flex;
+  padding: 10px;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+}
+
+.ticket_main div {
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+
+.ticket_main div div {
+  justify-content: right;
+  gap: 5px;
+  flex-direction: column;
+}
+
+.ticket_text {
+  background-color: white;
+  color: black;
+  margin: 0.5rem 1rem;
+  border-radius: 5px;
+  padding: 0.5rem;
+}
+
+.adminticket .ticket_text {
+  background-color: #711d1c;
+  color: white;
+}
+
+.ticket_main img {
+  width: 80px;
+  border-radius: 100px;
+}
+
+.ticket_main div div span {
+  font-size: 14px;
+  color: gray;
+}
+
+.empty {
+  width: 100%;
+  border-radius: 5px;
+  background-color: #711d1c21;
+  text-align: center;
+  margin-top: 60px;
+  padding: 20px 0;
+  color: #711d1c;
+}
+
+/* Responsive Styles */
+
+/* For Medium Screens (tablets ≤ 768px) */
+@media (max-width: 768px) {
+  .userTicket, .adminticket {
+    width: 100%; /* Full width for smaller screens */
+  }
+
+  .ticket_main {
+    flex-direction: column; /* Stack the user and admin sections vertically */
+    align-items: flex-start; /* Align items to the start for better readability */
+  }
+
+  .ticket_main div {
+    flex-direction: row; /* Ensure the user details are aligned correctly */
+    justify-content: flex-start; /* Adjust alignment */
+  }
+
+  .ticket_text {
+    margin: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .ticket_main img {
+    width: 60px; /* Adjust profile image size for tablets */
+  }
+
+  .ticket_main div div span {
+    font-size: 12px; /* Adjust font size for smaller screens */
+  }
+
+  .empty {
+    font-size: 0.9rem; /* Reduce the font size for mobile */
+  }
+}
+
+/* For Small Screens (mobile ≤ 480px) */
+@media (max-width: 480px) {
+  .userTicket, .adminticket {
+    width: 100%; /* Ensure the tickets take full width on small screens */
+  }
+
+  .ticket_main {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ticket_main div {
+    flex-direction: column; /* Stack the user details vertically */
+    align-items: flex-start; /* Align to the left for small screens */
+  }
+
+  .ticket_main img {
+    width: 50px; /* Smaller profile image for mobile */
+  }
+
+  .ticket_text {
+    margin: 0.5rem 0; /* Reduce margin for mobile devices */
+    padding: 0.5rem;
+    font-size: 0.9rem; /* Adjust font size for mobile */
+  }
+
+  .ticket_main div div span {
+    font-size: 12px; /* Adjust font size for smaller screens */
+  }
+
+  .empty {
+    font-size: 0.8rem; /* Further reduce font size for mobile */
+    padding: 15px 0;
+  }
+}

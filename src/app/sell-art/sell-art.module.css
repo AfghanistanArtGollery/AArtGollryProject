@@ -1,0 +1,52 @@
+.static_page {
+    margin-top: 1em;
+}
+.btn.btnPrimary.line {
+    color: #293C70;
+    border-color: #293C70;
+}
+.btn.btnPrimary.line {
+    background-color: transparent;
+    color: #4D4D4D;
+}
+.btnPrimary, .btnPrimary {
+    color: #FFFFFF;
+    background-color: #293C70;
+    border-color: #293C70;
+}
+.mt_md {
+    margin-top: 35px;
+}
+.btnPrimary{
+    color: #fff;
+    background-color: #4D4D4D;
+    border-color: #4D4D4D;
+}
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    border: 2px solid transparent;
+   
+    transition: all .5s;
+    padding: 6px 12px;
+    font-size: 15px;
+    line-height: 1.7;
+    border-radius: 3px;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    background-image: none;
+    white-space: nowrap;
+}
+.red {
+    color: #ff5a5f;
+}
+.primary{
+    color: #4D4D4D;
+}

@@ -1,0 +1,79 @@
+.stepper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 18px;
+  padding-bottom: 3.8rem;
+}
+
+.active_step {
+  opacity: 1 !important;
+}
+
+.stepper_bg {
+  background-color: #f4f4f4;
+  background-size: cover;
+  background-position: center center;
+  margin-bottom: 40px;
+  padding: 0 60px;
+  padding-top: 182px;
+}
+
+.stepper p,
+.stepper a {
+  display: inline-block;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  font-size: 22px;
+  line-height: 1.2;
+  opacity: 0.7;
+}
+
+.stepper svg {
+  font-size: 1.2rem;
+  opacity: 0.7;
+}
+
+/* LTR - Make sure text direction is left to right */
+.stepper_bg {
+  direction: ltr;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+  .stepper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stepper p,
+  .stepper a {
+    font-size: 18px;
+  }
+
+  .stepper svg {
+    font-size: 1rem;
+  }
+
+  .stepper_bg {
+    padding-top: 100px;
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stepper {
+    gap: 12px;
+  }
+
+  .stepper p,
+  .stepper a {
+    font-size: 16px;
+  }
+
+  .stepper svg {
+    font-size: 0.9rem;
+  }
+}
