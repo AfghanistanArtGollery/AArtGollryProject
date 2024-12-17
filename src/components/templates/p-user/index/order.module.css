@@ -1,7 +1,7 @@
 .card {
   width: 100%;
   background: white;
-  color: #711d1c;
+  color: #C86B42;
   padding: 1rem;
   height: 110px;
   border-radius: 8px;
@@ -63,7 +63,7 @@
 .price {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #711d1c;
+  color: #C86B42;
   margin-top: 8px;
 }
 

@@ -4,7 +4,7 @@ import style from './buy-art.module.css';
 
 import { authUser } from '@/utils/AuthHelper';
 
-
+import TiptapEditor from '@/components/tipTap/TiptapEditor';
 
 function page() {
   const user = authUser()
@@ -23,7 +23,7 @@ function page() {
               </ul>
             </div>
           </div>
-
+<TiptapEditor/>
           <div className="container static-page">
             <div className={style.cms_page_content}>
               <div className="HideIfAuthenticated">

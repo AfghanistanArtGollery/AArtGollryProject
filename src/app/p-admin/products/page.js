@@ -9,7 +9,7 @@ import AddProduct from "@/components/templates/p-admin/products/AddProduct";
 const page = async () => {
   connectToDB();
   const Categories = await modelCategory.find({}).sort({ _id: -1 }).lean();
-  console.log('Categories=>', Categories)
+
   return (
     <Layout>
       <main>

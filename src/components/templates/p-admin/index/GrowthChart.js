@@ -61,7 +61,7 @@ function GrowthChart() {
         <XAxis dataKey="name" />
         <YAxis />
         <Tooltip />
-        <Line type="monotone" dataKey="prev" stroke="#711D1C" />
+        <Line type="monotone" dataKey="prev" stroke="#C86B42" />
         <Line type="monotone" dataKey="current" stroke="#000" />
       </LineChart>
     </ResponsiveContainer>

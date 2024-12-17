@@ -7,13 +7,13 @@
 }
 
 .userTicket {
-  background-color: #711d1c;
+  background-color: #C86B42;
   color: white;
 }
 
 .adminticket {
   background-color: #f9f9f9;
-  border: #711d1c 3px solid;
+  border: #C86B42 3px solid;
   margin-right: auto;
 }
 
@@ -50,7 +50,7 @@
 }
 
 .adminticket .ticket_text {
-  background-color: #711d1c;
+  background-color: #C86B42;
   color: white;
 }
 
@@ -67,11 +67,11 @@
 .empty {
   width: 100%;
   border-radius: 5px;
-  background-color: #711d1c21;
+  background-color: #C86B4221;
   text-align: center;
   margin-top: 60px;
   padding: 20px 0;
-  color: #711d1c;
+  color: #C86B42;
 }
 
 /* Responsive Styles */

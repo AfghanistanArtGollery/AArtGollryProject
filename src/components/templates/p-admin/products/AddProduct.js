@@ -3,9 +3,11 @@ import React, { useEffect, useState } from "react";
 import styles from "./table.module.css";
 import swal from "sweetalert";
 import { useRouter } from "next/navigation";
+import Tiptap from "@/components/tipTap/TiptapEditor";
 
 function AddProduct({ Categories }) {
   const router = useRouter();
+
 
   // State for form inputs
   const [name, setName] = useState("");
@@ -26,7 +28,7 @@ function AddProduct({ Categories }) {
   const [height, setHeight] = useState("");
 
   const [shortDescription, setShortDescription] = useState("");
-  const [longDescription, setLongDescription] = useState("");
+  // const [longDescription, setLongDescription] = useState("");
 
   const [tags, setTags] = useState("");
   const [images, setImages] = useState([]);
@@ -39,8 +41,17 @@ function AddProduct({ Categories }) {
   // State for validation errors
   const [errors, setErrors] = useState({});
 
+
+  // To store Tiptap editor content
+  const [editorContent, setEditorContent] = useState("");
+
+  // Handle content save from the Tiptap editor
+  const handleEditorSave = (content) => {
+    console.log("Saved Editor Content:", content);
+    setEditorContent(content); // Store editor content in state
+  };
   // Function to handle form submission
-  const addArt = async () => {
+  const addArt = async ({ editor }) => {
     // Reset errors before validating
     setErrors({});
 
@@ -73,7 +84,8 @@ function AddProduct({ Categories }) {
     formData.append("dimensions[width]", width);
     formData.append("dimensions[height]", height);
     formData.append("shortDescription", shortDescription);
-    formData.append("longDescription", longDescription);
+
+    formData.append("longDescription", editorContent); // Save the Tiptap content
     formData.append("categoryID", categoryID);
     formData.append('subjectID', subjectID); // Reference to subject
     formData.append('materialID', materialID); // Reference to material
@@ -138,55 +150,55 @@ function AddProduct({ Categories }) {
 
   useEffect(() => {
     const getMaterials = async () => {
-  
-        const res = await fetch(`/api/materials`);
-        if (res.status === 200) {
-          const data = await res.json();
- 
-          setMaterials([...data]);
-        }
-      
+
+      const res = await fetch(`/api/materials`);
+      if (res.status === 200) {
+        const data = await res.json();
+
+        setMaterials([...data]);
+      }
+
     };
     getMaterials();
-  },[]);
+  }, []);
 
   // get styles when componenet rendered
   useEffect(() => {
     const getStyles = async () => {
-  
-        const res = await fetch(`/api/styles`);
-        if (res.status === 200) {
-          const data = await res.json();
-     
-          setStyle([...data]);
-        }
-      
+
+      const res = await fetch(`/api/styles`);
+      if (res.status === 200) {
+        const data = await res.json();
+
+        setStyle([...data]);
+      }
+
     };
     getStyles();
-  },[]);
+  }, []);
 
   useEffect(() => {
     const getSubjets = async () => {
-  
-        const res = await fetch(`/api/subjects`);
-        if (res.status === 200) {
-          const data = await res.json();
-    
-          setSubject([...data]);
-        }
-      
+
+      const res = await fetch(`/api/subjects`);
+      if (res.status === 200) {
+        const data = await res.json();
+
+        setSubject([...data]);
+      }
+
     };
     getSubjets();
-  },[]);
+  }, []);
 
- 
 
-  console.log('subject state=>',subject)
-  
+
+  console.log('subject state=>', subject)
+
 
   return (
     <section className={styles.discount}>
-      <p> Add your Artwork</p>
+      <p> ADD YOUR  ARTWORK</p>
       <div className={styles.discount_main}>
         {/* Artwork Name */}
         <div>
@@ -218,7 +230,7 @@ function AddProduct({ Categories }) {
 
 
         {/* Material */}
-     
+
 
         <div>
           <label>Select Maetrial (Medium):</label>
@@ -306,18 +318,8 @@ function AddProduct({ Categories }) {
           </select>
         </div>
 
-        {/* Descriptions */}
-        <div>
-          <label>Short Description</label>
-          <input
-            value={shortDescription}
-            onChange={(event) => setShortDescription(event.target.value)}
-            placeholder="Short description"
-            type="text"
-          />
-        </div>
 
-       
+
 
         {/* Dimensions */}
         <div>
@@ -340,6 +342,16 @@ function AddProduct({ Categories }) {
           />
         </div>
 
+        {/* Descriptions */}
+        <div>
+          <label>Short Description</label>
+          <input
+            value={shortDescription}
+            onChange={(event) => setShortDescription(event.target.value)}
+            placeholder="Short description"
+            type="text"
+          />
+        </div>
         {/* Tags */}
         <div>
           <label>Tags</label>
@@ -351,16 +363,24 @@ function AddProduct({ Categories }) {
           />
           {errors.tags && <span className={styles.error}>{errors.tags}</span>}
         </div>
+
+
+        {/* rich text editor */}
+        <div >
+          <Tiptap onSave={handleEditorSave} />
+        </div>
+
+        {/* 
         <div>
           <label>Long Description</label>
           <textarea
-          rows={7}
+            rows={7}
             value={longDescription}
             onChange={(event) => setLongDescription(event.target.value)}
             placeholder="Long description"
             type="text"
           />
-        </div>
+        </div> */}
         {/* Images */}
         <div>
           <label>Upload Your Images</label>
@@ -372,8 +392,6 @@ function AddProduct({ Categories }) {
           />
           {errors.images && <span className={styles.error}>{errors.images}</span>}
         </div>
-
-    
 
 
 

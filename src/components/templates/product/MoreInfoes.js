@@ -8,6 +8,7 @@ import styles from "./details.module.css";
 import Breadcrumb from "./Breadcrumb";
 import AddToWishlist from "./AddToWishlist";
 import { useState } from "react";
+import parse from 'html-react-parser'
 
 const MoreInfoes = ({ artwork }) => {
 
@@ -74,7 +75,7 @@ const MoreInfoes = ({ artwork }) => {
             <h2>Description</h2>
 
             <div className="listing-description">
-              <p>{artwork.longDescription}<br /></p>
+              <p>{parse(artwork.longDescription)}<br/> </p>
             </div>
 
             <div className="container my-4">

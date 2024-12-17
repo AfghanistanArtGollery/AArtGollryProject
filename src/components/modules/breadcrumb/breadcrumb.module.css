@@ -12,12 +12,11 @@
   .breadcrumb {
     color: rgb(21, 21, 4);
     background-color: #f4f4f4;
-    /* background-image: url(https://set-coffee.com/wp-content/uploads/2022/06/back1.jpg); */
     background-size: cover;
     background-position: center center;
     margin-bottom: 40px;
     padding: 0 60px;
-    padding-top: 150px;
+    padding-top: 80px;
   }
   .breadcrumb div p,
   .breadcrumb div a {

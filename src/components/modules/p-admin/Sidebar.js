@@ -55,6 +55,10 @@ const Sidebar = () => {
               <FaShoppingBag />
               Products
             </Link>
+            <Link href={"/p-admin/orders"}>
+              <FaShoppingBag />
+              Orders(Customer)
+            </Link>
             <Link href={"/p-admin/users"}>
               <FaUsers />
               Users

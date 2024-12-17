@@ -2,7 +2,7 @@
 .sidebar {
   width: 350px;
   height: 100vh;
-  background-color: #711d1c;
+  background-color: #4A4E69;
   color: white;
   padding: 20px;
   position: sticky;
@@ -47,7 +47,8 @@
   font-size: 18px;
   opacity: 0.8;
   text-decoration: none;
-  color: white;
+  color: #FFF8F0    ;
+  
   transition: opacity 0.3s ease; /* Smooth opacity transition */
 }
 

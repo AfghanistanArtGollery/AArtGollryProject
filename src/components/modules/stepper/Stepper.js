@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styles from "./stepper.module.css";
-import { FaArrowLeftLong } from "react-icons/fa6";
+import { FaArrowRight} from "react-icons/fa6";
 
 const Stepper = ({ step }) => {
   return (
@@ -9,7 +9,7 @@ const Stepper = ({ step }) => {
         <Link className={step == "cart" && styles.active_step} href={"/cart"}>
           Cart
         </Link>
-        <FaArrowLeftLong />
+        <FaArrowRight />
         {step === "checkout" || step === "complate" ? (
           <Link
             className={step == "checkout" && styles.active_step}
@@ -20,7 +20,7 @@ const Stepper = ({ step }) => {
         ) : (
           <p>Checkout</p>
         )}
-        <FaArrowLeftLong />
+        <FaArrowRight />
         {step == "complate" ? (
           <Link
             className={step == "complate" && styles.active_step}

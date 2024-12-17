@@ -56,7 +56,7 @@ function SaleChart() {
         <YAxis />
         <Tooltip />
 
-        <Area type="monotone" dataKey="sale" stroke="#000" fill="#711D1C" />
+        <Area type="monotone" dataKey="sale" stroke="#000" fill="#C86B42" />
       </AreaChart>
     </ResponsiveContainer>
   );

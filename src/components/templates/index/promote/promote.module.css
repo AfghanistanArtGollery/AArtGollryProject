@@ -56,7 +56,7 @@
     margin-left: auto;
   }
   .title {
-    color: #711d1c;
+    color: #C86B42;
     font-size: 44px;
   }
   
@@ -69,8 +69,8 @@
     justify-content: right;
   }
   .red_btn {
-    background-color: #711d1c !important;
-    border: 1px solid #711d1c !important;
+    background-color: #C86B42 !important;
+    border: 1px solid #C86B42 !important;
     color: white !important;
   }
   .why_coffee div button {

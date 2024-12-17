@@ -14,7 +14,7 @@
 
 .title a {
   background-color: #ffffff;
-  color: #711d1c;
+  color: #C86B42;
   font-size: 1rem;
   display: flex;
   position: relative;
@@ -22,7 +22,7 @@
   border-radius: 20px;
   padding: 0 10px;
   align-items: center;
-  border: 1px solid #711d1c;
+  border: 1px solid #C86B42;
 }
 
 .title:before {
@@ -45,8 +45,8 @@
 }
 
 .title:after {
-  border-bottom: 1px solid #711d1c;
-  box-shadow: 0 1px 0 0 #711d1c;
+  border-bottom: 1px solid #C86B42;
+  box-shadow: 0 1px 0 0 #C86B42;
   content: "";
   margin: 0 auto;
   position: absolute;
@@ -89,7 +89,7 @@
   padding: 10px;
   color: black;
   border: none;
-  border-bottom: 3px solid #711d1c;
+  border-bottom: 3px solid #C86B42;
   margin-top: 4.5px;
   width: 150px;
   outline: 0;
@@ -102,17 +102,17 @@
   color: white;
   border-radius: 4px;
   cursor: pointer;
-  background-color: #711d1c;
+  background-color: #C86B42;
 }
 
 .empty {
   width: 100%;
   border-radius: 5px;
-  background-color: #711d1c21;
+  background-color: #C86B4221;
   text-align: center;
   margin-top: 60px;
   padding: 20px 0;
-  color: #711d1c;
+  color: #C86B42;
 }
 
 /* Responsive Styles */

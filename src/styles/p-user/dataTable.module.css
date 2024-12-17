@@ -46,7 +46,7 @@
 }
 
 .delete_btn {
-  background: #711d1c;
+  background: #C86B42;
 }
 
 .edit_btn,
@@ -60,7 +60,7 @@
 }
 
 .no_check {
-  background: #711d1c;
+  background: #C86B42;
 }
 
 /* Table Container */
@@ -100,8 +100,8 @@
 }
 
 .title:after {
-  border-bottom: 1px solid #711d1c;
-  box-shadow: 0 1px 0 0 #711d1c;
+  border-bottom: 1px solid #C86B42;
+  box-shadow: 0 1px 0 0 #C86B42;
   content: "";
   margin: 0 auto;
   position: absolute;

@@ -1,8 +1,8 @@
 .ticket {
   width: 100%;
-  border-right: 3px solid #711d1c;
+  border-right: 3px solid #C86B42;
   padding: 1rem;
-  background-color: #711d1c21;
+  background-color: #C86B4221;
   display: flex;
   justify-content: space-between;
   border-radius: 5px;
@@ -22,7 +22,7 @@
 }
 
 .no_answer {
-  background-color: #711d1c;
+  background-color: #C86B42;
   color: white;
   border-radius: 5px;
   padding: 0.5rem;
@@ -30,7 +30,7 @@
 
 .answer {
   background-color: green;
-  color: #711d1c;
+  color: #C86B42;
   border-radius: 5px;
   padding: 0.5rem;
 }

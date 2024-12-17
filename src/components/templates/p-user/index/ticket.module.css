@@ -1,7 +1,7 @@
 .ticket {
   width: 100%;
-  background-color: #711d1c21; /* Light background for ticket */
-  border-right: 3px solid #711d1c;
+  background-color: #C86B4221; /* Light background for ticket */
+  border-right: 3px solid #C86B42;
   padding: 1rem;
   display: flex;
   justify-content: space-between;
@@ -43,7 +43,7 @@
   background: white;
   border-radius: 5px;
   font-size: 0.9rem;
-  color: #711d1c;
+  color: #C86B42;
 }
 
 .timestamp {
