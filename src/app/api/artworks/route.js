@@ -9,7 +9,7 @@ import path from 'path'
 
 export async function POST(req) {
   const user = await authUser()
-  console.log('user--->', user)
+
 
 
   try {

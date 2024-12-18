@@ -1,5 +1,4 @@
 import React from "react";
-import AdminPanelLayout from "@/components/layouts/AdminPanelLayout";
 
 import styles from "@/styles/p-admin/index.module.css";
 import Box from "@/components/modules/infoBox/InfoBox";
@@ -11,6 +10,7 @@ import CommentModel from "@/models/Comment";
 import UserModel from "@/models/User";
 import modelArtwork from "@/models/ArtWork";
 import connectToDB from "@/configs/db";
+import AdminChildLayout from "@/components/layouts/AdminChildLayout";
 
 async function AdminHomePage() {
   connectToDB();
@@ -19,7 +19,7 @@ async function AdminHomePage() {
   const artworks = await modelArtwork.find({}).lean();
 
   return (
-    <AdminPanelLayout>
+    <AdminChildLayout>
       <main>
         <section className={styles.dashboard_contents}>
           <Box title="Total Received Tickets" value={tickets.length} />
@@ -38,7 +38,7 @@ async function AdminHomePage() {
           </section>
         </div>
       </main>
-    </AdminPanelLayout>
+    </AdminChildLayout>
   );
 }
 

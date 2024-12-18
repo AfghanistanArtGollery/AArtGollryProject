@@ -9,66 +9,64 @@ const page = async () => {
 
   return (
     <>
-      <Navbar isLogin={user?true:false} />
-      <Breadcrumb route={"درباره ما"} />
+      <Navbar isLogin={user ? true : false} />
+      <Breadcrumb route={"About Us"} />
       <div className={styles.container}>
         <section>
           <div>
-            <span>درباره ما</span>
-            <p>فنجان داغ خوارزمی قهوه ست</p>
+            <span>About Us</span>
+            <p>Afghanistan Art Gallery</p>
           </div>
           <p>
-            تجربه‌ای به قدمت چهار نسل و ارتباط مستمر با مصرف کنندگان ضامن این
-            ویژگی‌هاست. از ویژگی‌های بارز مجموعه قهوه ست واردات مواد اولیه راسا
-            به وسیله مدیریت مجموعه و انتخاب بهترین مواد اولیه جهت تولید قهوه
-            است.
+            The **Afghanistan Art Gallery**, located in **Kabul Karte 3rd,
+            Afghanistan**, is a leading cultural and artistic hub, bringing
+            together creative talent from across the region.
           </p>
           <p>
-            مجموعه قهوه ست اولین مجموعه مرتبط با قهوه در ایران است که در سال
-            2007 به عضویت انجمن تخصصی قهوه اروپا (Speciality coffee association
-            of Europe) در آمده است.
+            Under the leadership of **Mohammad Nasir**, a renowned artist and
+            visionary, the gallery serves as a platform to promote Afghan art,
+            creativity, and cultural heritage. With decades of experience,
+            Mohammad Nasir has dedicated his life to supporting artists and
+            showcasing unique and inspiring works of art.
           </p>
         </section>
         <main className={styles.main}>
           <div>
             <p>
-              مسیری را که بنیان‌گذاران «قهوه ست» در دهه 20 شمسی آغاز کرده‌اند
-              اکنون وارد مرحله جدیدی شده است و مفتخریم اعلام کنیم در بهمن ماه 94
-              موفق به اخذ مجوزهای مربوطه از وزارت بهداشت درمان و آموزش پزشکی و
-              سازمان غذا دارو شده‌ایم و تولید سنتی و محدود قهوه را تبدیل به
-              تولید صنعتی و انبوه کرده‌ایم.
+              The gallery houses an extensive collection of contemporary and
+              traditional Afghan art, offering visitors a glimpse into the rich
+              cultural tapestry of Afghanistan. From **paintings** and
+              **sculptures** to **modern installations**, the Afghanistan Art
+              Gallery celebrates diversity in artistic expression.
             </p>
             <p>
-              از دیگر افتخارات مجموعه «قهوه ست» اخذ مدرک دیپلم دانش قهوه از
-              انجمن قهوه تخصصی اروپا در فروردین ماه سال 95 است. (SCAE Coffee
-              Diploma)
+              It hosts regular **exhibitions, workshops**, and **art events** to
+              nurture young talent and provide established artists with a global
+              platform. Artists from different backgrounds come together here to
+              tell stories of resilience, beauty, and hope through their art.
             </p>
             <p>
-              امید داریم با کسب دانش روز دنیا در این صنعت ارتقا کیفیت و تنوع
-              محصول در حد استانداردهای جهانی را در آینده‌ای نزدیک شاهد باشیم.
+              The vision of Mohammad Nasir has transformed this gallery into a
+              cultural landmark, contributing to the preservation and evolution
+              of Afghan art and identity.
             </p>
-            <p>صاحب امتیاز: شرکت فنجان داغ خوارزمی</p>
+            <p>**Location**: Kabul, Karte 3rd, Afghanistan</p>
+            <p>**Manager**: Mohammad Nasir</p>
           </div>
           <div>
-            <span>Set Coffee</span>
-            <p className={styles.title}>داستان قهوه ست</p>
+            <span>Our Mission</span>
+            <p className={styles.title}>Promoting Afghan Art & Heritage</p>
             <p>
-              تجربه‌ای به قدمت چهار نسل و ارتباط مستمر با مصرف کنندگان ضامن این
-              ویژگی‌هاست. از ویژگی‌های بارز مجموعه قهوه ست واردات مواد اولیه
-              راسا به وسیله مدیریت مجموعه و انتخاب بهترین مواد اولیه جهت تولید
-              قهوه است.
+              At Afghanistan Art Gallery, our mission is to preserve,
+              celebrate, and elevate Afghan art on a global stage. By connecting
+              artists, enthusiasts, and collectors, we aim to build a community
+              that values creativity and cultural heritage.
             </p>
             <p>
-              مجموعه قهوه ست اولین مجموعه مرتبط با قهوه در ایران است که در سال
-              2007 به عضویت انجمن تخصصی قهوه اروپا (Speciality coffee
-              association of Europe) در آمده است و بسیاری از دوره‌های مربوط به
-              فرآوری قهوه را مدیریت این مجموعه به صورت تخصصی در کارگاه‌های
-              آموزشی این انجمن و همچنین کارگاه‌های تخصصی فرآوری قهوه به خصوص در
-              زمینه بو دادن قهوه(Roasting) را در کشور آمریکا که از پیشگامان این
-              صنعت است را گذرانده است. اکنون با پشتوانه دستاوردهای گذشته و
-              تکنولوژی روز دنیا وارد مرحله تولید قهوه به صورت صنعتی و گسترده
-              شده‌ایم و مفتخریم اعلام کنیم که «قهوه ست» از این پس یک نام تجاری
-              صنعتی در صنعت قهوه ایران است
+              Through collaborations, curated exhibitions, and art education
+              programs, we empower emerging and professional artists alike. Our
+              goal is to make art accessible to all and foster a deeper
+              appreciation for Afghanistan's artistic traditions and innovations.
             </p>
           </div>
         </main>

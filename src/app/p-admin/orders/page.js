@@ -1,5 +1,5 @@
 
-import DataTable from '@/components/modules/p-admin/orders/dataTable/DataTable'
+import DataTable from '@/components/templates/p-admin/orders/dataTable/DataTable'
 import AdminPanelLayout from '@/components/layouts/AdminPanelLayout'
 import modelOrder from '@/models/Order'
 

@@ -8,7 +8,7 @@ import Register from "@/components/templates/login-register/Register";
 import Image from "next/image";
 
 const login_register = () => {
-
+  
   const [authType, setAuthType] = useState(authTypes.LOGIN);
 
   const showRegisterForm = () => setAuthType(authTypes.REGISTER);

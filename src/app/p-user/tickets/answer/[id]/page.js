@@ -8,6 +8,7 @@ import TicketModel from "@/models/Ticket";
 
 const page = async ({ params }) => {
   const ticketID = params.id;
+
   connectToDB();
 
   const ticket = await TicketModel.findOne({ _id: ticketID }).populate('user', 'name').lean();
@@ -16,9 +17,9 @@ const page = async ({ params }) => {
   const answerTicket = await TicketModel.findOne({
     mainTicket: ticket._id,
   }).populate("user", "name");
-  
 
-  console.log('answerTicket=>',answerTicket)
+
+  console.log('answerTicket=>', answerTicket)
 
 
   return (
@@ -27,16 +28,16 @@ const page = async ({ params }) => {
 
         <h1 className={styles.title}>
           <span> My tickets</span>
-          <Link href="/p-user/tickets/sendTicket">Send new ticket</Link>
+          <Link className={styles.title_mobile} href="/p-user/tickets/sendTicket">Send new ticket</Link>
         </h1>
 
         <div>
-        
 
-          <Answer type="user"   {...ticket} /> 
+
+         {  <Answer type="user"  answerTicket={JSON.parse(JSON.stringify(ticket))}  /> }       
 
           {answerTicket &&
-            <Answer type="admin"  {...ticket} />
+            <Answer type="admin"  answerTicket={JSON.parse(JSON.stringify(answerTicket))} />
           }
 
           {

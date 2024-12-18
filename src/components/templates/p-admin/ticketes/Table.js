@@ -11,7 +11,6 @@ export default function DataTable({ tickets, title }) {
   const showTicketBody = (body) => {
     swalAlert(body, undefined, "Close");
   };
-  console.log('tecketsADmin=>',tickets)
   
 
   const answerToTicket = async (ticket) => {

@@ -1,55 +1,162 @@
+/* Base Sidebar Styling */
 .sidebar {
+  width: 350px;
+  height: 100vh;
+  background-color: #4A4E69;
+  color: white;
+  padding: 20px;
+  position: sticky;
+  top: 0;
+  transition: all 0.3s ease; /* Smooth transition for sidebar toggle */
+  overflow-y: auto;
+  direction: ltr; /* Left-to-right layout */
+}
+
+.sidebar.open {
+  width: 250px; /* Adjust width when the sidebar is open */
+}
+
+.sidebar_header {
+  text-align: left; 
+  margin-top: 0.8rem;
+  padding-bottom: 20px;
+  border-bottom: 1px solid white;
+}
+
+.sidebar_header p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Sidebar Main Content */
+.sidebar_main {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 20px 10px;
+  margin-top: 20px;
+}
+
+/* Sidebar Links */
+.sidebar_main a {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 18px;
+  opacity: 0.8;
+  text-decoration: none;
+  color: #FFF8F0    ;
   
-    width: 350px;
-    height: 100vh;
-    background-color: #C86B42;
-    color: white;
-    padding: 10px;
-    position: sticky;
-    top: 0;
+  transition: opacity 0.3s ease; /* Smooth opacity transition */
+}
+
+.sidebar_main a:hover {
+  opacity: 1; /* Highlight link on hover */
+}
+
+.sidebar_link_active {
+  opacity: 1 !important;
+  font-weight: bold;
+}
+
+.sidebar_main a svg {
+  font-size: 1.5rem;
+}
+
+/* Sidebar Footer - Logout Section */
+.logout {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 30px;
+  width: 90%;
+  padding-top: 10px;
+  font-size: 1.3rem;
+  border-top: 2px solid white;
+  cursor: pointer;
+  align-items: center;
+  gap: 10px;
+  color: white;
+}
+
+.logout:hover {
+  background-color: #8c2423;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.logout svg {
+  font-size: 1.5rem;
+}
+
+/* Media Queries for Responsiveness */
+
+/* Tablets and Below (max-width: 968px) */
+@media (max-width: 968px) {
+  .sidebar {
+    width: 250px; /* Narrower sidebar for tablets */
   }
-  
-  .sidebar_header {
-    text-align: left; /* Align text to the left for LTR */
-    margin-top: 0.8rem;
-    padding-bottom: 23px;
-    border-bottom: 1px solid white;
+
+  .sidebar.open {
+    width: 200px; /* Further narrowing when sidebar is toggled */
   }
-  
-  
+
+  .sidebar_header p {
+    font-size: 1.2rem;
+  }
+
   .sidebar_main {
-    
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-    padding: 30px 10px;
+    padding: 15px 5px;
+    gap: 25px;
   }
-  
+
   .sidebar_main a {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: 11px;
-    font-size: 18px;
-    opacity: 0.7;
+    font-size: 16px;
+    gap: 12px;
   }
-  
-  .sidebar_link_active {
-    opacity: 1 !important;
+
+  .sidebar_main a svg {
+    font-size: 1.4rem;
   }
-  
+
   .logout {
-    display: flex;
-    justify-content: space-between;
-    position: absolute;
-    bottom: 30px;
-    flex-direction: row-reverse;
-    align-items: center;
-    cursor: pointer;
-    max-width: 0 auto;
-    width: 90%;
-    padding-top: 9px;
-    font-size: 1.3rem;
-    border-top: 2px solid white;
+    font-size: 1.2rem;
+    padding-top: 8px;
   }
-  
+}
+
+/* Mobile Devices (max-width: 480px) */
+@media (max-width: 480px) {
+  .sidebar {
+    width: 200px; /* Mobile-friendly width */
+  }
+
+  .sidebar.open {
+    width: 180px;
+  }
+
+  .sidebar_header p {
+    font-size: 1rem;
+  }
+
+  .sidebar_main {
+    padding: 12px 4px;
+    gap: 20px;
+  }
+
+  .sidebar_main a {
+    font-size: 14px;
+    gap: 10px;
+  }
+
+  .sidebar_main a svg {
+    font-size: 1.3rem;
+  }
+
+  .logout {
+    font-size: 1rem;
+    padding-top: 5px;
+  }
+}

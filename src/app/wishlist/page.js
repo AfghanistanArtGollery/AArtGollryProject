@@ -1,7 +1,8 @@
 import Breadcrumb from "@/components/modules/breadcrumb/Breadcrumb";
 import Footer from "@/components/modules/footer/Footer";
 import Navbar from "@/components/modules/navbar/Navbar";
-import Product from "@/components/modules/product/Product";
+import Product from "@/components/templates/p-user/whishlist/Product";
+
 import connectToDB from "@/configs/db";
 import styles from "@/styles/wishlist.module.css";
 
@@ -9,19 +10,19 @@ import { authUser } from "@/utils/AuthHelper";
 import Link from "next/link";
 import { FaRegHeart } from "react-icons/fa";
 
-import WishlistModel from "@/models/Wishlist";
+import modelWishlist from "@/models/Wishlist";
 
 const page = async () => {
 
-  let wishes = [];
+  let wishlist = [];
   connectToDB();
   const user = await authUser();
-  
-  if(user){
-      wishes = await WishlistModel.find({user:user.id}).populate('product','_id name price images').lean();
+
+  if (user) {
+    wishlist = await modelWishlist.find({ user: user._id }).populate('product').lean();
   }
 
-  
+   console.log('wishlist=>',wishlist)
 
 
   return (
@@ -34,19 +35,26 @@ const page = async () => {
         <p className={styles.title}>Your Favorite Arts</p>
 
         <section>
-            {wishes.length > 0 &&
-              wishes.map((wish) => 
-               
-                <Product key={wish._id} {...wish.product} />
-              )
-            }
+          {wishlist.length > 0 &&
+                             
+            wishlist.map(wish => (
+                <Product
+                    key={wish._id}
+                    productID={String(wish.product._id)}
+                    score={wish.product.score} 
+                    name={wish.product.name} 
+                    images={wish.product.images}
+                    price={wish.product.price}  // Pass individual properties from wish.product
+                />
+            ))
+          }
         </section>
       </main>
 
-      {wishes.length === 0 && (
+      {wishlist.length === 0 && (
         <div className={styles.wishlist_empty} data-aos="fade-up">
           <FaRegHeart />
-          <p>No products found</p>
+          <p>No Artwork found</p>
           <span>You currently have no Art work in your wishlist.</span>
           <span>You will find many interesting arts in the "Store" page.</span>
           <div>

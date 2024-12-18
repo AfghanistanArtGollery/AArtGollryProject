@@ -6,6 +6,7 @@ import { TbSwitch3 } from "react-icons/tb";
 import { FaTelegram, FaLinkedinIn, FaPinterest } from "react-icons/fa";
 import styles from "./details.module.css";
 import Breadcrumb from "./Breadcrumb";
+import Link from "next/link";
 import { FaShoppingCart } from "react-icons/fa";
 
 import AddToWishlist from "./AddToWishlist";
@@ -44,6 +45,11 @@ const Details = ({ artwork }) => {
       localStorage.setItem('cartart', JSON.stringify(cart))
 
     }
+    swal({
+      title:'Sucessfully added to cart',
+      icon:'success',
+      button:'Ok'
+    })
 
 
 
@@ -91,7 +97,9 @@ const Details = ({ artwork }) => {
 
       <p className="text-primary ps-4 fs-4 fw-bold">${artwork.price}</p>
 
-      <button type="button" className={styles.btn}>By Now!</button>
+     <Link href={`/checkout/${artwork._id}`}>
+     <button type="button" className={styles.btn}>By Now!</button>
+     </Link> 
 
       {/* Social Icons */}
 

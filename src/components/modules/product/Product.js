@@ -7,6 +7,7 @@ import { CiSearch, CiHeart } from "react-icons/ci";
 import { useEffect, useState } from "react";
 
 const Card = ({ artwork}) => {  // Default to an empty array if images is not passed
+  
   const [count, setCount] = useState(1);
   // console.log('user-product=>', artist_id)
 
@@ -59,7 +60,7 @@ const Card = ({ artwork}) => {  // Default to an empty array if images is not pa
         </div>
         <button onClick={addToCart}>Add to Cart</button>
       </div>
-      <Link href={`listings/${artwork._id}`} passHref>
+      <Link href={`/listings/${artwork._id}`} passHref>
         <div className={styles.details}>
           <span>{artwork.name}</span>
 

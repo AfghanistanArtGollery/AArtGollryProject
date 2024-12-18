@@ -1,23 +1,18 @@
 import React from 'react'
 import styles from '@/styles/not-found.module.css'
 import Link from 'next/link';
-export default function notFound() {
+import Image from 'next/image';
 
+export default function NotFound() {
     return (
-      <div>
-        <div className={styles.contents}>
-          <p className={styles.left_number}>4</p>
-          <div className={styles.mug}></div>
-          <p className={styles.right_number}>4</p>
+        <div className='container'>
+            <div className={styles.contents}>
+                <Image width={500} height={500} src={'/images/404.webp'}/>
+            </div>
+            <div className={styles.texts}>
+                <p>Page Not Found :))</p>
+                <Link href="/">Back to Home Page</Link>
+            </div>
         </div>
-        <div className={styles.texts}>
-          <p>صفحه مورد نظر یافت نشد :((</p>
-          <Link href="/">برگشت به صفحه اصلی</Link>
-        </div>
-      </div>
     );
-  
 }
-
-
-

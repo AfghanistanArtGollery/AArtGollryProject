@@ -17,7 +17,7 @@ export default function Map({ position, center, children }) {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <Marker position={position}>
-          <Popup>Set Coffee</Popup>
+          <Popup>Afghanistan Art Gollry</Popup>
         </Marker>
       </MapContainer>
       <div className={styles.details}>{children}</div>

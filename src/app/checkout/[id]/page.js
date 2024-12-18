@@ -3,16 +3,18 @@ import Footer from "@/components/modules/footer/Footer"
 import Navbar from "@/components/modules/navbar/Navbar"
 import Stepper from "@/components/modules/stepper/Stepper"
 import styles from '@/styles/checkout.module.css'
-
+import { authUser } from "@/utils/AuthHelper"
 import Order from "@/components/templates/checkout/order/Order"
 import Details from "@/components/templates/checkout/details/Details"
 
 import DiscoutcodBox from "@/components/modules/dicoundcode/DiscoutcodBox"
-const page = () => {
+const page = async() => {
+    
+    const user=await authUser()
 
     return (
         <>
-            <Navbar />
+            <Navbar isLogin={user?true:false}/>
             <Stepper step="checkout" />
             <div className={styles.container} data-aos="fade-up">
                 <DiscoutcodBox />

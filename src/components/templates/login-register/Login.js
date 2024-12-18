@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import styles from "./login.module.css";
 import Link from "next/link";
-import swalAlert from "@/utils/helperFunction";
 
 import { useRouter } from "next/navigation";
 
 const Login = ({ showRegisterForm }) => {
 const router=useRouter()
 
-  const [isLoginWithOtp, setIsLoginWithOtp] = useState(false);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

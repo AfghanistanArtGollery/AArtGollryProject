@@ -8,6 +8,8 @@ import { authUser } from "@/utils/AuthHelper";
 import TicketModel from "@/models/Ticket";
 import modelWish from "@/models/Wishlist";
 import modelComment from "@/models/Comment";
+import modelOrder from '@/models/Order'
+
 import { redirect } from "next/navigation";
 
 const page = async () => {
@@ -21,6 +23,10 @@ const page = async () => {
   const comments = await modelComment.find({ user: String(user._id) });
   const AllTickets = await TicketModel.find({ user: user._id });
   const Wishlist = await modelWish.find(({ user: user._id }));
+
+
+  const orders = await modelOrder.find({ user_id: user._id }).populate('user_id', 'name').populate('artwork_id', 'name price images').lean()
+
 
 
   return (
@@ -37,13 +43,13 @@ const page = async () => {
         <div className="row d-flex alig-items-center mt-2">
 
           {/* Tickets Section */}
-          <div className="col-6  col-md-5 col-sm-12 mb-4">
+          <div className="col-12  col-md-6 col-sm-12 mb-4">
             <Tickets tickets={JSON.parse(JSON.stringify(ticket))} />
           </div>
 
           {/* Orders Section */}
-          <div className="col-6 col-md-5 col-sm-12  mb-4">
-            <Orders  />
+          <div className="col-12  col-md-6 col-sm-12  mb-4">
+            <Orders customerOrder={JSON.parse(JSON.stringify(orders))}  />
           </div>
 
         </div>

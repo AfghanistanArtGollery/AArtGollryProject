@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "@/components/layouts/AdminPanelLayout";
+import AdminChildLayout from "@/components/layouts/AdminChildLayout";
 import styles from "@/components/templates/p-admin/ticketes/table.module.css";
 import Table from "@/components/templates/p-admin/ticketes/Table";
 
@@ -18,8 +18,7 @@ const page = async () => {
 
 
   return (
-    <Layout>
-      <h1>hello</h1>
+    <AdminChildLayout>
       <main>
         {tickets.length === 0 ? (
           <p className={styles.empty}>Ther is no tickets</p>
@@ -30,7 +29,7 @@ const page = async () => {
           />
         )}
       </main> 
-    </Layout>
+    </AdminChildLayout>
   );
 };
 

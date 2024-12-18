@@ -35,7 +35,7 @@ const ClientLayout = ({ children }) => {
                 )}
 
                 {/* Desktop Sidebar */}
-                <div className={styles.side_bar}>
+                <div className={styles.side_bar} >
                     <Sidebar />
                 </div>
 

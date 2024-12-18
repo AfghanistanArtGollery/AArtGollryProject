@@ -39,7 +39,7 @@ const page = async () => {
                             />
                         ))
                     ) : (
-                        <p className={styles.empty}>No products found</p>
+                        <p className={styles.empty}>No Artwork found</p>
                     )}
                 </div>
             </main>

@@ -4,8 +4,8 @@ import styles from "./table.module.css";
 import swal from "sweetalert";
 import { useRouter } from "next/navigation";
 import Tiptap from "@/components/tipTap/TiptapEditor";
-
-function AddProduct({ Categories }) {
+import RichTextEditor from "@/components/tipTap/TiptapEditor";
+function AddProduct({ Categories,editor  }) {
   const router = useRouter();
 
 
@@ -44,12 +44,19 @@ function AddProduct({ Categories }) {
 
   // To store Tiptap editor content
   const [editorContent, setEditorContent] = useState("");
-
+console.log('editorContent=>>>',editorContent)
   // Handle content save from the Tiptap editor
+
   const handleEditorSave = (content) => {
-    console.log("Saved Editor Content:", content);
-    setEditorContent(content); // Store editor content in state
+
+    setEditorContent(content);
+    swal({
+      title: "Description successfully saved",
+      icon: "success",
+      buttons: "Ok",
+    })
   };
+  
   // Function to handle form submission
   const addArt = async ({ editor }) => {
     // Reset errors before validating
@@ -68,6 +75,7 @@ function AddProduct({ Categories }) {
     if (!subject) validationErrors.subject = "Subject is required.";
     if (!materials) validationErrors.materials = "Material is required.";
     if (!style) validationErrors.style = "Style is required.";
+    if (!editorContent) validationErrors.editorContent = "Please click on save content button and try again";
 
     // If there are validation errors, stop form submission
     if (Object.keys(validationErrors).length > 0) {
@@ -112,6 +120,7 @@ function AddProduct({ Categories }) {
           icon: "success",
           buttons: "Ok",
         }).then(() => {
+          resetForm();
           router.refresh(); // Refresh the page after successful submission
         });
       } else {
@@ -131,6 +140,26 @@ function AddProduct({ Categories }) {
       });
     }
   };
+  const resetForm = () => {
+    setName("");
+    setSubject([]);
+    setSubjectID("");
+    setMaterials([]);
+    setMaterialID("");
+    setStyle([]);
+    setStyleID("");
+    setFramed(false);
+    setPrice("");
+    setWidth("");
+    setHeight("");
+    setShortDescription("");
+    setTags("");
+    setImages([]);
+    setCategoryID("");
+    setSubCategories([]);
+    setSubCategoryID("");
+  };
+
 
   // Fetch subcategories based on selected category
   useEffect(() => {
@@ -191,33 +220,30 @@ function AddProduct({ Categories }) {
     getSubjets();
   }, []);
 
-
-
-  console.log('subject state=>', subject)
-
-
   return (
     <section className={styles.discount}>
-      <p> ADD YOUR  ARTWORK</p>
-      <div className={styles.discount_main}>
-        {/* Artwork Name */}
-        <div>
+      <p>ADD YOUR ARTWORK</p>
+
+      <div className="row">
+        <div className="col-12 col-md-6 mb-3">
           <label>Artwork Name</label>
           <input
             value={name}
             onChange={(event) => setName(event.target.value)}
             placeholder="Add your name..."
             type="text"
+
           />
           {errors.name && <span className={styles.error}>{errors.name}</span>}
         </div>
 
-        {/* Subject */}
+        <div className="col-12 col-md-6 mb-3">
+          <label>Select Subject:</label>
+          <select
+            className="form-control"
+            onChange={(event) => setSubjectID(event.target.value)}
 
-        <div>
-          <label>Select Maetrial (Medium):</label>
-
-          <select onChange={(event) => setSubjectID(event.target.value)}>
+          >
             <option value={-1}>Please select a Subject</option>
             {subject.map((subject) => (
               <option key={subject._id} value={subject._id}>
@@ -225,76 +251,50 @@ function AddProduct({ Categories }) {
               </option>
             ))}
           </select>
-          {errors.category && <span className={styles.error}>{errors.category}</span>}
+          {errors.subject && <span className={styles.error}>{errors.subject}</span>}
         </div>
+      </div>
 
+      <div className="row">
+        <div className="col-12 col-md-6 mb-3">
+          <label>Select Material (Medium):</label>
+          <select
+            className="form-control"
+            onChange={(event) => setMaterialID(event.target.value)}
 
-        {/* Material */}
-
-
-        <div>
-          <label>Select Maetrial (Medium):</label>
-
-          <select onChange={(event) => setMaterialID(event.target.value)}>
-            <option value={-1}>Please select a Materila</option>
+          >
+            <option value={-1}>Please select a Material</option>
             {materials.map((material) => (
               <option key={material._id} value={material._id}>
                 {material.title}
               </option>
             ))}
+
           </select>
-          {errors.category && <span className={styles.error}>{errors.category}</span>}
+          {errors.materials && <span className={styles.error}>{errors.materials}</span>}
         </div>
 
-
-
-
-        {/* Style */}
-        <div>
-          <label>Select Style</label>
-
-          <select onChange={(event) => setStyleID(event.target.value)}>
-            <option value={-1}>Please select a style</option>
+        <div className="col-12 col-md-6 mb-3">
+          <label>Select Style:</label>
+          <select
+            onChange={(event) => setStyleID(event.target.value)}
+            className="form-control"
+          >
+            <option value={-1}>Please select a Style</option>
             {style.map((style) => (
               <option key={style._id} value={style._id}>
                 {style.title}
               </option>
             ))}
           </select>
-          {errors.category && <span className={styles.error}>{errors.category}</span>}
+          {errors.style && <span className={styles.error}>{errors.style}</span>}
         </div>
-
-
-        {/* Framed */}
-        <div>
-          <label className="form-check-label" htmlFor="framed">
-            Yes, the artwork is framed
-          </label>
-          <input
-            type="checkbox"
-            className="form-check-input"
-            id="framed"
-            checked={framed}
-            onChange={(event) => setFramed(event.target.checked)}
-          />
-        </div>
-
-        {/* Price */}
-        <div>
-          <label>Price</label>
-          <input
-            value={price}
-            onChange={(event) => setPrice(event.target.value)}
-            placeholder="Add artwork price"
-            type="text"
-          />
-          {errors.price && <span className={styles.error}>{errors.price}</span>}
-        </div>
-
+      </div>
+      <div className="row">
         {/* Category */}
-        <div>
+        <div className="col-12 col-md-6 mb-3">
           <label>Select Category:</label>
-          <select onChange={(event) => setCategoryID(event.target.value)}>
+          <select onChange={(event) => setCategoryID(event.target.value)} className="form-select">
             <option value={-1}>Please select a Category</option>
             {Categories.map((category) => (
               <option key={category._id} value={category._id}>
@@ -306,9 +306,9 @@ function AddProduct({ Categories }) {
         </div>
 
         {/* SubCategory */}
-        <div>
+        <div className="col-12 col-md-6 mb-3">
           <label>Select SubCategory (Optional):</label>
-          <select onChange={(event) => setSubCategoryID(event.target.value)}>
+          <select onChange={(event) => setSubCategoryID(event.target.value)} className="form-select">
             <option value="">Please select a Subcategory (Optional)</option>
             {subCategories.map((subCat) => (
               <option key={subCat._id} value={subCat._id}>
@@ -317,33 +317,68 @@ function AddProduct({ Categories }) {
             ))}
           </select>
         </div>
+      </div>
+
+      {/* Framed */}
+      <div className="row">
+        <div className="col-md-6 col-12">
+          <label>Framed</label>
+          <div className={styles.inputGroup}>
+            <input id="framed" name="framed" type="checkbox"
+
+              checked={framed}
+              onChange={(event) => setFramed(event.target.checked)}
+
+            />
+            <label for="framed">is framed ArtWork?</label>
+          </div>
+        </div>
+
+        <div className="col-12 col-md-6 mb-3">
+          <label>Price</label>
+          <input
+            value={price}
+            onChange={(event) => setPrice(event.target.value)}
+            placeholder="Add artwork price"
+            type="text"
+
+          />
+          {errors.price && <span className={styles.error}>{errors.price}</span>}
+        </div>
+
+
+      </div>
 
 
 
+      <div className="row">
 
-        {/* Dimensions */}
-        <div>
+        <div className="col-12 col-md-6 mb-3">
           <label>Width Dimension</label>
           <input
             value={width}
             onChange={(event) => setWidth(event.target.value)}
             placeholder="Width"
             type="text"
+
           />
         </div>
 
-        <div>
+        <div className="col-12 col-md-6 mb-3">
           <label>Height Dimension</label>
           <input
             value={height}
             onChange={(event) => setHeight(event.target.value)}
             placeholder="Height"
             type="text"
+
           />
         </div>
+      </div>
 
-        {/* Descriptions */}
-        <div>
+
+      <div className="row">
+        <div className="col-md-6 mb-3">
           <label>Short Description</label>
           <input
             value={shortDescription}
@@ -352,54 +387,49 @@ function AddProduct({ Categories }) {
             type="text"
           />
         </div>
-        {/* Tags */}
-        <div>
+        <div className="col-md-6 mb-3">
           <label>Tags</label>
           <input
             value={tags}
             onChange={(event) => setTags(event.target.value)}
             placeholder="art, nature, modern"
             type="text"
+
           />
           {errors.tags && <span className={styles.error}>{errors.tags}</span>}
         </div>
+      </div>
 
 
-        {/* rich text editor */}
-        <div >
-          <Tiptap onSave={handleEditorSave} />
+
+       {/* tiptap editor */}
+
+      <div className="mb-3">
+        <div className={styles.editorContainer}>
+     
+        <RichTextEditor  onSave={handleEditorSave} />
+
         </div>
 
-        {/* 
-        <div>
-          <label>Long Description</label>
-          <textarea
-            rows={7}
-            value={longDescription}
-            onChange={(event) => setLongDescription(event.target.value)}
-            placeholder="Long description"
-            type="text"
-          />
-        </div> */}
-        {/* Images */}
-        <div>
-          <label>Upload Your Images</label>
-          <input
-            className={styles.fileInput}
-            onChange={(event) => setImages(event.target.files)}
-            type="file"
-            multiple
-          />
-          {errors.images && <span className={styles.error}>{errors.images}</span>}
-        </div>
-
-
+          {errors.editorContent && <span className={`text-danger {editorContent.error}`}>{errors.editorContent}</span>}
 
       </div>
 
-      {/* Submit Button */}
-      <button className={styles.addButton} onClick={addArt}>
-        Add Artwork
+      <div className="mb-3">
+        <label>Upload Your Images</label>
+        <input
+          className={styles.fileInput}
+          onChange={(event) => setImages(event.target.files)}
+          type="file"
+          multiple
+
+        />
+        {errors.images && <span className={styles.error}>{errors.images}</span>}
+      </div>
+
+
+      <button className={`btn btn-primary w-100 ${styles.addButton}`} onClick={addArt}>
+        Submit Art Work
       </button>
     </section>
   );

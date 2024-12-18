@@ -17,7 +17,7 @@ const page = async () => {
       
       <Stepper step="cart" />
 
-      <main className={styles.cart} data-aos="fade-up">
+      <main className='container mb-5' data-aos="fade-up">
         <Table />
       </main>
 

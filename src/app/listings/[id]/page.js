@@ -14,21 +14,32 @@ import Breadcrumb from '@/components/modules/breadcrumb/Breadcrumb';
 import Details from '@/components/templates/product/Details';
 import MoreInfoes from '@/components/templates/product/MoreInfoes';
 import { authUser } from '@/utils/AuthHelper';
+import NotFound from '@/app/not-found';
+import mongoose from 'mongoose';
 async function page({ params }) {
   connectToDB();
+
   const user =await authUser()
+
   const artWorkID = params.id;
-  const product = await artworkModel.findOne({ _id: artWorkID }).populate(
+  if(!mongoose.Types.ObjectId.isValid(artWorkID)){
+        return <NotFound/>
+  }
+
+  const artWork = await artworkModel.findOne({ _id: artWorkID }).populate(
     "comments"
   ).populate('artist_id').populate('categoryID').populate('subjectID').populate('materialID')
     .populate('styleID');
+   
+    // if the id is not in database
+    if (artWork==null){
+      return <NotFound/>
+  
+     }
 
-  console.log('productArt=>', product)
+  const relatedArtWorks = await artworkModel.find({ artist_id: artWork.artist_id }).lean();
 
-  const relatedProducts = await artworkModel.find({ artist_id: product.artist_id }).lean();
-
-console.log('relatedProducts=>',relatedProducts)
-
+ 
   return (
     <div> {/* Wrap the JSX with a single root element */}
       <Navbar isLogin={user?true:false} />
@@ -37,14 +48,14 @@ console.log('relatedProducts=>',relatedProducts)
         <div className='row'>
 
           <div className='col-md-6 d-flex align-items-center'>
-            <SwiperArtWorkPics artwork={JSON.parse(JSON.stringify(product))} />
+            <SwiperArtWorkPics artwork={JSON.parse(JSON.stringify(artWork))} />
           </div>
 
           <div className='col-md-6'>
 
 
             {/* details artworks linke Buy button */}
-            <Details artwork={JSON.parse(JSON.stringify(product))} />
+            <Details artwork={JSON.parse(JSON.stringify(artWork))} />
 
           </div>
           {/* end col-md -6 */}
@@ -59,7 +70,7 @@ console.log('relatedProducts=>',relatedProducts)
 
       {/* detatiles and description component */}
 
-      <MoreInfoes artwork={JSON.parse(JSON.stringify(product))} />
+      <MoreInfoes artwork={JSON.parse(JSON.stringify(artWork))} />
 
 
       <div className="container my-4">
@@ -69,10 +80,10 @@ console.log('relatedProducts=>',relatedProducts)
           <img src="/images/shahin.jpg" alt="Esmee van Breugel" className="rounded-circle" width="150" height="150" />
         </div>
 
-        <h2 className="text-center mb-4">Other artWorks from {product.artist_id.name}</h2>
+        <h2 className="text-center mb-4">Other artWorks from {artWork.artist_id.name}</h2>
 
         <MoreProducts
-          relatedProducts={JSON.parse(JSON.stringify(relatedProducts))}
+          relatedProducts={JSON.parse(JSON.stringify(relatedArtWorks))}
         />
 
         <div className="text-center mt-4">

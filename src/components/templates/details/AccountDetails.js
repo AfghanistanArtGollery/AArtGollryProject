@@ -9,6 +9,8 @@ function AccountDetails() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
+    const [avatar, setAvatar] = useState(null);
+    const [imagePreview, setImagePreview] = useState("");
 
     useEffect(() => {
         const getUser = async () => {
@@ -18,26 +20,32 @@ function AccountDetails() {
             setName(data.name);
             setEmail(data.email);
             setPhone(data.phone);
+            setImagePreview(data.avatar || "/images/shahin.jpg");
         };
 
         getUser();
     }, []);
 
-    const updateUser = async () => {
-        // Validation (You)
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setAvatar(file);
+            setImagePreview(URL.createObjectURL(file)); // Show preview
+        }
+    };
 
-        const userNewInfos = {
-            name,
-            email,
-            phone,
-        };
+    const updateUser = async (e) => {
+        e.preventDefault();
+        const formData = new FormData();
+
+        formData.append("name", name);
+        formData.append("email", email);
+        formData.append("phone", phone);
+        if (avatar) formData.append("avatar", avatar);
 
         const res = await fetch("/api/user", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(userNewInfos),
+            body: formData, // Send as FormData
         });
 
         if (res.status === 200) {
@@ -45,9 +53,11 @@ function AccountDetails() {
                 title: "Your details have been updated successfully",
                 icon: "success",
                 buttons: "Got it",
-            }).then(async (result) => {
-                await fetch("/api/auth/signout", { method: "POST" });
-                location.replace("/login-register");
+            }).then(() => location.reload());
+        } else {
+            swal({
+                title: "Error updating your details",
+                icon: "error",
             });
         }
     };
@@ -64,7 +74,7 @@ function AccountDetails() {
                             <label>Username</label>
                             <input
                                 value={name}
-                                onChange={(event) => setName(event.target.value)}
+                                onChange={(e) => setName(e.target.value)}
                                 placeholder="Please enter your username"
                                 type="text"
                             />
@@ -73,16 +83,16 @@ function AccountDetails() {
                             <label>Email</label>
                             <input
                                 value={email}
-                                onChange={(event) => setEmail(event.target.value)}
+                                onChange={(e) => setEmail(e.target.value)}
                                 placeholder="Please enter your email"
-                                type="text"
+                                type="email"
                             />
                         </div>
                         <div>
                             <label>Phone Number</label>
                             <input
                                 value={phone}
-                                onChange={(event) => setPhone(event.target.value)}
+                                onChange={(e) => setPhone(e.target.value)}
                                 placeholder="Please enter your phone number"
                                 type="number"
                             />
@@ -90,18 +100,27 @@ function AccountDetails() {
                     </section>
                     <section>
                         <div className={styles.uploader}>
-                            <img src="/images/shahin.jpg" alt="Profile" />
+                            <img src={imagePreview} alt="Profile" />
                             <div>
                                 <div>
-                                    <button>
-                                        <IoCloudUploadOutline />
-                                        Change
-                                    </button>
-                                    <input type="file" name="" id="" />
+                                    <label htmlFor="file-upload" className={styles.upload_btn}>
+                                        <IoCloudUploadOutline /> Change ProFile
+                                    </label>
+                                    <input
+                                        id="file-upload"
+                                        type="file"
+                                        accept="image/*"
+                                        onChange={handleImageChange}
+                                        style={{ display: "none" }}
+                                    />
                                 </div>
-                                <button>
-                                    <MdOutlineDelete />
-                                    Delete
+                                <button
+                                    onClick={() => {
+                                        setAvatar(null);
+                                        setImagePreview("/images/default-profile.jpg");
+                                    }}
+                                >
+                                    <MdOutlineDelete /> Delete
                                 </button>
                             </div>
                         </div>
@@ -109,7 +128,7 @@ function AccountDetails() {
                             <label>Password</label>
                             <div className={styles.password_group}>
                                 <button>Change Password</button>
-                                <input type="password" />
+                                <input type="password" placeholder="••••••••" />
                             </div>
                         </div>
                     </section>

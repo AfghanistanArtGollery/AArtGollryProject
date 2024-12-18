@@ -6,8 +6,8 @@ import { IoIosArrowDown } from 'react-icons/io';
 import { FaShoppingCart, FaRegHeart } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
 
-export default function Navbar({ isLogin }) {
-  
+export default function Navbar({isAdmin, isLogin,wishlistLength }) {
+
   const [fixTop, setFixTop] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -22,6 +22,16 @@ export default function Navbar({ isLogin }) {
   }, []);
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
+
+  let cartArray;
+   let cartLength;
+  const cartData=localStorage.getItem('cartart')
+  if(cartData){
+
+     cartArray= JSON.parse(cartData)
+     cartLength=cartArray.length
+  }
+ 
 
   return (
     
@@ -50,6 +60,12 @@ export default function Navbar({ isLogin }) {
               </Link>
               <div className={styles.dropdownContent}>
                 <Link href="/p-user/orders">Orders</Link>
+                <Link href="/p-user">User Panel</Link>
+                {isAdmin&&
+                
+                <Link href="/p-admin">Admin Panel</Link>
+                }
+
                 <Link href="/p-user/tickets">Tickets</Link>
                 <Link href="/p-user/comments">Comments</Link>
                 <Link href="/p-user/wishlist">Wishlist</Link>
@@ -61,11 +77,11 @@ export default function Navbar({ isLogin }) {
           <div className={styles.icons}>
             <Link href="/cart">
               <FaShoppingCart />
-              <span>2</span>
+              <span>{cartLength}</span>
             </Link>
             <Link href="/wishlist">
               <FaRegHeart />
-              <span>1</span>
+              <span>{wishlistLength}</span>
             </Link>
           </div>
 
@@ -81,7 +97,7 @@ export default function Navbar({ isLogin }) {
             <li><Link href="/sell-art">Sell Art</Link></li>
             <li><Link href="/featured-artists">Featured Artists</Link></li>
             <li><Link href="/contact-us">Contuct us</Link></li>
-            <li><Link href="/about">About</Link></li>
+            <li><Link href="/about-us">About</Link></li>
        
 
         

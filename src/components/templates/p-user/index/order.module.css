@@ -70,7 +70,7 @@
 @media (max-width: 768px) {
   .card {
     height: auto;
-    flex-direction: column;
+    flex-direction: row;
     gap: 12px;
   }
 

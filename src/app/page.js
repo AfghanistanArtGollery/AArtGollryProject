@@ -6,20 +6,26 @@ import Bunner from '@/components/templates/index/bunner/Bunner'
 import Lettest from '@/components/templates/index/lettest/Letest'
 import Promote from '@/components/templates/index/promote/Promote'
 
+import modelWislist from '@/models/Wishlist'
 
 import { authUser } from '@/utils/AuthHelper'
-
+import { authAdmin } from '@/utils/AuthHelper'
 
 export default async function Home() {
 
   // is login for navabar
   const user = await authUser()
-  
+  const admin=await authAdmin()
 
+  const wishlistLength = (await modelWislist.find({ user: user._id },'_id')).length;
+
+ 
 
   return (
     <>
-      <Navbar isLogin={user ? true : false} />
+      <Navbar isAdmin={admin?true:false} isLogin={user ? true : false} wishlistLength={wishlistLength} />
+
+
       <Bunner />
       <Lettest />
       {/* <Promote /> if any advertise  */}

@@ -24,7 +24,7 @@
 }
 
 .content:nth-child(1) a:not(.content_details *) {
-  background: #C86B42 !important;
+  background: #4A4E69 !important;
   border-right-color: white;
   color: white;
 }

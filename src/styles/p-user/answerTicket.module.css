@@ -63,6 +63,13 @@
   z-index: -1;
 }
 
+@media screen  and (max-width:768px){
+  .title_mobile{
+    margin-top: 60px !important;
+  }
+  
+}
+
 .container {
   direction: ltr;
   padding: 0 30px;
@@ -84,72 +91,103 @@
 /* For Tablets (≤ 768px) */
 @media (max-width: 768px) {
   .title {
-    font-size: 24px; /* Smaller font size on tablet screens */
-    margin-top: 20px; /* Reduced margin */
-    margin-bottom: 20px; /* Reduced bottom margin */
-    flex-direction: column; /* Stack title and link vertically */
-    text-align: center; /* Center-align text */
+    font-size: 24px;
+    /* Smaller font size on tablet screens */
+    margin-top: 20px;
+    /* Reduced margin */
+    margin-bottom: 20px;
+    /* Reduced bottom margin */
+    flex-direction: column;
+    /* Stack title and link vertically */
+    text-align: center;
+    /* Center-align text */
   }
 
   .title a {
-    left: 0; /* Remove the left offset */
-    margin-top: 10px; /* Add top margin for spacing */
-    padding: 5px 15px; /* Adjust padding for smaller screens */
-    font-size: 0.9rem; /* Reduce font size for better mobile view */
+    left: 0;
+    /* Remove the left offset */
+    margin-top: 10px;
+    /* Add top margin for spacing */
+    padding: 5px 15px;
+    /* Adjust padding for smaller screens */
+    font-size: 0.9rem;
+    /* Reduce font size for better mobile view */
   }
 
   .title span {
-    margin-right: 0; /* Remove right margin for better alignment */
-    margin-left: 0; /* Remove left margin to center */
+    margin-right: 0;
+    /* Remove right margin for better alignment */
+    margin-left: 0;
+    /* Remove left margin to center */
   }
 
   .title:after {
-    top: 60%; /* Adjust position for smaller screens */
+    top: 60%;
+    /* Adjust position for smaller screens */
   }
 
   .container {
-    padding: 0 15px; /* Reduce container padding for smaller screens */
+    padding: 0 15px;
+    /* Reduce container padding for smaller screens */
   }
 
   .empty {
-    font-size: 0.9rem; /* Reduce font size for the empty message */
-    margin-top: 40px; /* Reduced top margin */
-    padding: 15px 0; /* Adjust padding */
+    font-size: 0.9rem;
+    /* Reduce font size for the empty message */
+    margin-top: 40px;
+    /* Reduced top margin */
+    padding: 15px 0;
+    /* Adjust padding */
   }
 }
 
 /* For Small Screens (≤ 480px) */
 @media (max-width: 480px) {
   .title {
-    font-size: 20px; /* Further reduce the font size for small screens */
-    margin-top: 15px; /* Reduced top margin */
-    margin-bottom: 15px; /* Reduced bottom margin */
-    flex-direction: column; /* Stack title and link vertically */
-    text-align: center; /* Center-align text */
+    font-size: 20px;
+    /* Further reduce the font size for small screens */
+    margin-top: 15px;
+    /* Reduced top margin */
+    margin-bottom: 15px;
+    /* Reduced bottom margin */
+    flex-direction: column;
+    /* Stack title and link vertically */
+    text-align: center;
+    /* Center-align text */
   }
 
   .title a {
-    left: 0; /* Remove left offset */
-    margin-top: 8px; /* Add margin for spacing */
-    padding: 5px 12px; /* Adjust padding for mobile */
-    font-size: 0.85rem; /* Further reduce font size */
+    left: 0;
+    /* Remove left offset */
+    margin-top: 8px;
+    /* Add margin for spacing */
+    padding: 5px 12px;
+    /* Adjust padding for mobile */
+    font-size: 0.85rem;
+    /* Further reduce font size */
   }
 
   .title span {
-    margin-left: 0; /* Ensure it's centered */
+    margin-left: 0;
+    /* Ensure it's centered */
   }
 
   .title:after {
-    top: 60%; /* Adjust the after element's position */
+    top: 60%;
+    /* Adjust the after element's position */
   }
 
   .container {
-    padding: 0 10px; /* Reduce padding for mobile devices */
+    padding: 0 10px;
+    /* Reduce padding for mobile devices */
   }
 
   .empty {
-    font-size: 0.8rem; /* Further reduce font size */
-    padding: 10px 0; /* Adjust padding */
-    margin-top: 30px; /* Adjust top margin */
+    font-size: 0.8rem;
+    /* Further reduce font size */
+    padding: 10px 0;
+    /* Adjust padding */
+    margin-top: 30px;
+    /* Adjust top margin */
   }
 }

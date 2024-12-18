@@ -5,7 +5,7 @@ import { ImReply } from "react-icons/im";
 import { FaComments, FaHeart, FaShoppingBag, FaUsers } from "react-icons/fa";
 import { MdOutlineAttachMoney } from "react-icons/md";
 import { MdSms, MdLogout } from "react-icons/md";
-import { usePathname } from "next/navigation";
+
 import { TbListDetails } from "react-icons/tb";
 import Link from "next/link";
 import swal from "sweetalert";
@@ -13,7 +13,7 @@ import { useState } from "react";
 
 const Sidebar = () => {
   const[sideBarMenu,setSideBarMenu]=useState(false)
-  const path = usePathname();
+  
 
   const logoutHandler = ({ sideBarMenu, toggleSidebar }) => {
     swal({
@@ -46,13 +46,13 @@ const Sidebar = () => {
  return (
 
 
-  <aside className={`${styles.sidebar} ${sideBarMenu ? styles.open : ""}`}>
+  <aside  className={`${styles.sidebar} ${sideBarMenu ? styles.open : ""}`}>
       <div className={styles.sidebar_header}>
         <p>Welcome, Shahin!</p>
       </div>
       <ul className={styles.sidebar_main}>
-        {path.includes("/p-user") ? (
-          <>
+       
+        
             <Link href={"/p-user"} className={styles.sidebar_link_active}>
               <ImReply />
               Dashboard
@@ -77,42 +77,7 @@ const Sidebar = () => {
               <TbListDetails />
               Account Details
             </Link>
-          </>
-        ) : (
-          <>
-            <Link href={"/p-admin"} className={styles.sidebar_link_active}>
-              <ImReply />
-              Dashboard
-            </Link>
-
-            <Link href={"/p-admin/products"}>
-              <FaShoppingBag />
-              Products
-            </Link>
-            <Link href={"/p-admin/orders"}>
-              <FaShoppingBag />
-              Orders(Customer)
-            </Link>
-
-            <Link href={"/p-admin/users"}>
-              <FaUsers />
-              Users
-            </Link>
-            <Link href={"/p-admin/comments"}>
-              <FaComments />
-              Comments
-            </Link>
-
-            <Link href={"/p-admin/tickets"}>
-              <MdSms />
-              Tickets
-            </Link>
-            <Link href={"/p-admin/discounts"}>
-              <MdOutlineAttachMoney />
-              Discounts
-            </Link>
-          </>
-        )}
+     
       </ul>
       <div className={styles.logout} onClick={logoutHandler}>
         <MdLogout />

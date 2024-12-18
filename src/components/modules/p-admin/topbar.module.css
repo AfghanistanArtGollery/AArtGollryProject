@@ -129,3 +129,35 @@
     text-align: center;
   }
   
+.toggle_button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 30px;
+  font-size: 2px;
+  padding: 8px 12px;
+  font-size: 1rem;
+  background-color: #C86B42;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+}
+
+.toggle_button:hover {
+  background-color: #8c2423;
+}
+
+@media screen and (max-width:968px){
+  .searchBox{
+    display: none;
+  }
+}
+
+@media screen  and (min-width:968px){
+  .toggle_button{
+    display: none;
+  }
+
+  
+}

@@ -3,7 +3,8 @@ import Order from "./Order";
 import styles from "./orders.module.css";
 import { FaArrowLeft } from "react-icons/fa6";
 
-const Orders = () => {
+const Orders = ({customerOrder}) => {
+  console.log('customerOrder=>o',customerOrder)
   return (
     <div className={styles.content}>
       <div className={styles.content_details}>
@@ -12,11 +13,18 @@ const Orders = () => {
           All Orders <FaArrowLeft />
         </Link>
       </div>
-     <Order />
-      {/* // <Order />
-      // <Order /> */}
+      {customerOrder.map(order=>(
 
-      <p className={styles.empty}>No orders placed</p>
+        <Order key={order._id} {...order} />
+
+      ))}
+   
+   
+   {customerOrder.length===0 &&(
+
+     <p className={styles.empty}>No orders placed</p>
+
+   )}
     </div>
   );
 };

@@ -4,15 +4,14 @@ import { ImReply } from "react-icons/im";
 import { FaComments, FaHeart, FaShoppingBag, FaUsers } from "react-icons/fa";
 import { MdOutlineAttachMoney } from "react-icons/md";
 import { MdSms, MdLogout } from "react-icons/md";
-import { usePathname } from "next/navigation";
-import { TbListDetails } from "react-icons/tb";
+
 import Link from "next/link";
 import swal from "sweetalert";
-import { useRouter } from "next/router";
+
 
 const Sidebar = () => {
-  const path = usePathname();
-  const router = useRouter();
+ 
+
 
   const logoutHandler = () => {
     swal({
@@ -31,7 +30,7 @@ const Sidebar = () => {
             icon: "warning",
             buttons: ["No", "Yes"],
           }).then(() => {
-            router.replace('/');
+            // router.replace('/');
           });
         }
       }
@@ -53,8 +52,14 @@ const Sidebar = () => {
 
             <Link href={"/p-admin/products"}>
               <FaShoppingBag />
-              Products
+              AddArwork
             </Link>
+
+            <Link href={"/p-admin/artworks"}>
+              <FaShoppingBag />
+              AddArworkLists
+            </Link>
+
             <Link href={"/p-admin/orders"}>
               <FaShoppingBag />
               Orders(Customer)

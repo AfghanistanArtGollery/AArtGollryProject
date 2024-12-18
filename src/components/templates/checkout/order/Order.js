@@ -45,8 +45,8 @@ const Order = () => {
                     <p className={styles.product_name}>{artwork.name}</p>
                 </div>
                 <div>
-                    <p>Price</p>
-                    <p>Subtotal</p>
+                    <p>30$</p>
+                    <p>Discount</p>
                 </div>
                 <div>
                     <p>Delivery Fee: <strong>$200</strong></p>

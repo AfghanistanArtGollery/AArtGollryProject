@@ -1,7 +1,8 @@
 import styles from "./topbar.module.css";
 import { IoIosSearch, IoIosNotifications } from "react-icons/io";
+import { GiHamburgerMenu } from 'react-icons/gi'; // Import burger menu icon
 
-const Topbar = () => {
+const Topbar = ({onToggleSidebar}) => {
   return (
     <>
       <div className={styles.topbar}>
@@ -23,6 +24,9 @@ const Topbar = () => {
             <IoIosNotifications />
             <span>2</span>
           </div>
+          <button onClick={onToggleSidebar} className={styles.toggle_button} >
+            <GiHamburgerMenu />Menu
+          </button>
         </section>
       </div>
     </>

@@ -5,27 +5,27 @@ import styles from './listing.module.css'
 import connectToDB from '@/configs/db';
 import modelArtwork from '@/models/ArtWork'
 import Link from 'next/link';
+import { authUser } from '@/utils/AuthHelper';
+import ArtWork from '@/components/modules/product/Product';
 import Breadcrumb from '@/components/modules/breadcrumb/Breadcrumb';
 async function AllArt() {
   connectToDB();
+  const user = await authUser()
+  const allArtWorks = await modelArtwork.find({}).populate('artist_id').lean()
 
-  const artWorks = await modelArtwork.find({}).populate('artist_id').lean()
   // const imagesArt= await modelArtwork.find({})
   // console.log('artWork=>', artWorks)
 
 
   return (
     <div> {/* Wrap the JSX with a single root element */}
-      <Navbar />
-      <Breadcrumb title="All lists"/>
+      <Navbar isLogin={user?true:false} />
+      <Breadcrumb title="All lists" />
 
-    
+
       <div className="container">
         <div className="row" style={{ marginTop: "20px" }}>
           <div className="col-md-3">
-
-
-
 
             {/* Filters Collapse Section */}
 
@@ -157,52 +157,24 @@ async function AllArt() {
 
           <div className="col-md-9" id={styles.main}>
             <div className="row">
-            
 
 
-              {artWorks.map(art=>(
+
+              {allArtWorks.map(artwork => (
 
 
-              <div className="col-md-4" key={art._id}>
-                <div>
-                  <span className={styles.product_price}>£{art.price}</span></div>
-                <img className={styles.img} src={art.images} />
-                <h3>{art.name}</h3>
-                <p>{art.artist_id.name}</p>
-                <p>Watercolours</p>
-              </div>
+                <div className="col-md-4" key={artwork._id}>
+                  <ArtWork key={artwork._id} artwork={JSON.parse(JSON.stringify(artwork))} />
+                </div>
 
               ))}
-              <div className="col-md-4">
-                <div><span className={styles.product_price}>£250.00</span></div>
-                <img className={styles.img} src="/images/2.jpg" />
-                <h3>Flowers</h3>
-                <p>Ali Ahmadi</p>
-                <p>Watercolours</p>
-              </div>
-              <div className="col-md-4">
-                <div><span className={styles.product_price}>£250.00</span></div>
-                <img className={styles.img} src="/images/1.jpg" style={{ marginTop: "50px" }} />
-                <h3>Flowers</h3>
-                <p>Ali Ahmadi</p>
-                <p>Watercolours</p>
-              </div>
-              <div className="col-md-4">
-                <div><span className={styles.product_price}>£250.00</span></div>
-                <img className={styles.img} src="/images/3.jpg" style={{ marginTop: "50px" }} />
-                <h3>Flowers</h3>
-                <p>Ali Ahmadi</p>
-                <p>Watercolours</p>
-              </div>
-              <div className="col-md-4">
-                <div><span className={styles.product_price}>£250.00</span></div>
-                <img className={styles.img} src="/images/shahin.jpg" style={{ marginTop: "50px" }} />
-                <h3>Flowers</h3>
-                <p>Ali Ahmadi</p>
-                <p>Watercolours</p>
-              </div>
+
+
+
+
+
             </div>
-            
+
           </div>
         </div>
 

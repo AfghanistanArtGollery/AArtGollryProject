@@ -90,4 +90,33 @@
     font-size: 18px;
     font-weight: bold;
   }
+  .editor_content{
+    padding: 3rem !important;
+  }
+  
+
+  .control-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .button-group button {
+    padding: 5px 10px;
+    margin: 0 5px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .button-group button.is-active {
+    background-color: #4a4e69;
+    color: white;
+  }
+  
   

@@ -28,6 +28,7 @@
 }
 
 .ticket_right {
+  display: flex;
   text-align: center;
   width: 30%;
 }
@@ -60,11 +61,19 @@
 }
 
 .not_answered {
+  
   background-color: #ff5722; /* Red background for not answered */
   color: white;
   border-radius: 5px;
   font-weight: bold;
   margin-bottom: 5px;
+
+}
+@media (max-width: 968px) {
+  .not_answered{
+    font-size: 12px;
+  }
+
 }
 
 /* Mobile responsiveness */
@@ -72,7 +81,7 @@
   .ticket {
     flex-direction: column;
     gap: 12px;
-    padding: 1rem;
+   
     height: auto;
   }
 

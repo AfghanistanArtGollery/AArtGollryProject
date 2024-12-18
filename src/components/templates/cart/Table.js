@@ -6,11 +6,13 @@ import { IoMdClose } from "react-icons/io";
 import { useEffect, useState } from "react";
 import { countryData } from "@/utils/stateData";
 import Select from "react-select";
+import Image from "next/image";
 import swalAlert from "@/utils/helperFunction";
 
 const countryOptions = countryData();
 
 const Table = () => {
+
   const [cart, setCart] = useState([]);
   const [discount, setDisCount] = useState('');
 
@@ -80,67 +82,26 @@ const Table = () => {
   // Get cities for the selected country
   const cities = stateSelectedOption ? stateSelectedOption.cities : [];
 
-  console.log(totalPrice);
+const removeArtwork=()=>{
+  swal({
+    title:'are you sure',
+    icon:'warning',
+    button:'yes'
+  }).then(()=>{
+    localStorage.removeItem('cartart')
+
+    window.location.reload(); // Refresh the page
+   
+
+  })
+}
 
   return (
     <>
       {cart.map((item) => (
-        < >
+        < div className="row">
 
-          <div key={item.id} className={styles.tabel_container}>
-            <table className={styles.table}>
-              <thead>
-                <tr>
-                  <th>Subtotal</th>
-                  <th>Quantity</th>
-                  <th>Price</th>
-                  <th>Product</th>
-                  <th></th>
-                </tr>
-              </thead>
-
-              <tbody>
-
-                <tr>
-                  <td>{(item.count * item.price).toLocaleString()} AFN</td>
-                  <td className={styles.counter}>
-                    <div>
-                      <span>-</span>
-                      <p>{item.count}</p>
-                      <span>+</span>
-                    </div>
-                  </td>
-                  <td className={styles.price}>
-                    {item.price.toLocaleString()} AFN
-                  </td>
-                  <td className={styles.product}>
-                    <img
-                      src={item.img[0]}
-                      alt={item.name}
-                    />
-                    <Link href={"/"}>{item.name}</Link>
-                  </td>
-
-                  <td>
-                    <IoMdClose className={styles.delete_icon} />
-                  </td>
-                </tr>
-
-              </tbody>
-
-            </table>
-
-            <section>
-              <button className={styles.update_btn}>Update Cart</button>
-              <div>
-                <button className={styles.set_off_btn} onClick={applyCoupon}>Apply Coupon</button>
-                <input value={discount} onChange={(event) => setDisCount(event.target.value)} type="text" placeholder="Discount Code" />
-              </div>
-            </section>
-
-          </div>
-
-          <div className={totalStyles.totals}>
+          <div className={`col-md-4 mt-4  order-md-1 order-2 totalStyles.totals`}>
             <p className={totalStyles.totals_title}>Shopping Cart Total</p>
 
             <div className={totalStyles.subtotal}>
@@ -188,7 +149,7 @@ const Table = () => {
 
             <div className={totalStyles.total}>
               <p>Total</p>
-              <p>{totalPrice.toLocaleString()} AFN</p>
+              <p>${totalPrice.toLocaleString()} </p>
             </div>
 
             <Link href={`/checkout/${item.id}`}>
@@ -198,7 +159,77 @@ const Table = () => {
             </Link>
           </div>
 
-        </>
+
+
+
+
+          <div key={item.id} className={` col-md-8  order-md-2 order-1 styles.tabel_container`}>
+            <table className={styles.table}>
+              <thead>
+                <tr>
+                  <th>Artwork</th>
+                  <th>Price</th>
+                  <th>Img</th>
+                  <th>Remove</th>
+
+
+                </tr>
+              </thead>
+
+              <tbody>
+
+                <tr>
+
+
+                  <td> <Link href={"/"}>{item.name}</Link></td>
+                  <td className={styles.price}>
+                    ${item.price.toLocaleString()} 
+                  </td>
+                  <td >
+                    <Image
+                      width={150}
+                      height={100}
+                      src={item.img[0]}
+                      alt={item.name}
+                    />
+
+                  </td>
+
+                  <td>
+                    <IoMdClose onClick={removeArtwork} className={styles.delete_icon} />
+                  </td>
+                </tr>
+
+              </tbody>
+
+            </table>
+
+            <section>
+              <button className={styles.update_btn}>Update Cart</button>
+            </section>
+            <div className="d-flex  mt-3 justify-content-between align-items-center">
+              <button className={`btn ${styles.set_off_btn}`} onClick={applyCoupon}>Apply Coupon</button>
+              <input
+                className="form-control w-75 p-10"
+                value={discount}
+                onChange={(event) => setDisCount(event.target.value)}
+                type="text"
+                placeholder="Discount Code"
+              />
+            </div>
+
+
+          </div>
+
+
+
+
+
+
+
+
+
+        </div>
       ))}
     </>
   );

@@ -33,7 +33,7 @@
   width: 95%;
   z-index: -1;
   border-top: 2px solid #dfdfdf;
-  box-shadow: 0 1px 0 0 #C86B42;
+  box-shadow: 0 1px 0 0 #711d1c;
 }
 
 /* Table container - responsive */
@@ -60,7 +60,7 @@
 }
 
 .delete_btn {
-  background: #C86B42;
+  background: #711d1c;
 }
 
 .respond_btn {

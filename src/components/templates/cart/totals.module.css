@@ -14,10 +14,9 @@
 }
 
 .subtotal {
-  flex-direction: row-reverse;
-  padding-bottom: 0.8rem;
   display: flex;
   justify-content: space-between;
+  padding-bottom: 0.8rem;
   margin-top: 1rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
@@ -28,17 +27,17 @@
   margin-top: 1rem;
 }
 
+.address {
+  direction: rtl;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
 .address span {
   color: gray;
   width: 150px;
   text-align: left !important;
-}
-
-.address {
-  direction: rtl;
-  margin-top: 1rem;
-  display: flex;
-  justify-content: space-between;
 }
 
 .change_address {
@@ -49,21 +48,16 @@
 
 .total {
   display: flex;
-  flex-direction: row-reverse;
+  justify-content: space-around;
   margin-top: 1rem;
   padding-top: 0.8rem;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
-  justify-content: space-between;
 }
 
 .total p:nth-child(2) {
   color: rgb(52, 24, 14);
   font-size: 22px;
   direction: rtl;
-}
-
-.checkout_btn:hover {
-  background: rgb(113, 29, 28) !important;
 }
 
 .checkout_btn {
@@ -76,11 +70,14 @@
   line-height: 20px;
   width: 100%;
   margin-top: 1rem;
-  border-radius: 5px !important;
+  border-radius: 5px;
   border-radius: 0.001px;
   color: white;
-  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15);
   background-color: rgb(0, 137, 121);
+}
+
+.checkout_btn:hover {
+  background: rgb(113, 29, 28);
 }
 
 .address_details input {
@@ -103,10 +100,6 @@
   padding-top: 10px;
 }
 
-.address_details button:hover {
-  background: #efefef;
-}
-
 .address_details button {
   color: #333;
   background-color: #f7f7f7;
@@ -115,7 +108,6 @@
   line-height: 18px;
   background-color: #f3f3f3;
   color: #3e3e3e;
-  position: relative;
   width: 30%;
   display: inline-flex;
   border: 0;
@@ -126,9 +118,12 @@
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
-  text-shadow: none;
   font-weight: 600;
   cursor: pointer;
-  transition: color 0.25s ease, background-color 0.25s ease,
-    border-color 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+  transition: color 0.25s ease, background-color 0.25s ease;
 }
+
+.address_details button:hover {
+  background: #efefef;
+}
+

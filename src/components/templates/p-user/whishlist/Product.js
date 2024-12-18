@@ -20,7 +20,7 @@ const Card = ({ price, score, name, productID,images }) => {
         const res = await fetch(`/api/wishlist/${productID}`, {
           method: "DELETE",
         });
-        console.log("Res ->", res);
+      
 
         if (res.status === 200) {
           swal({
@@ -47,8 +47,8 @@ const Card = ({ price, score, name, productID,images }) => {
         />
       </Link>
       <p>{name}</p>
-      <div>
-        <div>
+      <div className="d-flex justify-content-arount">
+        <div >
           {new Array(score).fill(0).map((item, index) => (
             <FaStar key={index} />
           ))}
