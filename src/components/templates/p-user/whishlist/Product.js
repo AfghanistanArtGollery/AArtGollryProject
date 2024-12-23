@@ -4,7 +4,7 @@ import Link from "next/link";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import swal from "sweetalert";
 
-const Card = ({ price, score, name, productID,images }) => {
+const Card = ({ price, score, name, artWorkID,images }) => {
 
    // Ensure images array is not empty before accessing images[0]
    const firstImage = images && images.length > 0 ? images[0] : '/path/to/desfault-image.jpg';  // Provide a fallback image
@@ -17,7 +17,7 @@ const Card = ({ price, score, name, productID,images }) => {
       buttons: ["No", "Yes"],
     }).then(async (result) => {
       if (result) {
-        const res = await fetch(`/api/wishlist/${productID}`, {
+        const res = await fetch(`/api/wishlist/${artWorkID}`, {
           method: "DELETE",
         });
       
@@ -37,7 +37,7 @@ const Card = ({ price, score, name, productID,images }) => {
 
   return (
     <div className={styles.card}>
-      <Link href={`/product/${productID}`}>
+      <Link href={`/product/${artWorkID}`}>
         <img
           width={283}
           height={283}

@@ -5,7 +5,6 @@ import modelOrder from '@/models/Order'
 
 const Page = async() => {
 const orders= await modelOrder.find({}).populate('user_id','name').populate('artwork_id','name price images').lean()
-console.log('orders=>',orders)
   return (
     <AdminPanelLayout>
       <main>

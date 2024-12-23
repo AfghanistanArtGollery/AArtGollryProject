@@ -62,7 +62,6 @@ const Table = () => {
     } else if (res.status === 200) {
       const discountCode = await res.json();
       const newPrice = totalPrice - (totalPrice * discountCode.percent) / 100;
-      console.log("discountCode ->", discountCode);
       setTotalPrice(newPrice);
       return swalAlert("Discount code applied successfully", "success", "Got it");
     }

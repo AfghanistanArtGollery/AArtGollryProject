@@ -1,99 +1,177 @@
-.description {
-  display: flex;
-  gap: 8px;
-  margin-top: 10px;
-  align-items: center;
+.footer {
+  background-color: #4A4E69;
+  padding-top: 40px;
 }
+
+.footer main {
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+
+  flex-direction: row; /* Changed from row-reverse to row for LTR */
+  text-align: left; /* Align text to the left */
+}
+
+.footer .container {
+  max-width: 1140px; /* Optional: Ensure content doesn't stretch too wide on large screens */
+}
+
 .descriptions {
   width: 300px;
   padding: 10px;
   color: antiquewhite;
   font-family: shabnam;
   font-size: 15px;
-  direction: rtl;
+  direction: ltr; /* Changed from rtl to ltr */
 }
-.description:nth-child(3) p {
-  font-size: 15px;
-}
-.descriptions_title {
-  color: aliceblue;
-  margin-bottom: 30px;
-  margin-top: 20px;
-}
-.footer main {
+
+.description {
   display: flex;
-  margin: 0 auto;
-  justify-content: space-between;
-  padding-bottom: 40px;
-  flex-direction: row-reverse;
-  text-align: right;
+  align-items: center;
 }
-.footer {
-  background-color: #4A4E69;
-  padding-top: 40px;
+
+.descriptions_title {
+  display: flex;
+  color: aliceblue;
+ 
 }
+
 .footer_article div div {
   display: flex;
-  justify-content: right;
+  justify-content: left; /* Changed from right to left */
   gap: 14px;
   color: rgba(255, 255, 255, 0.5);
   padding-top: 0.5rem;
 }
+
 .footer_article {
   font-family: shabnam;
   display: flex;
   gap: 15px;
-  
   align-items: center;
-
-  flex-direction: row-reverse;
+  flex-direction: row; /* Changed from row-reverse to row for LTR */
   margin: 20px 0px;
 }
+
 .footer_article_title {
   font-family: shabnam-Bold;
 }
+
 .footer h4 {
   margin-bottom: 15px;
   font-family: shabnam-Bold;
+  color: #fff;
 }
+
 .links li {
   list-style: none;
   margin-top: 10px;
   font-family: shabnam;
   color: rgba(255, 255, 255, 0.5);
 }
+
 .links {
   display: flex;
   gap: 80px;
-  margin-right: 1rem;
+  margin-left: 1rem; /* Adjusted from margin-right to margin-left for LTR */
 }
 
 .licenses img:nth-child(4) {
-  margin-left: 1rem;
+  margin-right: 1rem; /* Changed from margin-left to margin-right for LTR */
 }
+
 .licenses img {
   cursor: pointer;
 }
+
 .licenses {
   height: 200px;
   gap: 10px;
   display: grid;
   grid-template-columns: auto auto;
 }
+
 .copyRight {
-  font-family: shabnam;
-  direction: rtl;
+  /* font-family: shabnam; */
+  direction: ltr; /* Changed from rtl to ltr */
   padding: 20px 0px;
   font-size: 12px;
-  text-align: right;
+  color: #fff;
+  text-align: center; /* Changed from right to left */
 }
 
 .footer hr {
   border-color: #676767;
 }
+
 .copyRight svg {
   position: relative;
   top: 3.9px;
-  right: 1px;
+  left: 1px; /* Adjusted from right to left for LTR */
   font-size: 1.3rem;
+}
+
+@media (max-width: 768px) {
+  .footer main {
+    display: block;
+    text-align: center;
+  }
+
+  .footer .container {
+    padding: 20px;
+  }
+
+  .footer .links {
+    margin-top: 30px;
+  }
+
+  .footer .description {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer .licenses {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .footer .container {
+    padding: 0;
+  }
+
+  .footer main {
+    text-align: center;
+  }
+
+  .footer .descriptions {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .footer .descriptions_title {
+    font-size: 16px;
+  }
+
+  .footer .description p {
+    font-size: 13px;
+  }
+
+  .footer .licenses img {
+    width: 100%;
+    height: auto;
+  }
+
+  .footer .copyRight {
+    font-size: 10px;
+  }
+
+  .footer .footer_article {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .footer .footer_article div {
+    justify-content: center;
+  }
 }

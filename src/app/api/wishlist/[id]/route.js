@@ -3,11 +3,10 @@ import connectToDB from "@/configs/db";
 import { authUser } from "@/utils/AuthHelper";
 export async function DELETE(req,{params}){
     
-    console.log('hello ')
     try{
         connectToDB()
 
-         const productID=params.id
+         const artWorkID=params.id
 
         // find user
         const user= await authUser()
@@ -16,7 +15,7 @@ export async function DELETE(req,{params}){
         }
 
 
-         await modelWishlist.findOneAndDelete({user:user._id,product:productID})
+         await modelWishlist.findOneAndDelete({user:user._id,product:artWorkID})
         
 
 

@@ -1,0 +1,383 @@
+.title {
+  margin-top: 30px;
+  text-align: left; /* Changed to left */
+  text-transform: uppercase;
+  position: relative;
+  font-size: 30px;
+  z-index: 1;
+  font-weight: 500;
+}
+
+.title:before {
+  border-top: 2px solid #dfdfdf;
+  content: "";
+  margin: 0 auto;
+  position: absolute;
+  top: 52%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 95%;
+  z-index: -1;
+}
+
+.title span {
+  background: #fff;
+  padding: 0 15px;
+  margin-left: 4rem; /* Left margin for LTR */
+}
+
+.title:before {
+  border-top: none;
+}
+
+.title:after {
+  border-bottom: 1px solid #C86B42;
+  -webkit-box-shadow: 0 1px 0 0 #C86B42;
+  -moz-box-shadow: 0 1px 0 0 #C86B42;
+  box-shadow: 0 1px 0 0 #C86B42;
+  content: "";
+  margin: 0 auto;
+  position: absolute;
+  top: 51%;
+  left: 0;
+  right: 0;
+  width: 95%;
+  z-index: -1;
+}
+
+.table {
+  width: 100%;
+}
+
+.table tbody tr {
+  background-color: rgb(255, 255, 255);
+}
+
+.table {
+  width: 100%;
+  background-color: #f2f7fd;
+}
+
+.table th {
+  border: none;
+  color: #000000;
+  text-align: center;
+}
+
+.table tr {
+  vertical-align: middle;
+}
+
+.table td,
+.table th {
+  padding: 8px 22px;
+  text-align: center;
+}
+
+.delete_btn {
+  font-size: 13px;
+  background: #C86B42;
+  padding: 0.4rem 0.7rem;
+  border: 0;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  width: -webkit-fill-available;
+}
+
+.edit_btn,
+.btn {
+  font-size: 13px;
+  background: #000000;
+  padding: 0.4rem 0.7rem;
+  cursor: pointer;
+  border: 0;
+  border-radius: 3px;
+  color: white;
+  width: -webkit-fill-available;
+}
+
+.table_container {
+  padding: 40px 25px;
+}
+
+.answer_contact {
+  color: rgb(0, 0, 0);
+  background-color: blue !important;
+}
+
+.no_answer_contact {
+  color: white;
+  background-color: red !important;
+}
+
+.answer_comment {
+  color: rgb(255, 255, 255);
+  background-color: blue !important;
+}
+
+.no_answer_comment {
+  color: white;
+  background-color: red !important;
+}
+
+.check,
+.no_check {
+  font-size: 13px;
+  background: #000000;
+  padding: 0.4rem 0.7rem;
+  width: -webkit-fill-available;
+  cursor: pointer;
+  border: 0;
+  border-radius: 3px;
+  color: white;
+}
+.no_check {
+  background: #C86B42;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.empty {
+  color: white;
+  background-color: #C86B42;
+  padding: 0.7rem 2rem;
+  width: max-content;
+  margin: 15rem auto;
+  font-size: 1.7rem;
+  border-radius: 5px;
+}
+
+.accept {
+  background-color: green;
+  color: #fff;
+}
+
+.reject {
+  background-color: red;
+  color: #fff;
+}
+
+.discount {
+  padding: 20px;
+}
+
+.discount_main {
+  direction: ltr;
+  /* display: grid; */
+  /* gap: 30px; */
+  /* grid-template-columns: auto auto; */
+}
+
+
+
+.discount select {
+  background: white;
+  padding: 10px;
+  color: black;
+  border-radius: 5px;
+  border: 3px solid #C86B42;
+  margin-top: 4.5px;
+  outline: 0;
+}
+
+.discount input {
+  padding: 10px;
+  background-color: white;
+  margin-top: 4px;
+  outline: 0;
+  color: black;
+  text-align: left; /* Left alignment */
+  direction: ltr; /* Ensuring LTR text direction */
+  border-radius: 5px;
+  border: 3px solid #C86B42;
+  width: 100%;
+}
+
+.discount p {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  text-align: left; /* Changed from right to left */
+ 
+  /* font-size: 30px; */
+  position: relative;
+  z-index: 1;
+}
+
+.discount label {
+  font-size: 20px;
+  text-align: left; /* Changed from right to left */
+}
+
+.table {
+  width: 100%;
+}
+
+.table tbody tr {
+  background-color: rgb(255, 255, 255);
+}
+
+.table {
+  width: 100%;
+  background-color: #f2f7fd;
+}
+
+.table th {
+  border: none;
+  color: #000000;
+  text-align: center;
+}
+
+.table tr {
+  vertical-align: middle;
+}
+
+.table td,
+.table th {
+  padding: 8px 0px;
+  text-align: center;
+}
+
+.delete_btn {
+  font-size: 13px;
+  background: #C86B42;
+  padding: 0.4rem 0.7rem;
+  border: 0;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+}
+
+.discount button {
+  margin-left: auto;
+  width: max-content;
+  border: 0;
+  border-radius: 4px;
+  background-color: #C86B42;
+  color: white;
+  cursor: pointer;
+  padding: 0.5rem 1.5rem;
+  margin-top: 1.4rem;
+}
+
+.empty {
+  color: white;
+  background-color: #C86B42;
+  padding: 0.7rem 2rem;
+  width: max-content;
+  margin: 8rem auto;
+  font-size: 1.7rem;
+  border-radius: 5px;
+}
+
+.green {
+  color: white;
+  background-color: green;
+}
+
+.red {
+  color: white;
+  background-color: red;
+}
+.error {
+  color: red;
+  font-size: 12px;
+ 
+
+}
+
+.editorContainer{
+  border: 1px solid #C86B42;
+      border-radius: 5px;
+}
+
+
+/* check box styles */
+/* Define the styles in a flat manner */
+.inputGroup {
+    background-color: #fff;
+    display: block;
+    margin: 10px 0;
+    position: relative;
+
+    .label {
+      padding: 12px 30px;
+      width: 100%;
+      border: 1px solid #C86B42;
+      border-radius: 5px;
+      display: block;
+      text-align: left;
+      color: #3C454C;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+      transition: color 200ms ease-in;
+      overflow: hidden;
+
+      &:before {
+        width: 100%;
+        height: 10px;
+        border-radius: 50%;
+        content: '';
+        background-color: #5562eb;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) scale3d(1, 1, 1);
+        transition: all 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
+        opacity: 0;
+        z-index: -1;
+      }
+
+      &:after {
+        width: 32px;
+        height: 32px;
+        content: '';
+        border: 2px solid #D1D7DC;
+        background-color: #fff;
+        background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.414 11L4 12.414l5.414 5.414L20.828 6.414 19.414 5l-10 10z' fill='%23fff' fill-rule='nonzero'/%3E%3C/svg%3E ");
+        background-repeat: no-repeat;
+        background-position: 2px 3px;
+        border-radius: 50%;
+        z-index: 2;
+        position: absolute;
+        right: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        transition: all 200ms ease-in;
+      }
+    }
+
+    .input:checked ~ .label {
+      color: #fff;
+
+      &:before {
+        transform: translate(-50%, -50%) scale3d(56, 56, 1);
+        opacity: 1;
+      }
+
+      &:after {
+        background-color: #54E0C7;
+        border-color: #54E0C7;
+      }
+    }
+
+    .input {
+      width: 32px;
+      height: 32px;
+      order: 1;
+      z-index: 2;
+      position: absolute;
+      right: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      visibility: hidden;
+    }
+  }

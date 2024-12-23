@@ -80,7 +80,7 @@
   background: rgb(113, 29, 28);
 }
 
-.address_details input {
+.address_details .input {
   outline: 0;
   border: 0;
   background: white;

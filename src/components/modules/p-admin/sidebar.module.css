@@ -1,6 +1,6 @@
 /* Base Sidebar Styling */
 .sidebar {
-  width: 350px;
+  width: 280px;
   height: 100vh;
   background-color: #4A4E69;
   color: white;
@@ -44,7 +44,7 @@
   display: flex;
   align-items: center;
   gap: 15px;
-  font-size: 18px;
+  font-size: 15px;
   opacity: 0.8;
   text-decoration: none;
   color: #FFF8F0    ;

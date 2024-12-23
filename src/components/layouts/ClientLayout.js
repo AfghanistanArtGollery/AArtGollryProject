@@ -13,7 +13,7 @@ const ClientLayout = ({ children }) => {
     };
 
     return (
-        <div className={styles.layout}>
+        <div  className={styles.layout}>
             {/* Topbar - contains the toggle button */}
           
 
@@ -41,7 +41,7 @@ const ClientLayout = ({ children }) => {
 
                 {/* Main content area */}
 
-                <div className={styles.contents}>
+                <div  className={styles.contents}>
                     {/* Pass toggleSidebar to Topbar */}
                     <Topbar onToggleSidebar={toggleSidebar} />
                     {children}

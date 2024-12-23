@@ -1,33 +1,39 @@
 import DataTable from "@/components/templates/p-user/comments/DataTable";
-import Layout from "@/components/layouts/UserPanelLayout";
 import React from "react";
+import styles from "@/components/templates/p-admin/comments/table.module.css";
+
 import connectToDB from "@/configs/db";
 import Commentmodel from "@/models/Comment";
 import { authUser } from "@/utils/AuthHelper";
+import ClientLayout from "@/components/layouts/ClientLayout";
 const page = async () => {
   connectToDB();
   const user = await authUser();
   
   const comments = await Commentmodel.find(
-      { user: String(user._id) },
+      { email:user.email},
       "-__v"
-    ).populate("productID", "name");
+    ).populate("artWorkID", "name");
     
-    console.log('comments=>',comments)
 
 
   return (
-    <Layout>
+    <ClientLayout>
       <main>
         <DataTable
           comments={JSON.parse(JSON.stringify(comments))}
           title="Comment lists"
         />
-        {/* <p className={styles.empty}>
+
+        {comments.length===0&&(
+        <p className={styles.empty}>
          there is no comment
-        </p>  */}
+        </p>  
+
+
+        )}
       </main>
-    </Layout>
+    </ClientLayout>
   );
 };
 

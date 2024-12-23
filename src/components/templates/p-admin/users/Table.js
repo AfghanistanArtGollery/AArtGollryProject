@@ -17,7 +17,6 @@ export default function DataTable({ users, title }) {
             },
             body: JSON.stringify({ id: userID }),
         });
-        console.log(res);
     }
 
     const removeUser = async (userID) => {
@@ -34,7 +33,6 @@ export default function DataTable({ users, title }) {
                     },
                     body: JSON.stringify({ id: userID }),
                 });
-                console.log(res);
             }
         });
     }

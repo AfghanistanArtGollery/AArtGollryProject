@@ -1,7 +1,7 @@
 
 const mongoose = require('mongoose')
 
-require("./Product");
+require("./ArtWork");
 const schema = mongoose.Schema({
 
     username: {
@@ -36,14 +36,11 @@ const schema = mongoose.Schema({
 
 
     // Reference to Product
-    productID: {
+    artWorkID: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Product",
+        ref: "ArtWork",
         required: true
     },
-
-
-
 
 
 

@@ -5,7 +5,7 @@ import { ImReply } from "react-icons/im";
 import { FaComments, FaHeart, FaShoppingBag, FaUsers } from "react-icons/fa";
 import { MdOutlineAttachMoney } from "react-icons/md";
 import { MdSms, MdLogout } from "react-icons/md";
-
+import { IoAddSharp } from "react-icons/io5";
 import { TbListDetails } from "react-icons/tb";
 import Link from "next/link";
 import swal from "sweetalert";
@@ -60,6 +60,10 @@ const Sidebar = () => {
             <Link href={"/p-user/orders"}>
               <FaShoppingBag />
               Orders
+            </Link>
+            <Link href={"/p-user/artworks/post-artwork"}>
+              <IoAddSharp />
+              Post Artwork
             </Link>
             <Link href={"/p-user/tickets/"}>
               <MdSms />

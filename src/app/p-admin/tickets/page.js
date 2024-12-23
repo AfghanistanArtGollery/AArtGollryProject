@@ -7,7 +7,8 @@ import connectToDB from "@/configs/db";
 import TicketModel from "@/models/Ticket";
 
 const page = async () => {
-  connectToDB();
+
+   connectToDB();
 
     const tickets = await TicketModel.find({ isAnswer: false })
     .sort({ _id: -1 })

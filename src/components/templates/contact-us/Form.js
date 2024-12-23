@@ -40,7 +40,6 @@ const Form = () => {
       setMessage("");
       swalAlert("Your message has been successfully submitted", "success", "Got it");
     }
-    console.log("Res ->", res);
   };
 
   return (

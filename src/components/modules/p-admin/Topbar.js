@@ -15,7 +15,9 @@ const Topbar = ({onToggleSidebar}) => {
         </div>
         <section>
           <div className={styles.searchBox}>
-            <input type="text" placeholder="Search..." />
+            <input type="text" placeholder="Search..." 
+            className={styles.input}
+            />
             <div>
               <IoIosSearch />
             </div>

@@ -82,7 +82,6 @@ export async function POST(req) {
 
     return Response.json({ message: "Successfully created artwork", newArtwork }, { status: 201 });
   } catch (err) {
-    console.log('Error:', err);  // Debugging the error
     return Response.json({ message: err.message }, { status: 500 });
   }
 }

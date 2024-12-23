@@ -4,7 +4,6 @@ import style from './buy-art.module.css';
 
 import { authUser } from '@/utils/AuthHelper';
 
-import TiptapEditor from '@/components/tipTap/TiptapEditor';
 
 function page() {
   const user = authUser()
@@ -23,11 +22,10 @@ function page() {
               </ul>
             </div>
           </div>
-<TiptapEditor/>
           <div className="container static-page">
             <div className={style.cms_page_content}>
               <div className="HideIfAuthenticated">
-                <div><a className="btn btn-primary red line btn-lg mt-md" style={{ marginTop: "0px", marginBottom: "1em" }} href="/register/customers">Register Here</a></div>
+                <div><a className="btn btn-primary red line btn-lg mt-md" style={{ marginTop: "0px", marginBottom: "1em" }} href="/login-register">Register Here</a></div>
               </div>
               <h3><span>Want to learn more about how it all works?</span></h3>
               <div>Looking for something in particular?</div>

@@ -22,7 +22,6 @@ const page = async () => {
     wishlist = await modelWishlist.find({ user: user._id }).populate('product').lean();
   }
 
-   console.log('wishlist=>',wishlist)
 
 
   return (
@@ -40,7 +39,7 @@ const page = async () => {
             wishlist.map(wish => (
                 <Product
                     key={wish._id}
-                    productID={String(wish.product._id)}
+                    artWorkID={String(wish.product._id)}
                     score={wish.product.score} 
                     name={wish.product.name} 
                     images={wish.product.images}

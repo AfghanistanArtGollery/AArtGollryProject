@@ -1,7 +1,7 @@
 import { FaStar,FaRegStar } from "react-icons/fa";
 
 import styles from "./comment.module.css";
-const Comment = ({ username, body, email, score,date }) => {
+const Comment = ({username, body, email, score,date }) => {
 
   return (
     <section className={styles.comment}>

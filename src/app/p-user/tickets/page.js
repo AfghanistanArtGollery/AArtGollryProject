@@ -5,6 +5,7 @@ import connectToDB from "@/configs/db";
 
 import { authUser } from "@/utils/AuthHelper";
 import TicketModel from "@/models/Ticket";
+import ClientLayout from "@/components/layouts/ClientLayout";
 
 const page = async () => {
   connectToDB();
@@ -14,9 +15,9 @@ const page = async () => {
     .sort({ _id: -1 });
 
   return (
-    <Layout>
+    <ClientLayout>
       <Tickets tickets={JSON.parse(JSON.stringify(tickets))} />
-    </Layout>
+    </ClientLayout>
   );
 };
 

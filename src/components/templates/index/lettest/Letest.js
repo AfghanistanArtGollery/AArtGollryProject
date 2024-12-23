@@ -2,13 +2,13 @@ import React from 'react'
 import Link from 'next/link'
 import { FaChevronLeft } from "react-icons/fa6";
 
-import ArtWork from '@/components/modules/product/Product';
+import ArtWork from '@/components/modules/artwork/Artwork';
 import modelArtWork from '@/models/ArtWork'
 
 import styles from './letest.module.css'
 
 export default async function Latest({ products }) {
-  let lettstArtworks = await modelArtWork.find({}).populate('artist_id').populate('categoryID').sort({ _id: -1 }).limit(8)
+  let lettstArtworks = await modelArtWork.find({status:true}).populate('artist_id').populate('categoryID').sort({ _id: -1 }).limit(8)
   
   return (
     <div className={`container styles.container`}>
@@ -17,7 +17,7 @@ export default async function Latest({ products }) {
           <p>Latest ArtWorks</p>
           <span>Latest ArtWorks</span>
         </div>
-        <Link className={styles.link} href={"/category"}>
+        <Link className={styles.link} href={"/listings"}>
           View All <FaChevronLeft />{" "}
         </Link>
       </section>

@@ -10,59 +10,45 @@ const page = async () => {
   return (
     <>
       <Navbar isLogin={user ? true : false} />
-      <Breadcrumb route={"قوانین"} />
+      <Breadcrumb route={"Rulles"} />
       <div className={styles.container} data-aos="fade-up">
         <p>
-          “قهوه ست” ضمن احترامی که برای حریم شخصی کاربران قائل است، برای خرید،
-          ثبت نظر یا استفاده از برخی امکانات وب سایت اطلاعاتی را از کاربران
-          درخواست می‌کند تا بتواند خدماتی امن و مطمئن را به کاربران ارائه دهد.
-          برای پردازش و ارسال سفارش، اطلاعاتی مانند آدرس، شماره تلفن و ایمیل
-          مورد نیاز است و از آنجا که کلیه فعالیت‌های قهوه ست قانونی و مبتنی بر
-          قوانین تجارت الکترونیک صورت می‌گیرد و طی فرایند خرید، فاکتور رسمی و
-          بنا به درخواست مشتریان حقوقی گواهی ارزش افزوده صادر می‌شود، از این رو
-          وارد کردن اطلاعاتی مانند نام و کد ملی برای اشخاص حقیقی یا کد اقتصادی و
-          شناسه ملی برای خریدهای سازمانی لازم است. همچنین آدرس ایمیل و تلفن‌هایی
-          که مشتری در پروفایل خود ثبت می‌کند، تنها آدرس ایمیل و تلفن‌های رسمی و
-          مورد تایید مشتری است و تمام مکاتبات و پاسخ‌های شرکت از طریق آنها صورت
-          می‌گیرد.مشتریان می‌توانند نام، آدرس و تلفن شخص دیگری را برای تحویل
-          گرفتن سفارش وارد کنند و قهوه ست تنها برای ارسال همان سفارش، از این
-          اطلاعات استفاده خواهد کرد.همچنین قهوه ست ممکن است برای ارتباط با
-          مشتریان، بهینه سازی محتوای وب سایت و تحقیقات بازاریابی از برخی اطلاعات
-          استفاده کند و برای اطلاع رسانی رویدادها و اخبار، خدمات و سرویس‌های
-          ویژه یا پروموشن‌ها، برای اعضای وب سایت ایمیل یا پیامک ارسال نماید. در
-          صورتی که کاربران تمایل به دریافت اینگونه ایمیل و پیامک‌ها نداشته
-          باشند، می‌توانند عضویت دریافت خبرنامه قهوه ست را در پروفایل خود لغو
-          کنند.{" "}
+          Terms and Conditions for Afghanistan Art Gallery Website
+          The Art Gallery website respects the privacy of its users. To ensure a secure and reliable service, we request certain personal information from users for purposes such as making purchases, submitting reviews, or accessing certain features of the website. The information we request includes data such as address, phone number, and email to process and deliver orders. Since all activities on the Art Gallery website are conducted according to e-commerce regulations, the following information is required during the purchase process:
+
+          For individual customers: Full name and national ID.
+          For business customers: Economic code and national identification number.
+          The email address and phone numbers that customers register on their profiles are the official and verified contact points for all communications between the company and the customer.
+          All correspondence, including responses from the company, will be sent through these contact points.
+
+          Customers can also provide the name, address, and phone number of another person to receive their order, and the Art Gallery will only use this information for the delivery of that specific order.
+
+          The Art Gallery may use some of the personal information for purposes such as communicating
+          with customers, optimizing website content, and conducting market research. Additionally,
+          we may send emails or SMS messages regarding events, news, special services, or promotions to users who are members of the website. If users do not wish to receive these emails or
+          SMS messages, they can unsubscribe from the newsletter in their profile.
         </p>
         <p>
-          قهوه ست ممکن است نقد و نظرهای ارسالی کاربران را در راستای رعایت قوانین
-          وب سایت ویرایش کند. همچنین اگر نظر یا پیام ارسال شده توسط کاربر، مشمول
-          مصادیق محتوای مجرمانه باشد، قهوه ست می‌تواند از اطلاعات ثبت شده برای
-          پیگیری قانونی استفاده کند.حفظ و نگهداری رمز عبور بر عهده کاربران است و
-          برای جلوگیری از هرگونه سوء استفاده احتمالی، کاربران نباید آن را برای
-          شخص دیگری فاش کنند. قهوه ست هویت شخصی کاربران را محرمانه می‌داند و
-          اطلاعات شخصی آنان را به هیچ شخص یا سازمان دیگری منتقل نمی‌کند، مگر
-          اینکه با حکم قانونی مجبور باشد در اختیار مراجع ذی‌صلاح قرار دهد.قهوه
-          ست همانند سایر وب سایت‌ها از جمع آوری IP و کوکی‌ها استفاده می‌کند، اما
-          پروتکل، سرور و لایه‌های امنیتی قهوه ست و روش‌های مناسب مدیریت داده‌ها
-          اطلاعات کاربران را محافظت و از دسترسی‌های غیر قانونی جلوگیری
-          می‌کند.قهوه ست برای حفاظت و نگهداری اطلاعات و حریم شخصی کاربران همه
-          توان خود را به کار می‌گیرد و امیدوار است که تجربه‌ی خریدی امن، راحت و
-          خوشایند را برای همه کاربران فراهم آورد. 66726563 – ۰۲۱09366726563{" "}
-          <strong>(پاسخگویی طی ساعات کاری)</strong>
+          User Comments and Content Editing
+
+          The Art Gallery reserves the right to edit user comments to ensure compliance with the website's rules.
+          If a comment or message submitted by a user contains unlawful content, the Art Gallery may use the registered information to take legal action if necessary.
+
+          Password Security and User Responsibility
+
+          Users are responsible for maintaining the confidentiality of their passwords. To prevent unauthorized use, users should never disclose their passwords to others.
+          The Art Gallery considers users' personal identity confidential
+          and does not share this information with any third party unless required by law or court order.
+          <strong>(Answers 24/7)</strong>
         </p>
         <p>
-          استان تهران – شهر تهران – خیابان انقلاب روبروی خیابان ویلا (نجات الهی)
-          فروشگاه قهوه ست
+          Kabul,Afghanistan Art Gollery
         </p>
+
         <p>
-          در صورتی که تمایلی به دریافت ایمیل‌ها و خبرنامه های قهوه ست ندارید٬ می
-          توانید بر روی کلمه لغو عضویت در انتهای صفحه ایمیل کلیک کنید.
+          if any issue or problem you can ticket and contact us
         </p>
-        <p>
-          در صورت وجود هرگونه سوال٬ لطفا با اطلاعات تماس زیر ارتباط برقرار کنید.
-        </p>
-        <p>تلفن تماس و فکس: 66726563 – 021</p>
+        <p>0797277737</p>
       </div>
       <Footer />
     </>

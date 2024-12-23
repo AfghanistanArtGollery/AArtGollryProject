@@ -1,0 +1,99 @@
+/* General Table Styles */
+.table {
+    width: 100%;
+    background-color: #f2f7fd;
+    table-layout: fixed;
+    direction: ltr;
+  }
+  
+  .table th, .table td {
+    padding: 8px 22px;
+    text-align: center;
+  }
+  
+  /* Table Header */
+  .table th {
+    color: #000;
+    text-align: center;
+  }
+  
+  /* Table Rows */
+  .table tbody tr {
+    background-color: rgb(255, 255, 255);
+  }
+  
+  .table tbody td, .table tbody th {
+    padding: 8px 16px;
+    text-align: center;
+  }
+  
+  /* Button Styles */
+  .btn {
+    font-size: 10px;
+    padding: 0.4rem 0.7rem;
+    cursor: pointer;
+    border-radius: 3px;
+    width: -webkit-fill-available;
+  }
+  
+  /* Table Container */
+  .table-responsive {
+    overflow-x: auto;
+    padding: 40px 25px;
+  }
+  
+  /* Title Styles */
+  .title {
+    margin-top: 30px;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 30px;
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  
+  /* Responsive Styles for smaller screens */
+  @media screen and (max-width: 968px) {
+    .table th, .table td {
+      padding: 6px 12px;
+      font-size: 14px;
+    }
+  
+    /* Make table horizontally scrollable */
+    .table-responsive {
+      overflow-x: auto;
+    }
+  
+    .btn {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+  
+    .title {
+      font-size: 22px;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .title {
+      font-size: 10px;
+      margin-top: 20px;
+    }
+  
+    .table td, .table th {
+      padding: 5px 8px;
+      font-size: 10px;
+    }
+  
+    .btn {
+      /* padding: 0.2rem .5rem; */
+      font-size: 5px !important;
+    }
+    .table tbody td, .table tbody th {
+        padding: 5px 10px;
+        text-align: center;
+      }
+  }
+  

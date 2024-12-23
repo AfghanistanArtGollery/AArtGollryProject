@@ -8,9 +8,9 @@ import { authUser } from "@/utils/AuthHelper";
 import TicketModel from "@/models/Ticket";
 import modelWish from "@/models/Wishlist";
 import modelComment from "@/models/Comment";
-import modelOrder from '@/models/Order'
-
+import modelOrder from "@/models/Order";
 import { redirect } from "next/navigation";
+import ClientLayout from "@/components/layouts/ClientLayout";
 
 const page = async () => {
 
@@ -30,8 +30,9 @@ const page = async () => {
 
 
   return (
-    <Layout>
+    <ClientLayout>
       <main>
+        
         <section className={styles.boxes}>
           <Box title="Total Tickets" value={AllTickets.length} />
           <Box title="Total Comments" value={comments.length} />
@@ -56,7 +57,7 @@ const page = async () => {
 
 
       </main>
-    </Layout>
+    </ClientLayout>
   );
 };
 

@@ -4,7 +4,6 @@ import { authUser } from "@/utils/AuthHelper";
 export async function POST(req) {
  
   const user = await authUser()
-  console.log('userfrom-ticket',user)
 
   try {
      connectToDB();

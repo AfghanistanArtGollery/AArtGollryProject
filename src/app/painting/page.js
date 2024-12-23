@@ -1,4 +1,5 @@
 "use client" 
+import Image from 'next/image';
 import React, { useState, useEffects } from 'react';
 
 
@@ -95,7 +96,7 @@ function AllArt() {
   <div className="row">
     <div className="col-md-4">
       <div className="image-container">
-        <Image src="images/shahin.jpg" thumbnail />
+        <Image width={50} height={50} src="/images/shahin.jpg" thumbnail />
         <h3>Flowers</h3>
         <p>Ali Ahmadi</p>
         <div className="action-buttons">
@@ -107,7 +108,7 @@ function AllArt() {
     </div>
     <div className="col-md-4">
       <div className="image-container">
-        <Image src="images/shahin.jpg" thumbnail />
+        <Image width={50} height={50} src="/images/shahin.jpg" thumbnail />
         <h3>Flowers</h3>
         <p>Ali Ahmadi</p>
         <div className="action-buttons">
@@ -119,7 +120,7 @@ function AllArt() {
     </div>
     <div className="col-md-4">
       <div className="image-container">
-        <Image src="images/shahin.jpg" thumbnail />
+        <Image width={50} height={50} src="/images/shahin.jpg" thumbnail />
         <h3>Flowers</h3>
         <p>Ali Ahmadi</p>
         <div className="action-buttons">

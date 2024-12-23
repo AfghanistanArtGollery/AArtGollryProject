@@ -1,10 +1,10 @@
-import Layout from "@/components/layouts/UserPanelLayout";
 import styles from "@/styles/p-user/answerTicket.module.css";
 import Link from "next/link";
 import Answer from "@/components/templates/p-user/tickets/Answer";
 import connectToDB from "@/configs/db";
 
 import TicketModel from "@/models/Ticket";
+import ClientLayout from "@/components/layouts/ClientLayout";
 
 const page = async ({ params }) => {
   const ticketID = params.id;
@@ -19,11 +19,10 @@ const page = async ({ params }) => {
   }).populate("user", "name");
 
 
-  console.log('answerTicket=>', answerTicket)
 
 
   return (
-    <Layout>
+    <ClientLayout>
       <main className={styles.container}>
 
         <h1 className={styles.title}>
@@ -49,7 +48,7 @@ const page = async ({ params }) => {
           }
         </div>
       </main>
-    </Layout>
+    </ClientLayout>
   );
 };
 

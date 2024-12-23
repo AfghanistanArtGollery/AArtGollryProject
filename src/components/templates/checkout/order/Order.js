@@ -12,11 +12,11 @@ const Order = () => {
 
     // get id from url 
     const { id } = useParams()
-    const artworkID = id
+    const artWorkID = id
     useEffect(() => {
         const getArtworkDateils = async () => {
 
-            const res = await fetch(`/api/artworks/${artworkID}`)
+            const res = await fetch(`/api/artworks/${artWorkID}`)
             if (res.status === 200) {
                 const data = await res.json()
                 setArtwork(data.data)
@@ -29,7 +29,6 @@ const Order = () => {
 
     }, [])
 
-    console.log('artwork details=>', artwork)
 
     return (
         <div className={styles.order}>

@@ -2,7 +2,6 @@ import connectToDB from "@/configs/db"
 import userModel from '@/models/User'
 
 export async function PUT(req) {
-console.log('deleted ok')
 
     try {
         connectToDB()

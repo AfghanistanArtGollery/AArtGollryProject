@@ -15,21 +15,22 @@ const login_register = () => {
   const showloginForm = () => setAuthType(authTypes.LOGIN);
 
   return (
-    <div className={styles.login_register}>
-      <div className={styles.form_bg} data-aos="fade-up">
+    <div className='row container '>
+      <div className='col-12   col-md-4 'data-aos="fade-up">
         {authType === authTypes.LOGIN ? (
           <Login showRegisterForm={showRegisterForm} />
         ) : (
           <Register showloginForm={showloginForm} />
         )}
       </div>
-      <section className={styles.login_regist_img}>
-        <Image width={750} height={750}
+      
+      <div className={`col-12 col-md-6 ${styles.img_login_ragister}`}>
+        <Image width={800} height={750}
             
           src="https://cdn.kreezalid.com/kreezalid/556408/catalog/8096/108/1000x1000_medgardenfinal2jpg_26k7w_2030966691.jpg"
           alt=""
         />
-      </section>
+      </div>
     </div>
   );
 };

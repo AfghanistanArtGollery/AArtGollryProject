@@ -1,5 +1,5 @@
 import connectToDB from "@/configs/db";
-import Productmodel from "@/models/Product";
+import artWorkModel from "@/models/ArtWork";
 import modelComment from "@/models/Comment";
 export async function  POST(req){
     connectToDB();
@@ -12,7 +12,7 @@ export async function  POST(req){
             body,
             email,
             score,
-            productID
+            artWorkID
         }=reqBody
 
 
@@ -21,14 +21,14 @@ export async function  POST(req){
             body,
             email,
             score,
-            productID 
+            artWorkID 
         }
 
 
         // create in database table in comment table
         const comment= await modelComment.create(comments)
 
-        // const updatedProduct=await Productmodel.findOneAndUpdate({_id:productID},
+        // const updatedProduct=await artWorkModel.findOneAndUpdate({_id:artWorkID},
         //     {
         //         $push:{
         //             // push comments in comments column in product table
@@ -38,8 +38,8 @@ export async function  POST(req){
         //     }
         // )
 
-        const updatedProduct = await Productmodel.findOneAndUpdate(
-            { _id: productID }, // find the product by productID
+        const updatedProduct = await artWorkModel.findOneAndUpdate(
+            { _id: artWorkID }, // find the product by artWorkID
             {
               $push: { comments: comment._id }, // push the comment's _id to the comments array
             },
@@ -53,9 +53,9 @@ export async function  POST(req){
 
 
 
-        // const updatedProduct = await Productmodel.findOneAndUpdate(
+        // const updatedProduct = await artWorkModel.findOneAndUpdate(
         //     {
-        //       _id: comment.productID,
+        //       _id: comment.artWorkID,
         //     },
         //     {
         //       $push: { comments: comment._id },

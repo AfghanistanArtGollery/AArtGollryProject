@@ -233,4 +233,14 @@
     }
   }
   
-  
+  /* not approve button */
+  .No_approve{
+    font-size: 13px;
+    background: #4A4E69;
+    padding: 0.4rem 0.7rem;
+    border: 0;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+    width: -webkit-fill-available;
+  }

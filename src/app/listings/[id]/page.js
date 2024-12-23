@@ -6,20 +6,25 @@ import Link from "next/link";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import { CiSearch, CiHeart } from "react-icons/ci";
 
+import commentModel from '@/models/Comment'
 import artworkModel from '@/models/ArtWork'
 import connectToDB from '@/configs/db';
-import MoreProducts from '@/components/templates/product/MoreProducts';
-import SwiperArtWorkPics from '@/components/modules/product/SwiperArtWorkPics';
+import MoreArtWorks from '@/components/templates/artwork/MoreArtWorks';
+import SwiperArtWorkPics from '@/components/modules/artwork/SwiperArtWorkPics';
 import Breadcrumb from '@/components/modules/breadcrumb/Breadcrumb';
-import Details from '@/components/templates/product/Details';
-import MoreInfoes from '@/components/templates/product/MoreInfoes';
+import Details from '@/components/templates/artwork/Details';
+import MoreInfoes from '@/components/templates/artwork/MoreInfoes';
 import { authUser } from '@/utils/AuthHelper';
 import NotFound from '@/app/not-found';
 import mongoose from 'mongoose';
+// import CommentForm from '@/components/templates/artwork/CommentForm';
+import Comments from '@/components/templates/artwork/Comments';
 async function page({ params }) {
   connectToDB();
 
   const user =await authUser()
+
+   
 
   const artWorkID = params.id;
   if(!mongoose.Types.ObjectId.isValid(artWorkID)){
@@ -38,6 +43,7 @@ async function page({ params }) {
      }
 
   const relatedArtWorks = await artworkModel.find({ artist_id: artWork.artist_id }).lean();
+  const commentsData= await commentModel.find({artWorkID:artWorkID}).populate('artWorkID').lean()
 
  
   return (
@@ -72,6 +78,12 @@ async function page({ params }) {
 
       <MoreInfoes artwork={JSON.parse(JSON.stringify(artWork))} />
 
+      <div className="container">
+      <Comments comments={JSON.parse(JSON.stringify(commentsData)) } artWorkID={artWorkID}/>
+
+      </div>
+      <hr />
+
 
       <div className="container my-4">
 
@@ -82,8 +94,9 @@ async function page({ params }) {
 
         <h2 className="text-center mb-4">Other artWorks from {artWork.artist_id.name}</h2>
 
-        <MoreProducts
-          relatedProducts={JSON.parse(JSON.stringify(relatedArtWorks))}
+
+        <MoreArtWorks
+          relatedArtWorks={JSON.parse(JSON.stringify(relatedArtWorks))}
         />
 
         <div className="text-center mt-4">

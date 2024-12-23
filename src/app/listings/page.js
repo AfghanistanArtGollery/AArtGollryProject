@@ -6,21 +6,30 @@ import connectToDB from '@/configs/db';
 import modelArtwork from '@/models/ArtWork'
 import Link from 'next/link';
 import { authUser } from '@/utils/AuthHelper';
-import ArtWork from '@/components/modules/product/Product';
+import ArtWork from '@/components/modules/artwork/Artwork';
 import Breadcrumb from '@/components/modules/breadcrumb/Breadcrumb';
 async function AllArt() {
   connectToDB();
   const user = await authUser()
-  const allArtWorks = await modelArtwork.find({}).populate('artist_id').lean()
-
-  // const imagesArt= await modelArtwork.find({})
-  // console.log('artWork=>', artWorks)
+  const allArtWorks = await modelArtwork.find({}).sort({_id:-1}).populate('artist_id').lean()
 
 
+  const lengthPainting = allArtWorks.filter(artwork =>
+    artwork.categoryID.title === 'Painting'
+  ).length;
+  const lengthDrawing = allArtWorks.filter(artwork =>
+    artwork.categoryID.title === 'Drawing'
+  ).length;
+  const lengthSculpture = allArtWorks.filter(artwork =>
+    artwork.categoryID.title === 'Sculpture'
+  ).length;
+  const lengthPrints = allArtWorks.filter(artwork =>
+    artwork.categoryID.title === 'Prints'
+  ).length;
   return (
     <div> {/* Wrap the JSX with a single root element */}
-      <Navbar isLogin={user?true:false} />
-      <Breadcrumb title="All lists" />
+      <Navbar isLogin={user ? true : false} />
+      <Breadcrumb route="All lists" />
 
 
       <div className="container">
@@ -31,16 +40,11 @@ async function AllArt() {
 
 
             <ul className={styles.result_category_list}>
-              <li><Link href="/listing/category/painting">Painting</Link></li>
-              <li><Link href="/listing/category/drawing">Drawing</Link></li>
-              <li><Link href="/listing/category/digital-art">Digital Art</Link></li>
-              <li><Link href="/listing/category/sculpture">Sculpture</Link></li>
-              <li><Link href="/listing/category/mosaic">Mosaic</Link></li>
-              <li><Link href="/listing/category/collage">Collage</Link></li>
-              <li><Link href="/listing/category/ceramic">Ceramic</Link></li>
-              <li><Link href="/listing/category/photograph">Photograph</Link></li>
-              <li><Link href="/listing/category/prints">Prints</Link></li>
-              <li><Link href="/listing/category/mixed-media">Mixed Media</Link></li>
+              <li><Link href="/listings/category/painting">Painting</Link></li>
+              <li><Link href="/listings/category/drawing">Drawing</Link></li>
+              <li><Link href="/listings/category/prints">Printing</Link></li>
+              <li><Link href="/listings/category/sculpture">Sculpture</Link></li>
+              <li><Link href="/listings/category/photograph">Photograph</Link></li>
             </ul>
 
 
@@ -83,7 +87,7 @@ async function AllArt() {
                       <div className="checkbox">
                         <label>
                           <input type="checkbox" name="category_id[46617]" value="1" />
-                          Watercolours <span className="search-category-results-count">(1822)</span>
+                          Painting <span className="search-category-results-count">({lengthPainting})</span>
                         </label>
                       </div>
                     </li>
@@ -91,7 +95,7 @@ async function AllArt() {
                       <div className="checkbox">
                         <label>
                           <input type="checkbox" name="category_id[46625]" value="1" />
-                          Oil <span className="search-category-results-count">(5405)</span>
+                          Drawing <span className="search-category-results-count">({lengthDrawing})</span>
                         </label>
                       </div>
                     </li>
@@ -99,7 +103,7 @@ async function AllArt() {
                       <div className="checkbox">
                         <label>
                           <input type="checkbox" name="category_id[46626]" value="1" />
-                          Acrylic <span className="search-category-results-count">(8008)</span>
+                          Sculpture <span className="search-category-results-count">({lengthSculpture})</span>
                         </label>
                       </div>
                     </li>
@@ -107,52 +111,19 @@ async function AllArt() {
                       <div className="checkbox">
                         <label>
                           <input type="checkbox" name="category_id[46626]" value="1" />
-                          Acrylic <span className="search-category-results-count">(8008)</span>
+                          Printing <span className="search-category-results-count">({lengthPrints})</span>
                         </label>
                       </div>
                     </li>
-                    <li>
-                      <div className="checkbox">
-                        <label>
-                          <input type="checkbox" name="category_id[46626]" value="1" />
-                          Acrylic <span className="search-category-results-count">(8008)</span>
-                        </label>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="checkbox">
-                        <label>
-                          <input type="checkbox" name="category_id[46626]" value="1" />
-                          Acrylic <span className="search-category-results-count">(8008)</span>
-                        </label>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="checkbox">
-                        <label>
-                          <input type="checkbox" name="category_id[46626]" value="1" />
-                          Acrylic <span className="search-category-results-count">(8008)</span>
-                        </label>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="checkbox">
-                        <label>
-                          <input type="checkbox" name="category_id[46626]" value="1" />
-                          Acrylic <span className="search-category-results-count">(8008)</span>
-                        </label>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="checkbox">
-                        <label>
-                          <input type="checkbox" name="category_id[46626]" value="1" />
-                          Acrylic <span className="search-category-results-count">(8008)</span>
-                        </label>
-                      </div>
-                    </li>
+
+
                     {/* More categories here */}
-                  </ul></div></form></div></div>
+                  </ul>
+
+                </div>
+              </form>
+            </div>
+          </div>
 
 
           <div className="col-md-9" id={styles.main}>

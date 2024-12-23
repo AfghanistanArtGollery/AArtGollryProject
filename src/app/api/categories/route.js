@@ -19,10 +19,16 @@ export async function POST(req, res) {
 }
 
 export async function GET() {
-    
-    connectToDB();
 
-    const getCategory= await modelCategory.find({})
+    try {
+        connectToDB();
 
-    return Response.json(getCategory)
+        const data = await modelCategory.find({})
+
+        return Response.json({ data }, { status: 200 })
+
+    } catch (error) {
+        return Response.json({ message: error.message }, { status: 500 })
+    }
+
 }

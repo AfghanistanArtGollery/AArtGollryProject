@@ -1,10 +1,12 @@
 "use client";
 import styles from "./sidebar.module.css";
 import { ImReply } from "react-icons/im";
-import { FaComments, FaHeart, FaShoppingBag, FaUsers } from "react-icons/fa";
+import { IoAddSharp } from "react-icons/io5";
+
+import { FaOpencart,FaComments, FaHeart,FaPhoneAlt, FaShoppingBag, FaUsers } from "react-icons/fa";
 import { MdOutlineAttachMoney } from "react-icons/md";
 import { MdSms, MdLogout } from "react-icons/md";
-
+import { PiArticleNyTimesLight } from "react-icons/pi";
 import Link from "next/link";
 import swal from "sweetalert";
 
@@ -38,32 +40,39 @@ const Sidebar = () => {
   };
 
   return (
-    <aside className={styles.sidebar}>
+    <aside  className={styles.sidebar}>
       <div className={styles.sidebar_header}>
         <p>Welcome, Shahi!</p>
       </div>
-      <ul className={styles.sidebar_main}>
+      <ul style={{marginTop:"2px"}} className={styles.sidebar_main}>
       
           <>
             <Link href={"/p-admin"} className={styles.sidebar_link_active}>
               <ImReply />
               Dashboard
             </Link>
-
+          
             <Link href={"/p-admin/products"}>
-              <FaShoppingBag />
+            
+          
+            <IoAddSharp size={25} />
               AddArwork
             </Link>
 
             <Link href={"/p-admin/artworks"}>
-              <FaShoppingBag />
-              AddArworkLists
+            <FaOpencart size={25} /> 
+              ArtArworkLists
             </Link>
 
             <Link href={"/p-admin/orders"}>
-              <FaShoppingBag />
+              <FaShoppingBag size={20}/>
               Orders(Customer)
             </Link>
+            <Link href={" /p-admin/blog/articlepost"}>
+            <PiArticleNyTimesLight />
+              Add Article
+            </Link>
+        
             <Link href={"/p-admin/users"}>
               <FaUsers />
               Users
@@ -80,6 +89,10 @@ const Sidebar = () => {
             <Link href={"/p-admin/discounts"}>
               <MdOutlineAttachMoney />
               Discounts
+            </Link>
+            <Link href={"/p-admin/contact"}>
+            <FaPhoneAlt size={20} />
+              Contact
             </Link>
           </>
        

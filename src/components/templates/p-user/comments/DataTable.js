@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import styles from "@/styles/p-user/dataTable.module.css";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import swalAlert from "@/utils/helperFunction";
 
@@ -10,19 +9,18 @@ export default function DataTable({ comments, title }) {
   };
 
   return (
-    <div>
-      <div>
-        <h1 className={styles.title}>
-          <span>{title}</span>
-        </h1>
-      </div>
-      <div className={styles.table_container}>
-        <table className={styles.table}>
+    <div className="container mt-4">
+      <h1 className="text-left text-uppercase mb-3" style={{ fontSize: "30px", fontWeight: 500 }}>
+        {title}
+      </h1>
+
+      <div className="table-responsive">
+        <table className="table table-bordered table-striped table-hover">
           <thead>
             <tr>
               <th>ID</th>
               <th>Date</th>
-              <th>Product</th>
+              <th>ArtWork</th>
               <th>Rating</th>
               <th>Status</th>
               <th>View</th>
@@ -33,7 +31,7 @@ export default function DataTable({ comments, title }) {
               <tr key={index}>
                 <td>{index + 1}</td>
                 <td>{new Date(comment.date).toLocaleDateString("en-GB")}</td>
-                <td>{comment.productID.name}</td>
+                <td>{comment.artWorkID.name}</td>
                 <td>
                   {new Array(comment.score).fill(0).map((item, index) => (
                     <FaStar key={index} />
@@ -43,7 +41,10 @@ export default function DataTable({ comments, title }) {
                   ))}
                 </td>
                 <td>
-                  <button type="button" className={styles.no_check}>
+                  <button
+                    type="button"
+                    className={`btn ${comment.isAccept ? "btn-success" : "btn-warning"}`}
+                  >
                     {comment.isAccept ? "Accepted" : "Pending Approval"}
                   </button>
                 </td>
@@ -51,7 +52,7 @@ export default function DataTable({ comments, title }) {
                   <button
                     type="button"
                     onClick={() => showCommentBody(comment.body)}
-                    className={styles.btn}
+                    className="btn btn-info"
                   >
                     View
                   </button>

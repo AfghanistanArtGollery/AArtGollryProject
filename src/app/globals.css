@@ -1,7 +1,7 @@
-@font-face {
+/* @font-face {
   font-family: shabnam;
   src: url("/fonts/shabnam/Shabnam-Medium.woff");
-}
+} */
 .primary{
   color:#4A4E69 ;
 }
@@ -25,20 +25,22 @@ A modern, cool gray that provides balance and elegance.
 Secondary (Rust Orange): #C86B42
 A warm, vibrant accent color for buttons, icons, and headings. */
 
-
+/* 
 @font-face {
   font-family: shabnam-Bold;
   src: url("/fonts/shabnam/Shabnam-Bold.woff");
-}
+} */
 
+/* Set normal font weight for the general text */
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: shabnam;
 }
 
+
 body {
+  font-family: 'Roboto', sans-serif;
   direction: ltr; /* Set the direction to left-to-right */
 }
 
@@ -64,8 +66,8 @@ body {
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+  color: inherit !important;
+  text-decoration: none !important;
 }
 
 @media (prefers-color-scheme: dark) {

@@ -2,7 +2,7 @@
   display: grid;
   background-color: white;
   padding: 10px 25px;
-  width: 380px;
+  
   font-family: Arial, sans-serif; /* Changed font-family to more common LTR fonts */
   margin: 7rem auto 2rem;
   border-radius: 4px;
@@ -82,17 +82,17 @@
 .checkbox input:focus,
 .checkbox input:hover {
   box-shadow: 0 0 0 3px #ebebeb;
-  border-color: #8c8c8c;
+  border-color: #C86B42;
 }
 
 .btn_light {
-  color: rgb(109, 109, 109);
+  color: #ffff;
   border: 1px solid rgb(214, 214, 214);
   margin-bottom: 3rem;
   cursor: pointer;
   padding: 1rem;
   font-family: Arial, sans-serif; /* Changed font-family to more common LTR fonts */
-  background: rgb(242, 242, 242);
+  background: #C86B42;
 }
 
 .btn {
@@ -100,7 +100,7 @@
   color: #f7f7f7;
   cursor: pointer;
   font-family: Arial, sans-serif; /* Changed font-family to more common LTR fonts */
-  background-color: rgb(52, 24, 14);
+  background-color: #4A4E69;
 }
 
 .forgot_pass {

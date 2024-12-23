@@ -9,18 +9,19 @@ import {
   FaTelegram,
   FaTwitter,
 } from "react-icons/fa";
+import Image from "next/image";
 
-const Card = () => {
+const Card = ({_id,title,excerpt,img}) => {
   return (
 
     <div className="container">
-    <a href="/blog/18305-art-with-a-message" className={styles.post_link} title="Art with a Message">
+    <Link href={`/blog/${_id} `} className={styles.post_link} title={title}>
       <div className={styles.img_cover} style={{background: "url(&quot;https://kreezalid.s3.eu-central-1.amazonaws.com/artgallery/articles/1000x1000_utsonapakicsi_a0aqq_1553679557.jpg&quot;) 50% 50% / cover no-repeat;"}}>
-        <img className={styles.hidden} src="https://cdn.kreezalid.com/kreezalid/artgallery/articles/300x300_1000x1000_utsonapakicsi_a0aqq_1553679557.jpg" title="Art with a Message" alt="Art with a Message" />
+        <Image width={500} height={500} className={styles.hidden} src={img}  alt="Art with a Message" />
       </div>
-    <h4 className={styles.postTitle}><span>Art with a Message</span></h4>
-    <p className={styles.postSummary}>The images in this blog may not make you feel comfortable - but ...</p>
-    </a>
+    <h4 className={styles.postTitle}><span>{title}</span></h4>
+    <p className={styles.postSummary}>{excerpt} ...</p>
+    </Link>
 
 
     </div>

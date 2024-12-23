@@ -11,7 +11,8 @@ import UserModel from "@/models/User";
 import modelArtwork from "@/models/ArtWork";
 import connectToDB from "@/configs/db";
 import AdminChildLayout from "@/components/layouts/AdminChildLayout";
-
+import SaleChart from "@/components/templates/p-admin/index/SaleChart";
+import GrowthChart from "@/components/templates/p-admin/index/GrowthChart";
 async function AdminHomePage() {
   connectToDB();
   const tickets = await TicketModel.find({}).lean();

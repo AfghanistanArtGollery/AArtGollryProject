@@ -35,7 +35,7 @@
   .discount_container button:hover {
       background: rgb(113, 29, 28) !important;
   }
-  .discount_container input {
+  .discount_container .input {
       outline: 0;
       border: 0;
       background: white;

@@ -6,12 +6,71 @@ import { useRouter } from "next/navigation";
 import swalAlert from "@/utils/helperFunction";
 
 export default function DataTable({ comments, title }) {
-  console.log('comments table=>', comments.productID);
   const router = useRouter();
 
   const showCommentBody = (body) => {
     swalAlert(body, undefined, "Got it");
   };
+
+  // change is accept field 
+  const approveComment = (commentID) => {
+    const updateIsAccept = async () => {
+      const res = await fetch(`/api/comments/${commentID}`, {
+        method: "PUT", // Use PUT instead of POST
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          commentID, // Pass the commentID, though you don't need to send it in body
+        }),
+      });
+  
+      if (res.status === 200) {
+        swalAlert('Comment successfully updated', 'success', 'Ok');
+      
+
+         setTimeout(()=>{
+            
+          router.refresh()
+          },2000)
+
+       
+      } else {
+        swalAlert('Error updating comment', 'error', 'Try again');
+
+      }
+    };
+    updateIsAccept();
+    console.log('commentID=>', commentID);
+  };
+
+   //Deleete comment using ID
+   const deleteComment = (commentID) => {
+    const deleteComment = async () => {
+      const res = await fetch(`/api/comments/${commentID}`, {
+        method: "DELETE", // Use PUT instead of POST
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          commentID, // Pass the commentID, though you don't need to send it in body
+        }),
+      });
+  
+      if (res.status === 200) {
+        swalAlert('Comment successfully Deleted', 'success', 'Ok');
+        setTimeout(()=>{
+            
+          router.refresh()
+          },2000)
+
+      } else {
+        swalAlert('Error Deleteing comment', 'error', 'Try again');
+      }
+    };
+    deleteComment();
+  };
+  
 
   return (
     <div>
@@ -46,7 +105,7 @@ export default function DataTable({ comments, title }) {
                 <td>{comment.email}</td>
                 <td>{comment.score}</td>
                 <td>{comment.score}</td>
-                {/* <td>{comment.productID.name}</td> */}
+                {/* <td>{comment.artWorkID.name}</td> */}
                 <td>{new Date(comment.date).toLocaleDateString("en-US")}</td>
                 <td>
                   <button
@@ -63,13 +122,14 @@ export default function DataTable({ comments, title }) {
                   </button>
                 </td>
                 <td>
-                  <button type="button" className={styles.delete_btn}>
+                  <button onClick={()=>deleteComment(comment._id)} type="button" className={styles.delete_btn}>
                     Delete
                   </button>
                 </td>
                 <td>
-                  <button type="button" className={styles.delete_btn}>
-                    Approve
+                  
+                  <button className= {comment.isAccept==false?styles.delete_btn:styles.No_approve}  onClick={()=>approveComment(comment._id)} type="button" >
+                  {comment.isAccept==false?'Approve':'RemoveApprove'}
                   </button>
                 </td>
                 <td>

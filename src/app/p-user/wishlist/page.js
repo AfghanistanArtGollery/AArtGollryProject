@@ -16,7 +16,7 @@ const page = async () => {
     const user = await authUser();
 
     // Fetch the wishlist from the database and populate the product
-    const wishlist = await WishlistModel.find({ user: user._id }).populate('product');
+    const wishlist = await WishlistModel.find({ user: user._id }).populate('artWorkID');
 
 
     return (
@@ -31,11 +31,11 @@ const page = async () => {
                         wishlist.map(wish => (
                             <Product
                                 key={wish._id}
-                                productID={String(wish.product._id)}
-                                score={wish.product.score} 
-                                name={wish.product.name} 
-                                images={wish.product.images}
-                                price={wish.product.price}  // Pass individual properties from wish.product
+                                artWorkID={String(wish.artWorkID._id)}
+                                score={wish.artWorkID.score} 
+                                name={wish.artWorkID.name} 
+                                images={wish.artWorkID.images}
+                                price={wish.artWorkID.price}  // Pass individual properties from wish.product
                             />
                         ))
                     ) : (

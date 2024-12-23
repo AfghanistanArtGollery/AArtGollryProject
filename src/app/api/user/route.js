@@ -8,7 +8,6 @@ import path from "path";
 
 export async function POST(req) {
   const user = await authUser();
-  console.log('user=>auth',user)
   try {
     connectToDB();
 
@@ -67,7 +66,6 @@ export async function POST(req) {
 
 
 export async function DELETE(req) {
-  console.log('helo from delete route')
   try {
     connectToDB();
     const body = await req.json()

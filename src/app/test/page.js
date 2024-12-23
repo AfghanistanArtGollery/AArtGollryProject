@@ -7,7 +7,7 @@ import { FaRegStar, FaStar } from "react-icons/fa";
 import { CiSearch, CiHeart } from "react-icons/ci";
 import styles from './test.module.css';
 import artworkModel from '@/models/ArtWork'
-import MoreProducts from '@/components/templates/product/MoreProducts';
+import MoreProducts from '@/components/templates/artwork/MoreArtWorks';
 
 async function page({ params }) {
 

@@ -5,7 +5,6 @@ import Ticket from "./Ticket";
 
 import Box from "@/components/modules/infoBox/InfoBox";
 function Tickets({ tickets }) {
-  console.log(tickets);
   return (
     <main className={styles.container}>
       <h1 className={styles.title}>
