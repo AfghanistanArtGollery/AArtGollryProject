@@ -2,13 +2,23 @@ import connectToDB from "@/configs/db";
 import UserModel from "@/models/User";
 import { generateAccessToken, hashPassword } from "@/utils/auth";
 import { roles } from "@/utils/constants";
+import {
+  valiadteEmail,
+  valiadtePassword,
+} from "@/utils/auth";
 
 export async function POST(req) {
   connectToDB();
   const body = await req.json();
   const { name, phone, email, password } = body;
 
-  // Validation (You)
+  const isValidPassword = valiadtePassword(password);
+  if ( !isValidPassword) {
+    return Response.json(
+      { message: "Password is Not follow from rolle " },
+      { status: 419 }
+    );
+  }
 
   const isUserExist = await UserModel.findOne({
     $or: [{ name }, { email }, { phone }],
@@ -26,7 +36,7 @@ export async function POST(req) {
   }
 
   const hashedPassword = await hashPassword(password);
-  const accessToken = generateAccessToken({ name });
+  const accessToken = generateAccessToken({ email });
 
   const users = await UserModel.find({});
 
@@ -42,7 +52,8 @@ export async function POST(req) {
     { message: "User signed up successfully :))" },
     {
       status: 201,
-      headers: { "Set-Cookie": `token=${accessToken};path=/;httpOnly=true` },
+
+      headers: { "Set-Cookie": `token=${accessToken};path=/;httpOnly=true;secure=true;SameSite=Strict` },
     }
   );
 }

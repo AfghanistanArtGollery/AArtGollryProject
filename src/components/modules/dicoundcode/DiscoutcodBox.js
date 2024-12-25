@@ -21,7 +21,7 @@ export default function DiscoutcodBox() {
                 <div className={styles.discount_container}>
                     <p>If you have a discount code, please enter it in the box below</p>
                     <div>
-                        <input type="text" placeholder="Discount code" />
+                        <input type="text" placeholder="Discount code" className={styles.input} />
                         <button>Apply Coupon</button>
                     </div>
                 </div>

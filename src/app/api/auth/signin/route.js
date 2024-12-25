@@ -59,7 +59,8 @@ export async function POST(req) {
       {
         status: 200,
         headers: {
-          "Set-Cookie": `token=${accessToken};path=/;httpOnly=true;`,
+          // samesite for csrf attackts secure true only hhtp
+          "Set-Cookie": `token=${accessToken};path=/;httpOnly=true;secure=true;SameSite=Strict`,
         },
       }
     );

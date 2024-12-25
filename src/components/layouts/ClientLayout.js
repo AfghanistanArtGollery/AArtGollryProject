@@ -5,7 +5,10 @@ import styles from "./userPanelLayout.module.css";
 import Sidebar from "@/components/modules/p-user/Sidebar";
 import Topbar from "@/components/modules/p-user/Topbar";
 
-const ClientLayout = ({ children }) => {
+const ClientLayout = ({ children },{user}) => {
+
+    console.log('user',user)
+
     const [isSidebarVisible, setSidebarVisible] = useState(false); // Sidebar hidden initially
 
     const toggleSidebar = () => {
@@ -16,7 +19,6 @@ const ClientLayout = ({ children }) => {
         <div  className={styles.layout}>
             {/* Topbar - contains the toggle button */}
           
-
             <div className={styles.section}>
                 {/* Mobile Sidebar */}
                 <div

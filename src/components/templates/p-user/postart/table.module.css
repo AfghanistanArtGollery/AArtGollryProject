@@ -163,18 +163,6 @@
   color: #fff;
 }
 
-.discount {
-  padding: 20px;
-}
-
-.discount_main {
-  direction: ltr;
-  /* display: grid; */
-  /* gap: 30px; */
-  /* grid-template-columns: auto auto; */
-}
-
-
 
 .discount select {
   background: white;
@@ -186,16 +174,16 @@
   outline: 0;
 }
 
-.discount input {
+.input {
   padding: 10px;
   background-color: white;
-  margin-top: 4px;
+ 
   outline: 0;
   color: black;
   text-align: left; /* Left alignment */
   direction: ltr; /* Ensuring LTR text direction */
   border-radius: 5px;
-  border: 3px solid #C86B42;
+  border: 2px solid #C86B42;
   width: 100%;
 }
 
@@ -209,49 +197,17 @@
   z-index: 1;
 }
 
-.discount label {
+.label {
   font-size: 20px;
   text-align: left; /* Changed from right to left */
 }
 
-.table {
-  width: 100%;
-}
 
-.table tbody tr {
-  background-color: rgb(255, 255, 255);
-}
 
-.table {
-  width: 100%;
-  background-color: #f2f7fd;
-}
 
-.table th {
-  border: none;
-  color: #000000;
-  text-align: center;
-}
 
-.table tr {
-  vertical-align: middle;
-}
 
-.table td,
-.table th {
-  padding: 8px 0px;
-  text-align: center;
-}
 
-.delete_btn {
-  font-size: 13px;
-  background: #C86B42;
-  padding: 0.4rem 0.7rem;
-  border: 0;
-  border-radius: 3px;
-  color: white;
-  cursor: pointer;
-}
 
 .discount button {
   margin-left: auto;

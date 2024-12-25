@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 
 const Layout = async ({ children }) => {
   const user = await authUser();
-
+    console.log('name=>',user)
   // Uncomment this if authentication is required
   if (!user) {
     redirect("/login-register");
@@ -14,7 +14,7 @@ const Layout = async ({ children }) => {
 
   return (
     <div className={styles.layout}>
-      <ClientLayout>{children}</ClientLayout> {/* Use the client wrapper */}
+      <ClientLayout user={user}>{children}</ClientLayout> {/* Use the client wrapper */}
     </div>
   );
 };

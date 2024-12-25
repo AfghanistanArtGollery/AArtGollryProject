@@ -9,15 +9,26 @@ function AddDiscount() {
   const [code, setCode] = useState("");
   const [percent, setPercent] = useState("");
   const [maxUse, setMaxUse] = useState("");
-
+  const [artworks, setArtworks] = useState([]);
+  const [artWorkID,setArtID]=useState('')
+  
+console.log('artworks',artworks)
   useEffect(() => {
     const getProducts = async () => {
-      // Fetch to get products data
+      const res= await fetch('/api/artworks')
+ 
+        const artData= await res.json()
+        
+        setArtworks(artData.data)
+    
+     
+
     };
 
     getProducts();
   }, []);
 
+  
   const addDiscount = async () => {
     // Validation (You) ✅
 
@@ -25,6 +36,7 @@ function AddDiscount() {
       code,
       percent,
       maxUse,
+      artWorkID
     };
 
     const res = await fetch("/api/discounts", {
@@ -61,6 +73,7 @@ function AddDiscount() {
             onChange={(event) => setPercent(event.target.value)}
             placeholder="Please enter discount percentage"
             type="text"
+            className={styles.input}
           />
         </div>
 
@@ -71,16 +84,26 @@ function AddDiscount() {
             onChange={(event) => setCode(event.target.value)}
             placeholder="Please enter discount code"
             type="text"
+            className={styles.input}
+
           />
         </div>
 
         
         <div>
-          <label>Artworks</label>
-          <select name="" id="">
-            <option value="">Turkish Artwork</option>
-            <option value="">Arabica Artwork</option>
-            <option value="">Mountain Sunrise Artwork</option>
+          <label>Artworks(Optional)</label>
+
+          <select
+            className="form-control"
+            onChange={(event) => setArtID(event.target.value)}
+
+          >
+            <option value={-1}>Please select a artwork</option>
+            {artworks.map((art) => (
+              <option key={art._id} value={art._id}>
+                {art.name}
+              </option>
+            ))}
           </select>
         </div>
 
@@ -91,6 +114,8 @@ function AddDiscount() {
             onChange={(event) => setMaxUse(event.target.value)}
             placeholder="Max usage of discount code"
             type="text"
+            className={styles.input}
+
           />
         </div>
       </div>

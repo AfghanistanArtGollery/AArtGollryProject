@@ -5,9 +5,15 @@ import Table from "@/components/templates/p-admin/ticketes/Table";
 
 import connectToDB from "@/configs/db";
 import TicketModel from "@/models/Ticket";
-
+import { authAdmin } from "@/utils/AuthHelper";
+import { redirect } from "next/navigation";
 const page = async () => {
-
+  const admin=await authAdmin()
+  
+  if(!admin){
+    
+    return redirect('/login-register')
+  }
    connectToDB();
 
     const tickets = await TicketModel.find({ isAnswer: false })
@@ -26,7 +32,7 @@ const page = async () => {
         ) : (
           <Table
             tickets={JSON.parse(JSON.stringify(tickets))}
-            title="user lists"
+            title="Ticket lists"
           />
         )}
       </main> 

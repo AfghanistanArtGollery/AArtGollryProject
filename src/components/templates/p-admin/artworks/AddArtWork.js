@@ -221,7 +221,11 @@ console.log('editorContent=>>>',editorContent)
 
   return (
     <section className={styles.discount}>
-      <p>ADD YOUR ARTWORK</p>
+       <div>
+        <h1 className={styles.title}>
+          <span>Post ArtWork</span>
+        </h1>
+      </div>
 
       <div className="row">
         <div className="col-12 col-md-6 mb-3">
@@ -339,8 +343,8 @@ console.log('editorContent=>>>',editorContent)
           <input
             value={price}
             onChange={(event) => setPrice(event.target.value)}
-            placeholder="Add artwork price"
-            type="text"
+            placeholder="e.g $399"
+            type="number"
             className={styles.input}
 
           />
@@ -359,8 +363,8 @@ console.log('editorContent=>>>',editorContent)
           <input
             value={width}
             onChange={(event) => setWidth(event.target.value)}
-            placeholder="Width"
-            type="text"
+            placeholder="Width in cm"
+            type="number"
             className={styles.input}
 
           />
@@ -371,8 +375,8 @@ console.log('editorContent=>>>',editorContent)
           <input
             value={height}
             onChange={(event) => setHeight(event.target.value)}
-            placeholder="Height"
-            type="text"
+            placeholder="Height in cm"
+           type="number"
             className={styles.input}
 
           />
@@ -386,7 +390,7 @@ console.log('editorContent=>>>',editorContent)
           <input
             value={shortDescription}
             onChange={(event) => setShortDescription(event.target.value)}
-            placeholder="Short description"
+            placeholder="Short description less then 20 words..."
             type="text"
             className={styles.input}
           />

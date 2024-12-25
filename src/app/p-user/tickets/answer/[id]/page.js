@@ -6,7 +6,18 @@ import connectToDB from "@/configs/db";
 import TicketModel from "@/models/Ticket";
 import ClientLayout from "@/components/layouts/ClientLayout";
 
+
+import { authUser } from "@/utils/AuthHelper";
+import { redirect } from "next/navigation";
+
+ 
 const page = async ({ params }) => {
+  const user=await authUser()
+  
+  if(!user){
+    
+    return redirect('/login-register')
+  }
   const ticketID = params.id;
 
   connectToDB();

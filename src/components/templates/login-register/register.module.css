@@ -102,3 +102,7 @@
   content: "✖";
   color: red;
 }
+.error{
+  color: red;
+  text-align: start;
+}

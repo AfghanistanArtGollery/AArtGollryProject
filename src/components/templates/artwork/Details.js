@@ -6,16 +6,17 @@ import { TbSwitch3 } from "react-icons/tb";
 import { FaTelegram, FaLinkedinIn, FaPinterest } from "react-icons/fa";
 import styles from "./details.module.css";
 import Breadcrumb from "./Breadcrumb";
+import { TbDiscountOff } from "react-icons/tb";
 import Link from "next/link";
 import { FaShoppingCart } from "react-icons/fa";
 
 import AddToWishlist from "./AddToWishlist";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Details = ({ artwork }) => {
 
   const [count, setCount] = useState(1)
-
+  const [discounts, setDiscounts] = useState([]);
 
   const addToCart = () => {
 
@@ -46,9 +47,9 @@ const Details = ({ artwork }) => {
 
     }
     swal({
-      title:'Sucessfully added to cart',
-      icon:'success',
-      button:'Ok'
+      title: 'Sucessfully added to cart',
+      icon: 'success',
+      button: 'Ok'
     })
 
 
@@ -56,6 +57,19 @@ const Details = ({ artwork }) => {
   }
 
 
+  // get all discounts
+  useEffect(() => {
+    const getDiscounts = async () => {
+      const res = await fetch('/api/discounts')
+
+      const disData = await res.json()
+
+      setDiscounts(disData.data)
+
+    };
+
+    getDiscounts();
+  }, []);
 
 
 
@@ -93,13 +107,40 @@ const Details = ({ artwork }) => {
 
         <AddToWishlist artWorkID={artwork._id} />
       </div>
-
-
+      <div className="d-flex">
       <p className="text-primary ps-4 fs-4 fw-bold">${artwork.price}</p>
 
-     <Link href={`/checkout/${artwork._id}`}>
-     <button type="button" className={styles.btn}>By Now!</button>
-     </Link> 
+
+
+
+        {discounts.map((discount) => (
+
+
+          discount.artWorkID === artwork._id && (
+
+            <>
+
+              {/* <p className="text-primary ps-4 text-decoration-line-through fs-4 fw-bold">${artwork.price}</p> */}
+
+              <p className="text-danger ps-4 fs-4 fw-bold">
+              <TbDiscountOff />   ${Math.ceil(artwork.price - (artwork.price * discount.percent / 100))}
+               
+              </p>
+
+
+            </>
+
+          )
+
+        ))}
+
+      </div>
+
+
+
+      <Link href={`/checkout/${artwork._id}`}>
+        <button type="button" className={styles.btn}>By Now!</button>
+      </Link>
 
       {/* Social Icons */}
 

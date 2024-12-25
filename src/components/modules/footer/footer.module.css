@@ -87,7 +87,8 @@
 .licenses {
   height: 200px;
   gap: 10px;
-  display: grid;
+  display: flex;
+  justify-content: center;
   grid-template-columns: auto auto;
 }
 
@@ -141,7 +142,7 @@
   }
 
   .footer main {
-    text-align: center;
+    text-align: start;
   }
 
   .footer .descriptions {

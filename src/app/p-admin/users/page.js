@@ -4,8 +4,16 @@ import Table from "@/components/templates/p-admin/users/Table";
 import connectToDB from "@/configs/db";
 import UserModel from "@/models/User";
 import AdminChildLayout from "@/components/layouts/AdminChildLayout";
+import { authAdmin } from "@/utils/AuthHelper";
+import { redirect } from "next/navigation";
 
 const page = async () => {
+  const admin=await authAdmin()
+  
+  if(!admin){
+    
+    return redirect('/login-register')
+  }
   connectToDB();
   const users = await UserModel.find({}).lean();
 

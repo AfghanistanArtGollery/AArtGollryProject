@@ -6,10 +6,17 @@ import connectToDB from "@/configs/db";
 import { authUser } from "@/utils/AuthHelper";
 import TicketModel from "@/models/Ticket";
 import ClientLayout from "@/components/layouts/ClientLayout";
+import { redirect } from "next/navigation";
 
 const page = async () => {
+
+  const user=await authUser()
+  
+  if(!user){
+    
+    return redirect('/login-register')
+  }
   connectToDB();
-  const user = await authUser();
   const tickets = await TicketModel.find({ user: user._id, isAnswer: false })
     .populate("department", "title")
     .sort({ _id: -1 });

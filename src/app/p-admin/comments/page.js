@@ -4,8 +4,16 @@ import Table from "@/components/templates/p-admin/comments/Table";
 import connectToDB from "@/configs/db";
 import CommentModel from "@/models/Comment";
 import AdminChildLayout from "@/components/layouts/AdminChildLayout";
-
+import { authAdmin } from "@/utils/AuthHelper";
+import { redirect } from "next/navigation";
 const page = async () => {
+  const admin=await authAdmin()
+  
+  if(!admin){
+    
+    return redirect('/login-register')
+  }
+
   connectToDB();
   const comments = await CommentModel.find({})
     .sort({ _id: -1 })
@@ -18,7 +26,7 @@ const page = async () => {
     <AdminChildLayout>
       <main>
         {comments.length === 0 ? (
-          <p className={styles.empty}>there is no comment</p>
+          <p className={styles.empty}>There is no comment</p>
         ) : (
           <Table
             comments={JSON.parse(JSON.stringify(comments))}

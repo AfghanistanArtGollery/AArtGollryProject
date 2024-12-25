@@ -15,8 +15,9 @@ export default async function Home() {
 
   // is login for navabar
   const user = await authUser()
+  
   const admin = await authAdmin()
-
+   
   const blogs = await modelBlog.find({}).lean();
   
   let wishlistLength = null;
@@ -34,6 +35,7 @@ export default async function Home() {
 
 
       <Bunner />
+   
       <Lettest />
       {/* <Promote /> if any advertise  */}
       <Articles blogs={JSON.parse(JSON.stringify(blogs))} />

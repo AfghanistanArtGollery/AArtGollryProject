@@ -9,9 +9,26 @@ import { IoAddSharp } from "react-icons/io5";
 import { TbListDetails } from "react-icons/tb";
 import Link from "next/link";
 import swal from "sweetalert";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 const Sidebar = () => {
+  const router= useRouter()
+  const [user, setUser] = useState({});
+  
+  useEffect(() => {
+    const authUser = async () => {
+      const res = await fetch("/api/auth/me");
+
+      if (res.status === 200) {
+        const data = await res.json();
+        setUser({ ...data });
+      }
+    };
+
+    authUser();
+  }, []);
+  
   const[sideBarMenu,setSideBarMenu]=useState(false)
   
 
@@ -32,7 +49,7 @@ const Sidebar = () => {
             icon: "warning",
             buttons: ["No", "Yes"],
           }).then(() => {
-            // router.push('/')
+            router.push('/')
           });
         }
       }
@@ -48,7 +65,7 @@ const Sidebar = () => {
 
   <aside  className={`${styles.sidebar} ${sideBarMenu ? styles.open : ""}`}>
       <div className={styles.sidebar_header}>
-        <p>Welcome, Shahin!</p>
+        <p>Welcome, {user.name}!</p>
       </div>
       <ul className={styles.sidebar_main}>
        

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-
+require('./ArtWork')
 const schema = mongoose.Schema({
 
     code: {
@@ -17,6 +17,11 @@ const schema = mongoose.Schema({
     uses: {
         type: Number,
         default:0
+    },
+    artWorkID:{
+        type:mongoose.Types.ObjectId,
+        ref:'ArtWork'
+
     }
 
 }, { timestamps: true });

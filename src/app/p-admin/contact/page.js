@@ -4,9 +4,15 @@ import Table from "@/components/templates/p-admin/contact/Table";
 
 import connectToDB from "@/configs/db";
 import contactModel from "@/models/Contact";
-
+import { authAdmin } from '@/utils/AuthHelper';
+import { redirect } from 'next/navigation';
 export default async function page() {
-
+    const admin=await authAdmin()
+  
+    if(!admin){
+      
+      return redirect('/login-register')
+    }
     connectToDB();
 
     const contactLists = await contactModel.find({})

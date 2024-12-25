@@ -1,7 +1,7 @@
 import Breadcrumb from "@/components/modules/breadcrumb/Breadcrumb";
 import Footer from "@/components/modules/footer/Footer";
 import Navbar from "@/components/modules/navbar/Navbar";
-import Product from "@/components/templates/p-user/whishlist/Product";
+import Artwork from "@/components/templates/p-user/whishlist/Product";
 
 import connectToDB from "@/configs/db";
 import styles from "@/styles/wishlist.module.css";
@@ -19,7 +19,7 @@ const page = async () => {
   const user = await authUser();
 
   if (user) {
-    wishlist = await modelWishlist.find({ user: user._id }).populate('product').lean();
+    wishlist = await modelWishlist.find({ user: user._id }).populate('artWorkID').lean();
   }
 
 
@@ -37,13 +37,13 @@ const page = async () => {
           {wishlist.length > 0 &&
                              
             wishlist.map(wish => (
-                <Product
+                <Artwork
                     key={wish._id}
-                    artWorkID={String(wish.product._id)}
-                    score={wish.product.score} 
-                    name={wish.product.name} 
-                    images={wish.product.images}
-                    price={wish.product.price}  // Pass individual properties from wish.product
+                    artWorkID={String(wish.artWorkID._id)}
+                    score={wish.artWorkID.score} 
+                    name={wish.artWorkID.name} 
+                    images={wish.artWorkID.images}
+                    price={wish.artWorkID.price}  // Pass individual properties from wish.product
                 />
             ))
           }

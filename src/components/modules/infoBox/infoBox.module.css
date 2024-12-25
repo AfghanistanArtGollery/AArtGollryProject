@@ -44,3 +44,10 @@
     width: 200px;
   }
 }
+
+@media (max-width: 576px) {
+
+  .box {
+    width: 100%;
+  }
+}

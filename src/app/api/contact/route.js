@@ -1,5 +1,11 @@
 import connectToDB from "@/configs/db";
 import ContactModel from "@/models/Contact";
+import DOMPurify from 'dompurify'
+import {JSDOM} from 'jsdom'
+import { valiadteEmail,valiadtePhone } from "@/utils/auth";
+import { validate } from "@/models/SubCategory";
+const window = new JSDOM('').window
+const purify= DOMPurify(window)
 
 export async function POST(req) {
 
@@ -10,8 +16,22 @@ export async function POST(req) {
     const { name, email, phone, company, message } = body;
 
     // Validation (You)
+    const isValiadteEmail= valiadteEmail(email)
+    const isValiadtePhone=valiadtePhone(phone)
+    
+    if (!isValiadteEmail || !isValiadtePhone) {
+      return Response.json(
+        { message: "email or phone is not valid" },
+        { status: 419 }
+      );
+    }
+   
 
-    await ContactModel.create({ name, email, phone, company, message });
+    // prevent from none html tags or elemenet
+   const sanitizedMessage = purify.sanitize(message);
+
+
+    await ContactModel.create({ name, email, phone, company, message:sanitizedMessage });
 
     return Response.json(
       { message: "Message saved successfully :))" },
@@ -19,7 +39,7 @@ export async function POST(req) {
     );
   } catch (err) {
     return Response.json(
-      { message: err },
+      { message: err.message },
       {
         status: 500,
       }

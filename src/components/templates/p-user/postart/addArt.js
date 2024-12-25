@@ -3,9 +3,8 @@ import React, { useEffect, useState } from "react";
 import styles from "./table.module.css";
 import swal from "sweetalert";
 import { useRouter } from "next/navigation";
-import Tiptap from "@/components/modules/tipTap/TiptapEditor";
 import RichTextEditor from "@/components/modules/tipTap/TiptapEditor";
-function addArt({ Categories ,editor  }) {
+function AddArtWork({ Categories,editor  }) {
   const router = useRouter();
 
 
@@ -58,7 +57,7 @@ console.log('editorContent=>>>',editorContent)
   };
   
   // Function to handle form submission
-  const addArtwork = async ({ editor }) => {
+  const addArt = async ({ editor }) => {
     // Reset errors before validating
     setErrors({});
 
@@ -116,7 +115,7 @@ console.log('editorContent=>>>',editorContent)
 
       if (res.status === 201) {
         swal({
-          title: "Artwork added successfully we are reviewing your art and will be approved after 30 minutes and 2 hours",
+          title: "Artwork added successfully",
           icon: "success",
           buttons: "Ok",
         }).then(() => {
@@ -222,11 +221,16 @@ console.log('editorContent=>>>',editorContent)
 
   return (
     <section className={styles.discount}>
-      <p>ADD YOUR ARTWORK</p>
+      <div>
+        <h1 className={styles.title}>
+          <span>Add ArtWork</span>
+        </h1>
+      </div>
+
 
       <div className="row">
         <div className="col-12 col-md-6 mb-3">
-          <label>Artwork Name</label>
+          <label >Artwork Name</label>
           <input
             value={name}
             onChange={(event) => setName(event.target.value)}
@@ -294,7 +298,7 @@ console.log('editorContent=>>>',editorContent)
       <div className="row">
         {/* Category */}
         <div className="col-12 col-md-6 mb-3">
-          <label>Select Category:</label>
+          <label >Select Category:</label>
           <select onChange={(event) => setCategoryID(event.target.value)} className="form-select">
             <option value={-1}>Please select a Category</option>
             {Categories.map((category) => (
@@ -326,12 +330,12 @@ console.log('editorContent=>>>',editorContent)
           <label>Framed</label>
           <div className={styles.inputGroup}>
             <input id="framed" name="framed" type="checkbox"
-              className={styles.input}
+
               checked={framed}
               onChange={(event) => setFramed(event.target.checked)}
-
+           className={styles.input}
             />
-            <label className={styles.label} htmlFor="framed">is framed ArtWork?</label>
+            <label className={styles.label} for="framed">is framed ArtWork?</label>
           </div>
         </div>
 
@@ -340,9 +344,10 @@ console.log('editorContent=>>>',editorContent)
           <input
             value={price}
             onChange={(event) => setPrice(event.target.value)}
-            placeholder="Add artwork price"
-            type="text"
+            placeholder="e.g $399"
+            type="number"
             className={styles.input}
+
           />
           {errors.price && <span className={styles.error}>{errors.price}</span>}
         </div>
@@ -359,9 +364,8 @@ console.log('editorContent=>>>',editorContent)
           <input
             value={width}
             onChange={(event) => setWidth(event.target.value)}
-            placeholder="Width"
-            type="text"
-          
+            placeholder="Width in cm"
+            type="number"
             className={styles.input}
 
           />
@@ -372,8 +376,8 @@ console.log('editorContent=>>>',editorContent)
           <input
             value={height}
             onChange={(event) => setHeight(event.target.value)}
-            placeholder="Height"
-            type="text"
+            placeholder="Height in cm"
+           type="number"
             className={styles.input}
 
           />
@@ -387,19 +391,20 @@ console.log('editorContent=>>>',editorContent)
           <input
             value={shortDescription}
             onChange={(event) => setShortDescription(event.target.value)}
-            placeholder="Short description"
+            placeholder="Short description less then 20 words"
             type="text"
             className={styles.input}
           />
         </div>
         <div className="col-md-6 mb-3">
-          <label>Tags</label>
+          <label>Tags Separate using (,)</label>
           <input
             value={tags}
             onChange={(event) => setTags(event.target.value)}
             placeholder="art, nature, modern"
             type="text"
             className={styles.input}
+
           />
           {errors.tags && <span className={styles.error}>{errors.tags}</span>}
         </div>
@@ -433,11 +438,11 @@ console.log('editorContent=>>>',editorContent)
       </div>
 
 
-      <button className={`btn btn-primary w-100 ${styles.addButton}`} onClick={addArtwork}>
+      <button className={`btn btn-primary w-100 ${styles.addButton}`} onClick={addArt}>
         Submit Art Work
       </button>
     </section>
   );
 }
 
-export default addArt;
+export default AddArtWork;

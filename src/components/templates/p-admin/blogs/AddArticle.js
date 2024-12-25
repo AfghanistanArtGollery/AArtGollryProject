@@ -109,11 +109,11 @@ function AddArticle({ editor }) {
                 </div>
                 <div className="col-12 col-md-6 mb-3">
 
-                    <label>excerpt</label>
+                    <label>Excerpt</label>
                     <input
                         value={excerpt}
                         onChange={(event) => setExcerpt(event.target.value)}
-                        placeholder="excerpt"
+                        placeholder="excerpt..."
                         type="text"
                         className={styles.input}
                     />

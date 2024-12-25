@@ -4,8 +4,16 @@ import connectToDB from "@/configs/db";
 import DiscountModel from "@/models/Discount";
 import AddDiscount from "@/components/templates/p-admin/discounts/AddDiscount";
 import AdminChildLayout from "@/components/layouts/AdminChildLayout";
+import { authAdmin } from "@/utils/AuthHelper";
+import { redirect } from "next/navigation";
 
 const Discounts = async () => {
+  const admin=await authAdmin()
+  
+  if(!admin){
+    
+    return redirect('/login-register')
+  }
   connectToDB();
   const discounts = await DiscountModel.find({}).lean();
 

@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { authUser } from '@/utils/AuthHelper';
 import ArtWork from '@/components/modules/artwork/Artwork';
 import Breadcrumb from '@/components/modules/breadcrumb/Breadcrumb';
+import Footer from '@/components/modules/footer/Footer';
 async function AllArt({ params }) {
 
   connectToDB();
@@ -28,7 +29,7 @@ async function AllArt({ params }) {
   const user = await authUser()
 
   // const allCategory = await modelArtwork.find({}).populate('artist_id').lean()
-  const allArtWorks = await modelArtwork.find({}).populate('artist_id').populate('categoryID').lean()
+  const allArtWorks = await modelArtwork.find({}).sort({_id:-1}).populate('artist_id').populate('categoryID').lean()
 
 
 
@@ -75,7 +76,7 @@ async function AllArt({ params }) {
       <Breadcrumb route={categoryTitle} />
 
 
-      <div className="container">
+      <div className="container mb-5">
         <div className="row" style={{ marginTop: "20px" }}>
           <div className="col-md-3">
 
@@ -104,13 +105,13 @@ async function AllArt({ params }) {
                     <div className="noUi_base">
                       <div className="noUi_origin" style={{ left: "0%" }}>
                         <div className="noUi_handle noUi_handle_lower">
-                          <div className="noUi_tooltip">£100</div>
+                          <div className="noUi_tooltip">$100</div>
                         </div>
                       </div>
                       <div className={styles.noUi_connect}></div>
                       <div className="noUi_origin" style={{ left: "100%" }}>
                         <div className="noUi_handle noUi_handle_upper">
-                          <div className="noUi_tooltip">£29,000</div>
+                          <div className="noUi_tooltip">$10,000</div>
                         </div>
                       </div>
                     </div>
@@ -125,7 +126,7 @@ async function AllArt({ params }) {
 
                 {/* Category Filter */}
                 <div className="category_browse_wrapper">
-                  <span className={styles.filter_title}>Categories</span>
+                  <span className={styles.filter_title}>Categories Ammount</span>
                   <ul className="list-unstyled category_browse_list">
                     <li>
                       <div className="checkbox">
@@ -159,46 +160,8 @@ async function AllArt({ params }) {
                         </label>
                       </div>
                     </li>
-                    <li>
-                      <div className="checkbox">
-                        <label>
-                          <input type="checkbox" name="category_id[46626]" value="1" />
-                          Acrylic <span className="search-category-results-count">(8008)</span>
-                        </label>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="checkbox">
-                        <label>
-                          <input type="checkbox" name="category_id[46626]" value="1" />
-                          Acrylic <span className="search-category-results-count">(8008)</span>
-                        </label>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="checkbox">
-                        <label>
-                          <input type="checkbox" name="category_id[46626]" value="1" />
-                          Acrylic <span className="search-category-results-count">(8008)</span>
-                        </label>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="checkbox">
-                        <label>
-                          <input type="checkbox" name="category_id[46626]" value="1" />
-                          Acrylic <span className="search-category-results-count">(8008)</span>
-                        </label>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="checkbox">
-                        <label>
-                          <input type="checkbox" name="category_id[46626]" value="1" />
-                          Acrylic <span className="search-category-results-count">(8008)</span>
-                        </label>
-                      </div>
-                    </li>
+                  
+                  
                     {/* More categories here */}
                   </ul>
                 </div>
@@ -208,15 +171,15 @@ async function AllArt({ params }) {
           </div>
 
 
-          <div className="col-md-9" id={styles.main}>
+          <div className="col-12 col-md-9" id={styles.main}>
             <div className="row">
 
 
-
+          
               {filteredArtWorks.map(artwork => (
 
 
-                <div className="col-md-4" key={artwork._id}>
+                <div className=" col-6 col-md-4" key={artwork._id}>
                   <ArtWork key={artwork._id} artwork={JSON.parse(JSON.stringify(artwork))} />
                 </div>
 
@@ -233,6 +196,7 @@ async function AllArt({ params }) {
 
 
       </div>
+      <Footer/>
     </div>
 
 

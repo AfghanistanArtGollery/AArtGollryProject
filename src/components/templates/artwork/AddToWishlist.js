@@ -5,6 +5,9 @@ import React, { useEffect, useState } from "react";
 import { CiHeart } from "react-icons/ci";
 
 function AddToWishlist({ artWorkID }) {
+
+  console.log('artworkDI=>',artWorkID)
+
   const [user, setUser] = useState({});
 
   useEffect(() => {
@@ -32,7 +35,7 @@ function AddToWishlist({ artWorkID }) {
 
     const wish = {
       user: user._id,
-      product: artWorkID,
+      artWorkID: artWorkID,
     };
 
     const res = await fetch("/api/wishlist", {
@@ -51,7 +54,7 @@ function AddToWishlist({ artWorkID }) {
 
   return (
     <div onClick={addToWishlist}>
-      <CiHeart />
+      <CiHeart size={25} />
       <a href="/">Add to Wishlist</a>
     </div>
   );

@@ -85,3 +85,18 @@ export async function POST(req) {
     return Response.json({ message: err.message }, { status: 500 });
   }
 }
+
+
+export async function GET(req,res) {
+
+  connectToDB();
+
+  
+  try {
+    const data= await ArtWorkModel.find({})
+    return Response.json({data})
+  } catch (error) {
+    return Response.json({message:error.message},{status:500})
+  }
+  
+}

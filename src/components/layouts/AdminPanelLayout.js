@@ -3,9 +3,7 @@ import Topbar from '../modules/p-admin/Topbar'
 import Sidebar from '../modules/p-admin/Sidebar'
 import styles from './adminPanelLayout.module.css'
 import AdminChildLayout from './AdminChildLayout'
-import { authUser } from '@/utils/AuthHelper'
 import { redirect } from 'next/navigation'
-
 export default async function AdminPanelLayout({ children }) {
 
   const user = await authUser();

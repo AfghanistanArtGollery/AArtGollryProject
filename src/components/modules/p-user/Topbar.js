@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import styles from "./topbar.module.css";
 import { IoIosSearch, IoIosNotifications } from "react-icons/io";
 import Modal from "./Modal";
@@ -13,15 +13,28 @@ const Topbar = ({ onToggleSidebar }) => {
 
   const hideModal = () => setShowModal(false);
 
+  const [user, setUser] = useState({});
+  useEffect(() => {
+    const authUser = async () => {
+      const res = await fetch("/api/auth/me");
+
+      if (res.status === 200) {
+        const data = await res.json();
+        setUser({ ...data });
+      }
+    };
+
+    authUser();
+  }, []);
   return (
     <>
       <div className={styles.topbar}>
         <div className={styles.profile}>
           <div>
-            <p>Asadshahi</p>
-            <span>Admin</span>
+            <p>{user.name}</p>
+            <span>{user.role}</span>
           </div>
-          <img src="/images/shahin.jpg" alt="Profile" />
+          <img src={user.avatar} alt="Profile" />
         </div>
         <section>
         <div
@@ -57,7 +70,7 @@ const Topbar = ({ onToggleSidebar }) => {
                   setShowModal(true);
                 }}
               >
-                Hello Admin
+                Hello .....
               </p>
               <button onClick={() => setShowNotifications(false)}>Got it</button>
             </div>
@@ -68,7 +81,7 @@ const Topbar = ({ onToggleSidebar }) => {
                   setShowModal(true);
                 }}
               >
-                Hello Admin
+                Hello .....
               </p>
               <button onClick={() => setShowNotifications(false)}>Got it</button>
             </div>

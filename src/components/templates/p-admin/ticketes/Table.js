@@ -76,7 +76,7 @@ export default function DataTable({ tickets, title }) {
             {tickets.map((ticket, index) => (
               <tr key={ticket._id}>
                 <td>{index + 1}</td>
-                <td>{ticket.user.name}</td>
+                <td className={`${ticket.hasAnswer==true?'bg-success':'bg-danger'}`}>{ticket.user.name}</td>
                 <td>{ticket.title}</td>
                 <td>  {ticket.department.title}</td>
                 <td>

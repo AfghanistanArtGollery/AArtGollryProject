@@ -1,25 +1,27 @@
-'use client'
+'use client';
 import { useState } from "react";
 import styles from "./register.module.css";
 import swal from "sweetalert";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
+import registerValidation from "../../../../validations/RegisterValidation";
 
 const Register = ({ showloginForm }) => {
 
-  const router=useRouter()
+  const router = useRouter();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState({});
 
-  // Validation states
+  // Validation states for password strength
   const [isValidLength, setIsValidLength] = useState(false);
   const [hasUppercase, setHasUppercase] = useState(false);
   const [hasLowercase, setHasLowercase] = useState(false);
   const [hasNumber, setHasNumber] = useState(false);
   const [hasSpecialChar, setHasSpecialChar] = useState(false);
 
-  // Function to validate password
   const validatePassword = (password) => {
     setIsValidLength(password.length >= 8);
     setHasUppercase(/[A-Z]/.test(password));
@@ -28,7 +30,6 @@ const Register = ({ showloginForm }) => {
     setHasSpecialChar(/[^A-Za-z0-9]/.test(password));
   };
 
-  // Function to handle password input changes
   const handlePasswordChange = (e) => {
     const inputPassword = e.target.value;
     setPassword(inputPassword);
@@ -36,41 +37,48 @@ const Register = ({ showloginForm }) => {
   };
 
   const signUp = async () => {
-    const user = { name, email, phone, password };
+    const user = { name, email, phone, password, confirmPassword };
 
-    // Ensure all validation criteria are met before proceeding
-    if (!isValidLength || !hasUppercase || !hasLowercase || !hasNumber || !hasSpecialChar) {
-      swal({
-        title: "Password does not meet requirements",
-        buttons: "Ok",
+    try {
+      // first check this
+      await registerValidation.validate(user, {
+        abortEarly: false,
       });
-      return;
-    }
+      // Proceed with sign-up request if validation passes
+      const res = await fetch("http://localhost:3000/api/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      });
 
-    const res = await fetch("http://localhost:3000/api/auth/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(user),
-    });
-
-    if (res.status === 201) {
-      swal({
-        title: "Successfully registered",
-        buttons: "Ok",
-      });
-      router.back()
-    } else if (res.status === 401) {
-      swal({
-        title: "User with this email, phone, or name already exists",
-        buttons: "Ok",
-      });
-    } else {
-      swal({
-        title: "Some issue occurred",
-        buttons: "Ok",
-      });
+      if (res.status === 201) {
+        swal({
+          title: "Successfully registered",
+          buttons: "Ok",
+        });
+        router.back();
+      } else if (res.status === 422) {
+        swal({
+          title: "The username or email or phone exist already !!",
+          buttons: "Try Again",
+        });
+      } else {
+        swal({
+          title: "Some issue occurred",
+          buttons: "Ok",
+        });
+      }
+    } catch (err) {
+      let errors = err.inner.reduce(
+        (acc, err) => ({
+          ...acc,
+          [err.path]: err.message,
+        }),
+        {}
+      );
+      setError(errors);  // Set all errors to display unter the input fields
     }
   };
 
@@ -84,6 +92,8 @@ const Register = ({ showloginForm }) => {
           type="text"
           placeholder="Full Name"
         />
+        {error.name && <p className={styles.error}>{error.name}</p>}
+        
         <input
           value={phone}
           className={styles.input}
@@ -91,6 +101,8 @@ const Register = ({ showloginForm }) => {
           type="text"
           placeholder="Phone number"
         />
+        {error.phone && <p className={styles.error}>{error.phone}</p>}
+        
         <input
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -98,6 +110,8 @@ const Register = ({ showloginForm }) => {
           type="email"
           placeholder="Email"
         />
+        {error.email && <p className={styles.error}>{error.email}</p>}
+        
         <input
           onChange={handlePasswordChange}
           value={password}
@@ -105,8 +119,19 @@ const Register = ({ showloginForm }) => {
           type="password"
           placeholder="Password"
         />
+        {error.password && <p className={styles.error}>{error.password}</p>}
+        
+        <input
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          value={confirmPassword}
+          className={styles.input}
+          type="password"
+          placeholder="Confirm Password"
+        />
+        {error.confirmPassword && <p className={styles.error}>{error.confirmPassword}</p>}
+        
         <div className="password-requirements mt-3">
-          <ul className=' list-unstyled'>
+          <ul className="list-unstyled">
             <li className={isValidLength ? styles.valid : styles.invalid}>Min. of 8 characters</li>
             <li className={hasUppercase ? styles.valid : styles.invalid}>1 uppercase</li>
             <li className={hasLowercase ? styles.valid : styles.invalid}>1 lowercase</li>
@@ -115,19 +140,9 @@ const Register = ({ showloginForm }) => {
           </ul>
         </div>
 
-        <button
-          onClick={signUp}
-          style={{ marginTop: ".7rem" }}
-          className={styles.btn}
-        >
-          Register
-        </button>
-
-        <p onClick={showloginForm} className={styles.back_to_login}>
-          Back to Login
-        </p>
+        <button onClick={signUp} className={styles.btn}>Register</button>
+        <p onClick={showloginForm} className={styles.back_to_login}>Back to Login</p>
       </div>
-      <p className={styles.redirect_to_home}>Cancel</p>
     </>
   );
 };

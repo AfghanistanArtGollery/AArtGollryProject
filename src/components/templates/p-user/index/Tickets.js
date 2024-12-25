@@ -15,8 +15,12 @@ const Tickets = ({ tickets }) => {
       {tickets.map((ticket) => (
         <Ticket key={ticket._id} {...ticket} />
       ))}
+      {tickets.length === 0 && (
 
-      {/* <p className={styles.empty}>No tickets registered</p> */}
+        <p className={styles.empty}>No tickets registered</p>
+      )
+
+      }
     </div>
   );
 };

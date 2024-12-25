@@ -90,7 +90,14 @@ export default function Navbar({ isAdmin, isLogin, wishlistLength }) {
           </Link>
           <Link href="/wishlist">
             <FaRegHeart />
-            <span>{wishlistLength}</span>
+            {wishlistLength && (
+
+              <span>{wishlistLength}</span>
+            )}
+         
+
+
+
           </Link>
         </div>
 
@@ -105,6 +112,8 @@ export default function Navbar({ isAdmin, isLogin, wishlistLength }) {
           <li><Link href="/buy-art">Buy Art</Link></li>
           <li><Link href="/sell-art">Sell Art</Link></li>
           <li><Link href="/blog">Blog</Link></li>
+          <li><Link href="/artist">Artist</Link></li>
+
           <li><Link href="/contact-us">Contuct us</Link></li>
           <li><Link href="/about-us">About</Link></li>
 

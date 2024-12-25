@@ -15,7 +15,7 @@ export async function DELETE(req,{params}){
         }
 
 
-         await modelWishlist.findOneAndDelete({user:user._id,product:artWorkID})
+         await modelWishlist.findOneAndDelete({user:user._id,artWorkID:artWorkID})
         
 
 

@@ -12,9 +12,11 @@
 
 .description {
   direction: ltr !important;
-  text-align: start;
+  display: flex;
+  justify-content: start;
   color: gray;
   /* Center description */
+
   font-size: 18px;
   /* Make description font slightly smaller */
 

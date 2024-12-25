@@ -9,12 +9,14 @@ import { MdSms, MdLogout } from "react-icons/md";
 import { PiArticleNyTimesLight } from "react-icons/pi";
 import Link from "next/link";
 import swal from "sweetalert";
+import { useState,useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 
 const Sidebar = () => {
  
-
-
+const router =useRouter()
+const [user, setUser] = useState({});
   const logoutHandler = () => {
     swal({
       title: "Are you sure you want to log out?",
@@ -32,17 +34,30 @@ const Sidebar = () => {
             icon: "warning",
             buttons: ["No", "Yes"],
           }).then(() => {
-            // router.replace('/');
+            router.push('/');
           });
         }
       }
     });
   };
+ 
+  
+  useEffect(() => {
+    const authUser = async () => {
+      const res = await fetch("/api/auth/me");
 
+      if (res.status === 200) {
+        const data = await res.json();
+        setUser({ ...data });
+      }
+    };
+
+    authUser();
+  }, []);
   return (
     <aside  className={styles.sidebar}>
       <div className={styles.sidebar_header}>
-        <p>Welcome, Shahi!</p>
+        <p>Welcome, {user.name}!</p>
       </div>
       <ul style={{marginTop:"2px"}} className={styles.sidebar_main}>
       

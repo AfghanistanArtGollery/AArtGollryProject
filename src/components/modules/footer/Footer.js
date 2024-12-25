@@ -5,6 +5,7 @@ import { FaRegHeart } from "react-icons/fa";
 import { IoIosReorder } from "react-icons/io";
 import { MdOutlineEmail } from "react-icons/md";
 import Article from "./Article";
+import Image from "next/image";
 import Link from "next/link";
 
 const Footer = () => {
@@ -17,18 +18,23 @@ const Footer = () => {
           </p>
 
           <div className={styles.description}>
+            <p>
             <CiLocationOn  size={20} />
             
             house 12 karte 3 kabul afghanistan
+            </p>
            
           </div>
           <div className={styles.description}>
+            <p>
+
             <IoIosReorder size={20} />
             Order Tracking: 02188305827
+            </p>
           </div>
           <div className={styles.description}>
-            <MdOutlineEmail size={20} />
-            afghantenders@info
+          
+            <p>   <MdOutlineEmail size={20} />afgartgollery@info.com</p>
           </div>
         </section>
 
@@ -45,6 +51,9 @@ const Footer = () => {
             </li>
             <li>
               <Link href={"/rules"}>Terms & Conditions</Link>
+            </li>
+            <li>
+              <Link href={"/artist"}>Atists & Developers</Link>
             </li>
           </div>
 
@@ -69,7 +78,8 @@ const Footer = () => {
 
 
         <div className={styles.licenses}>
-          <img src="/images/logoart.png" width={400} height={200} alt="License 4" />
+
+          <Image src="/images/logoart.png" width={400} height={250} alt="License 4" />
        
         </div>
       </main>
@@ -77,7 +87,7 @@ const Footer = () => {
       <hr />
       <div className="container">
         <p className={styles.copyRight}>
-          2025 <MdOutlineCopyright /> All Rights Reserved by <strong>Afghanistan Art Gollery</strong> | Designed & Developed by <strong>AsadShahi || Express Creative</strong>
+          2025 <MdOutlineCopyright /> All Rights Reserved by <strong>Afghanistan Art Gollery</strong> | Designed & Developed by <strong>AsadShahi & Express Creative</strong>
         </p>
       </div>
     </footer>

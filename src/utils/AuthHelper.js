@@ -26,6 +26,7 @@ const authAdmin = async () => {
   connectToDB();
   const token = cookies().get("token");
   let user = null;
+  
 
   if (token) {
     const tokenPayload = verifyAccessToken(token.value);
@@ -42,8 +43,9 @@ const authAdmin = async () => {
   } else {
     return null;
   }
- 
-  return user;
+  
+  return user
+  console.log('admin=>',user)
 };
 
 

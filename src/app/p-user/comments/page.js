@@ -6,15 +6,26 @@ import connectToDB from "@/configs/db";
 import Commentmodel from "@/models/Comment";
 import { authUser } from "@/utils/AuthHelper";
 import ClientLayout from "@/components/layouts/ClientLayout";
+import { redirect } from "next/navigation";
+
+
 const page = async () => {
+
+  const user = await authUser()
+
+  if (!user) {
+
+    return redirect('/login-register')
+  }
+
   connectToDB();
-  const user = await authUser();
-  
+
+
   const comments = await Commentmodel.find(
-      { email:user.email},
-      "-__v"
-    ).populate("artWorkID", "name");
-    
+    { email: user.email },
+    "-__v"
+  ).populate("artWorkID", "name");
+
 
 
   return (
@@ -25,10 +36,10 @@ const page = async () => {
           title="Comment lists"
         />
 
-        {comments.length===0&&(
-        <p className={styles.empty}>
-         there is no comment
-        </p>  
+        {comments.length === 0 && (
+          <p className={styles.empty}>
+            There is no comment
+          </p>
 
 
         )}

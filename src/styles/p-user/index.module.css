@@ -1,8 +1,8 @@
 .boxes {
-    gap: 20px;
+    gap: 10px;
     direction: ltr;
     margin-top: 3rem;
-    padding: 0 40px;
+    padding: 0 20px;
     display: flex;
 
     flex-wrap: wrap;
