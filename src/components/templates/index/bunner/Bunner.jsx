@@ -34,27 +34,29 @@ export default function SwiperArtWorkPics({ artwork }) {
         <div className={styles.swiperButtonPrev} />
 
 
-      
+
 
 
         <SwiperSlide>
           <div className={styles.swiper_mobile_img}>
-          <Image
-          objectFit="cover"
+            <Image
+              objectFit="cover"
 
-            style={{ height: '650px' }}
+              style={{ height: '650px' }}
 
 
-            width={500} height={500}
-            src="https://cdn.kreezalid.com/kreezalid/556408/catalog/8096/99/1000x1000_1_spsmq_1279148334.jpg" alt="Slide"
-          />
+              width={500} height={500}
+
+              src='/images/bunner.jpg'
+            // src="https://cdn.kreezalid.com/kreezalid/556408/catalog/8096/99/1000x1000_1_spsmq_1279148334.jpg" alt="Slide"
+            />
 
           </div>
 
 
         </SwiperSlide>
 
-        <SwiperSlide>
+        {/* <SwiperSlide>
           <Image
 
             style={{ height: '650px' }}
@@ -77,7 +79,7 @@ export default function SwiperArtWorkPics({ artwork }) {
           />
 
         </SwiperSlide>
-
+ */}
 
 
 

@@ -22,7 +22,12 @@ const schema = new mongoose.Schema({
     type: String,
     required: true,
   },
-});
+  answer: {
+    type: Number, // 0 - 1
+    required: true,
+    default:0,
+  },
+},{ timestamps: true });
 
 const model = mongoose.models.Contact || mongoose.model("Contact", schema);
 

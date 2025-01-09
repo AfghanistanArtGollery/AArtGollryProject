@@ -1,4 +1,5 @@
 const mongoose =require("mongoose");
+
 const schema=new mongoose.Schema({
     name:{
         type:String,
@@ -22,6 +23,7 @@ const schema=new mongoose.Schema({
     },
     role:{
         type:String,
+        enum:["ADMIN","USER","AUTHER","ARTIST"],
         default:"USER",
     },
 

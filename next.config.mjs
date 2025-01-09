@@ -8,7 +8,7 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'cdn.kreezalid.com',
-        pathname: '/kreezalid/**', // Adjust the pathname if needed based on your URL structure
+        pathname: '/**', // Adjust the pathname if needed based on your URL structure
       },
       {
         protocol: 'http', // If you want to allow non-secure HTTP sources (like localhost)

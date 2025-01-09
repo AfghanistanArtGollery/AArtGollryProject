@@ -56,7 +56,7 @@
   padding: 10px;
   background-color: white;
   margin-top: 4px;
-  text-align: end;
+  direction: ltr;
   outline: 0;
   color: black;
   border-radius: 5px;
@@ -163,10 +163,10 @@
 }
 
 .uploader button,
-.password_group button {
+.password_group  {
   background-color: #C86B42;
   color: white;
-  padding: 0.7rem;
+  /* padding: 0.7rem; */
   margin-top: 10px;
   display: flex;
   align-items: center;
@@ -179,6 +179,19 @@
   border-radius: 7px;
   border: 0;
 }
+
+
+/* Asad Shahi ...))) */
+.password_group button {
+  border: 0;
+  background-color: transparent;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+} 
+
+
 
 .uploader div div button {
   width: 100%;
@@ -222,11 +235,11 @@
   gap: 10px;
   outline: 0;
   cursor: pointer;
-  width: 30%;
+  width: 100%;
   border-radius: 7px;
-  margin: 90px auto;
+  margin: 65px auto;
   border: 0;
-  font-size: 1.8rem;
+  font-size: 1.3rem;
 }
 
 .submit_btn:disabled {

@@ -21,7 +21,9 @@ const page = async () => {
  
  
 
-  const ticket = await TicketModel.find({ user: user._id }).populate('department', 'title').sort({ _id: -1 }).lean();
+  const ticket = await TicketModel.find({ user: user._id }).limit(3).populate('department', 'title').sort({ _id: -1 }).lean();
+  
+  
   const comments = await modelComment.find({ user: user._id}).lean();
   const AllTickets = await TicketModel.find({ user: user._id }).lean();
   const Wishlist = await modelWish.find(({ user: user._id })).lean();

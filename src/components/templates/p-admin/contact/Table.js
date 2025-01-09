@@ -13,7 +13,7 @@ export default function DataTable({contacts, title }) {
   };
   
 
-  const answerToContact = async (contact) => {
+  const answerToContact = async (contactID,email) => {
 
     swal({
         title: "We will added function soon...",
@@ -21,35 +21,35 @@ export default function DataTable({contacts, title }) {
          button: "OK",
      });
 
-    // swal({
-    //   title: "Please enter the response:",
-    //   content: "input",
-    //   buttons: "Submit Response",
-    // }).then(async (answerText) => {
-    //   if (answerText) {
-    //     const answer = {
-    //       ...ticket,
-    //       body: answerText,
-    //       ticketID: ticket._id,
-    //     };
+     swal({
+       title: "Please enter the response:",
+       content: "input",
+       buttons: "Submit Response",
+     }).then(async (answerText) => {
+       if (answerText) {
+         const answer = {   
+          bodyMassage: answerText,
+           contactID,
+           email,
+         };
 
-    //     const res = await fetch("/api/tickets/answer", {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //       body: JSON.stringify(answer),
-    //     });
+         const res = await fetch("/api/contact/answer", {
+           method: "POST",
+           headers: {
+             "Content-Type": "application/json",
+           },
+           body: JSON.stringify(answer),
+         });
 
-    //     if (res.status === 201) {
-    //       swal({
-    //         title: "Response submitted successfully",
-    //         icon: "success",
-    //         buttons: "Got it",
-    //       });
-    //     }
-    //   }
-    // });
+         if (res.status === 200) {
+           swal({
+             title: "message emailed successfully !!",
+             icon: "success",
+             buttons: "Got it",
+           });
+         }
+       }
+     });
   };
 
 
@@ -104,7 +104,7 @@ export default function DataTable({contacts, title }) {
                 </td>
                 <td>
 
-                  <button onClick={() => answerToContact(contact)} type="button" className={styles.delete_btn}>
+                  <button onClick={() => answerToContact(contact._id,contact.email)} type="button" className={styles.delete_btn}>
                     Respond
                   </button>
                 </td>

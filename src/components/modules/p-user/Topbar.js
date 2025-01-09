@@ -34,7 +34,7 @@ const Topbar = ({ onToggleSidebar }) => {
             <p>{user.name}</p>
             <span>{user.role}</span>
           </div>
-          <img src={user.avatar} alt="Profile" />
+          <img src={user.avatar||'/images/shahin.jpg'} alt="Profile" />
         </div>
         <section>
         <div

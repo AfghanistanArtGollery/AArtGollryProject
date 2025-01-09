@@ -6,7 +6,10 @@ import connectToDB from "@/configs/db";
 import contactModel from "@/models/Contact";
 import { authAdmin } from '@/utils/AuthHelper';
 import { redirect } from 'next/navigation';
+
+
 export default async function page() {
+
     const admin=await authAdmin()
   
     if(!admin){

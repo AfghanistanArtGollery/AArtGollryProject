@@ -9,6 +9,8 @@ import { authUser } from '@/utils/AuthHelper';
 import ArtWork from '@/components/modules/artwork/Artwork';
 import Breadcrumb from '@/components/modules/breadcrumb/Breadcrumb';
 import Footer from '@/components/modules/footer/Footer';
+
+
 async function AllArt({ params }) {
 
   connectToDB();
@@ -30,6 +32,8 @@ async function AllArt({ params }) {
 
   // const allCategory = await modelArtwork.find({}).populate('artist_id').lean()
   const allArtWorks = await modelArtwork.find({}).sort({_id:-1}).populate('artist_id').populate('categoryID').lean()
+
+
 
 
 
