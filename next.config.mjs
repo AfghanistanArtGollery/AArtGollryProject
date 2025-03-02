@@ -1,21 +1,26 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    // Deprecated: Remove the domains property
-    // domains: ['localhost', 'localhost:3000/'], // Don't use domains anymore.
-
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'cdn.kreezalid.com',
-        pathname: '/**', // Adjust the pathname if needed based on your URL structure
+        pathname: '/**',
       },
       {
-        protocol: 'http', // If you want to allow non-secure HTTP sources (like localhost)
+        protocol: 'http',
         hostname: 'localhost',
-        pathname: '/**', // Allow all paths in localhost
+        pathname: '/**',
       },
     ],
+  },
+
+  env: {
+    MONGO_URL: process.env.MONGO_URL,
+    AccessTokenSecretKey: process.env.AccessTokenSecretKey,
+    RefreshTokenSecretKey: process.env.RefreshTokenSecretKey,
+    GMAIL_USER: process.env.GMAIL_USER,
+    GMAIL_PASS: process.env.GMAIL_PASS,
   },
 };
 
